@@ -3,6 +3,6 @@ title: Learn Once, Write Anywhere
 order: 2
 ---
 
-We don't make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code.
+เราจะไม่สร้างสมมติฐานเกี่ยวกับส่วนที่เหลือของเทคโนโลยีที่คุณใช้อยู่ ดังนั้นคุณสามารถพัฒนาฟีเจอร์ใหม่ๆ ใน React โดยไม่ต้องเขียนโค้ดที่มีอยู่ใหม่
 
-React can also render on the server using Node and power mobile apps using [React Native](https://facebook.github.io/react-native/).
+React สามารถเรนเดอร์ได้บนเซิร์ฟเวอร์ด้วย Node และสร้างแอพพลิเคชันมือถือได้ด้วย [React Native](https://facebook.github.io/react-native/).

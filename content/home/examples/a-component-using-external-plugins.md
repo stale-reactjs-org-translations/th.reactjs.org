@@ -4,4 +4,4 @@ order: 3
 domid: markdown-example
 ---
 
-React allows you to interface with other libraries and frameworks. This example uses **remarkable**, an external Markdown library, to convert the `<textarea>`'s value in real time.
+React อนุญาติให้คุณใช้ไลบรารี่และเฟรมเวิร์อคอื่นๆ ได้ ตัวอย่างนี้ใช้ **remarkable** ที่เป็นไลบรารี่ Markdown ภายนอกที่แปลงค่าของ `<textarea>` ในขณะทำงาน
