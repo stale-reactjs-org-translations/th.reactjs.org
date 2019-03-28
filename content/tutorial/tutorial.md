@@ -1,6 +1,6 @@
 ---
 id: tutorial
-title: "Tutorial: Intro to React"
+title: "แบบฝึกหัด: React เบื้องต้น"
 layout: tutorial
 sectionid: tutorial
 permalink: tutorial/tutorial.html
@@ -12,24 +12,24 @@ redirect_from:
   - "docs/tutorial-zh-CN.html"
 ---
 
-This tutorial doesn't assume any existing React knowledge.
+แบบฝึกหัดนี้ไม่จำเป็นต้องมีความรู้เกี่ยวกับ React มาก่อน
 
-## Before We Start the Tutorial {#before-we-start-the-tutorial}
+## ก่อนที่เราจะเริ่มแบบฝึกหัด {#before-we-start-the-tutorial}
 
-We will build a small game during this tutorial. **You might be tempted to skip it because you're not building games -- but give it a chance.** The techniques you'll learn in the tutorial are fundamental to building any React apps, and mastering it will give you a deep understanding of React.
+แบบฝึกหัดนี้เราจะสร้างเกมส์ง่ายๆ **คุณอาาจะข้ามแบบฝึกหัดนี้ไปเพราะว่าคุณไม่ได้สร้างเกมส์ -- แต่ลองดูสักหน่อย** เทคนิคที่คุณจะได้เรียนรู้จากแบบฝึกหัดนี้เป็นพื้นฐานสำหรับสร้างแอพพลิเคชัน React อื่นๆ และการเรียนรู้แบบฝึกหัดนี้ทำให้คุณมีความเข้าใจ React ในเชิงลึกได้
 
->Tip
+>คำแนะนำ
 >
->This tutorial is designed for people who prefer to **learn by doing**. If you prefer learning concepts from the ground up, check out our [step-by-step guide](/docs/hello-world.html). You might find this tutorial and the guide complementary to each other.
+>แบบฝึกหัดนี้ออกแบบมาสำหรับคนที่ต้องการ **เรียนรู้ด้วยการทำ** ถ้าคุณต้องการเรียนรู้ด้วยแนวความคิดนี้จากพื้นฐานขึ้นไป สามารถดูได้ที่ [แนะนำทีละขั้นตอน](/docs/hello-world.html) คุณสามารถทำแบบฝึกหัดนี้และแนะนำให้กันและกัน
 
-The tutorial is divided into several sections:
+แบบฝึกหัดนี้แบ่งออกเป็นส่วนต่างๆ ดังนี้:
 
-* [Setup for the Tutorial](#setup-for-the-tutorial) will give you **a starting point** to follow the tutorial.
-* [Overview](#overview) will teach you **the fundamentals** of React: components, props, and state.
-* [Completing the Game](#completing-the-game) will teach you **the most common techniques** in React development.
-* [Adding Time Travel](#adding-time-travel) will give you **a deeper insight** into the unique strengths of React.
+* [ติดตั้งสำหรับแบบฝึกหัด](#setup-for-the-tutorial) จะแนะนำคุณสำหรับ **จุดเริ่มต้น** ของแบบฝึกหัดนี้
+* [ภาพรวม](#overview) จะสอนคุณ **ความรู้พื้นฐาน** ของ React: คอมโพเนนท์, พร็อพซ, และสถานะ
+* [คอมไพล์เกมส์](#completing-the-game) จะสอนคุณ **เทคนิคพื้นฐานส่วนใหญ่** ในการพัฒนาแอพพลิเคชัน React
+* [เพิ่ม Time Travel](#adding-time-travel) จะแนะนำคุณสำหรับ **ความเข้าใจที่ลึกซึ่งยิ่งขึ้น** เกี่ยวกับจุดแข็งที่เป็นเอกลักษณ์ของ React.
 
-You don't have to complete all of the sections at once to get the value out of this tutorial. Try to get as far as you can -- even if it's one or two sections.
+คุณไม่ต้องทำทุกส่วนให้เสร็จในครั้งเดียวเพื่อให้แบบฝึกหัดนี้เสร็จ ลองทำให้ได้มากที่สุดเท่าที่จะทำได้ -- แม้ว่ามันจะเป็นหนึ่งหรือสองส่วน
 
 ### What Are We Building? {#what-are-we-building}
 
