@@ -133,7 +133,7 @@ class Home extends Component {
                         fontSize: 30,
                       },
                     }}>
-                    จาวาสคริปต์ไลบรารี่สำหรับสร้างส่วนต่อประสานงานผู้ใช้
+                    ไลบรารี JavaScript สำหรับสร้างส่วนต่อประสานงานผู้ใช้
                   </p>
                   <Flex
                     valign="center"
