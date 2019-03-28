@@ -3,6 +3,6 @@ title: Component-Based
 order: 1
 ---
 
-Build encapsulated components that manage their own state, then compose them to make complex UIs.
+สร้างคอมโพแนนท์ที่ห่อหุ้ม ที่จัดการสถานะของตัวเอง จากนั้นเรียบเรียงคอมโพแนนท์ต่างๆ เพื่อสร้างส่วนต่อประสานงานผู้ใช้ที่ซับซ้อนได้
 
-Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.
+เมื่อลอจิกของคอมโพแนนท์ถูกเขียนด้วยจาวาสคริปต์แทนที่จะใช้เทมเพลต คุณสามารถส่งข้อมูลที่หลากหลายผ่านแอพพลิเคชันของคุณและรักษาสถานะของ DOM

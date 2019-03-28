@@ -4,4 +4,4 @@ order: 1
 domid: timer-example
 ---
 
-In addition to taking input data (accessed via `this.props`), a component can maintain internal state data (accessed via `this.state`). When a component's state data changes, the rendered markup will be updated by re-invoking `render()`.
+นอกจากจะรับข้อมูล (เข้าถึงด้วย `this.props`) คอมโพแนนท์สามารถเก็บรักษาข้อมูลสถานะภายใน (เข้าถึงด้วย `this.state`) เมื่อข้อมูลสถานะของคอมโพแนนท์มีการเปลี่ยนแปลง มาร์กอัปเรนเดอร์จะอัพเดตด้วยการเรียกใช้งาน `render()` อีกครั้ง

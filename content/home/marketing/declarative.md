@@ -3,6 +3,6 @@ title: Declarative
 order: 0
 ---
 
-React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
+React ทำให้การสร้างส่วนต่อประสานงานผู้ใช้ที่โต้ตอบได้ อย่างง่ายดาย ออกแบบมุมมองแบบง่ายสำหรับแต่ละสถานะในแอพพลิเคชันของคุณ และ React จะอัพเดตและสร้างคอมโพแนนท์ที่ถูกต้องได้อย่างมีประสิทธิภาพ ทุกครั้งเมื่อคุณมีการเปลี่ยนแปลงข้อมูล
 
-Declarative views make your code more predictable and easier to debug.
+มุมมองแบบ declarative ทำให้โค้ดของคุณคาดการณ์ได้และง่ายต่อการดีบั๊ก
