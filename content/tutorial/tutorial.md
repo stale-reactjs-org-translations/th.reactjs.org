@@ -1,6 +1,6 @@
 ---
 id: tutorial
-title: "Tutorial: Intro to React"
+title: "แบบฝึกหัด: เริ่มต้น React"
 layout: tutorial
 sectionid: tutorial
 permalink: tutorial/tutorial.html
@@ -12,97 +12,97 @@ redirect_from:
   - "docs/tutorial-zh-CN.html"
 ---
 
-This tutorial doesn't assume any existing React knowledge.
+แบบฝึกหัดนี้ไม่จำเป็นต้นมีพื้นฐาน React มาก่อนก็ทำได้
 
-## Before We Start the Tutorial {#before-we-start-the-tutorial}
+## ก่อนที่เราจะเริ่มต้นทำแบบฝึกหัด {#before-we-start-the-tutorial}
 
-We will build a small game during this tutorial. **You might be tempted to skip it because you're not building games -- but give it a chance.** The techniques you'll learn in the tutorial are fundamental to building any React apps, and mastering it will give you a deep understanding of React.
+ในขณะที่ทำตามแบบฝึกหัดนี้ไป เราก็จะได้เขียนเกมเล็ก ๆ เล่นกันสนุก ๆ **แต่คุณอาจข้ามส่วนนี้ไปก็ได้เพราะคุณไม่ได้สนใจที่จะเขียนเกมนี่นา -- แต่ลองดูหน่อยก็ไม่เสียหายอะไรนะ** สิ่งที่คุณจะได้เรียนรู้ในแบบฝึกหัดนี้ถือเป็นเทคนิคขึ้นพื้นฐานที่จำเป็นสำหรับพัฒนา React แอปพลิเคชั่น และยิ่งถ้าคุณฝึกจนเชี่ยวชาญแล้วล่ะก็ จะยิ่งทำให้คุณเข้าใจ React ได้อย่างลึกซึ้งเลยทีเดียว
 
->Tip
+>เกร็ดความรู้
 >
->This tutorial is designed for people who prefer to **learn by doing**. If you prefer learning concepts from the ground up, check out our [step-by-step guide](/docs/hello-world.html). You might find this tutorial and the guide complementary to each other.
+>แบบฝึกหัดนี้ออกแบบมาสำหรับคนที่ชอบ **การเรียนรู้ด้วยการลงมือทำ**. แต่ถ้าคุณชอบเรียนแบบทีละขั้นตั้งแต่เริ่มต้นเลย, เชิญลิงค์นี้เลย [คู่มือฝึกหัดทีละขั้นตอน](/docs/hello-world.html) คุณคงเห็นแล้วว่าเนื้อหาของแบบฝึกหัดนี้กับคู่มือฝึกหัดทีละขั้นตอนนั้นจะสอดคล้องซึ่งกันและกัน
 
-The tutorial is divided into several sections:
+แบบฝึกหัดนี้จะแบ่งออกเป็นหลาย ๆ หมวดหมู่:
 
-* [Setup for the Tutorial](#setup-for-the-tutorial) will give you **a starting point** to follow the tutorial.
-* [Overview](#overview) will teach you **the fundamentals** of React: components, props, and state.
-* [Completing the Game](#completing-the-game) will teach you **the most common techniques** in React development.
-* [Adding Time Travel](#adding-time-travel) will give you **a deeper insight** into the unique strengths of React.
+* [เตรียมตัวก่อนทำแบบฝึกหัด](#setup-for-the-tutorial) จะช่วยตระเตรียมเครื่องมือและอื่น ๆ เพื่อเป็น **จุดเริ่มต้น** ให้คุณทำตามแบบฝึกหัดได้อย่างเข้าใจ
+* [เนื้อหารวบยอด](#overview) จะสอน **องค์ประกอบพื้นฐาน** ของ React เช่น คอมโพเนนท์ (Component) , พร็อบ (Props), และ สเตท (State)
+* [เขียนเกมจนเสร็จ](#completing-the-game) จะสอน **เทคนิคทั่วไป** ที่ใช้ในการพัฒนา React แอปพลิเคชั่น
+* [เพิ่มการเดินทางข้ามเวลา](#adding-time-travel) จะทำให้คุณ **เข้าใจอย่างลึกซึ้ง** ถึงจุดเด่นที่เป็นเอกลักษณ์ของ React
 
-You don't have to complete all of the sections at once to get the value out of this tutorial. Try to get as far as you can -- even if it's one or two sections.
+คุณไม่จำเป็นต้องทำทั้งหมดให้เสร็จในรวดเดียว ลองทำไปให้เยอะที่สุดเท่าที่ทำได้ก่อน -- จะแค่หนึ่งหรือสองหมวดก็ไม่ว่ากัน.
 
-### What Are We Building? {#what-are-we-building}
+### เรากำลังจะสร้างอะไรกัน? {#what-are-we-building}
 
-In this tutorial, we'll show how to build an interactive tic-tac-toe game with React.
+ในแบบฝึกหัดนี้, เราจะมาเรียนรู้ถึงวิธีการสร้างเกม โอ-เอ็กซ์ (Tic-Tac-Toe) ด้วย React
 
-You can see what we'll be building here: **[Final Result](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**. If the code doesn't make sense to you, or if you are unfamiliar with the code's syntax, don't worry! The goal of this tutorial is to help you understand React and its syntax.
+คุณสามารถดูสิ่งที่เรากำลังจะสร้างนี้จาก : **[ตัวเกมที่เสร็จแล้ว](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)** ถ้าคุณเห็นโค้ด แล้วดูไม่สมเหตุสมผลเอาซะเลย หรือดูแล้วยังไม่คุ้นเคยกับโครงสร้างของไวยากรณ์ (Syntax), อย่าเพิ่งกังกลไป! เพราะจุดประสงค์ของแบบฝึกหัดนี้เพื่อช่วยให้คุณเข้าใจ React และไวยากรณ์เหล่านี้ให้มากขึ้นนั่นเอง
 
-We recommend that you check out the tic-tac-toe game before continuing with the tutorial. One of the features that you'll notice is that there is a numbered list to the right of the game's board. This list gives you a history of all of the moves that have occurred in the game, and is updated as the game progresses.
+เราแนะนำให้คุณดูตัวเกมโอ-เอ็กซ์ ก่อนที่จะลุยกันต่อกับแบบฝึกหัดนี้, ฟีเจอร์ (Feature) นึงที่คุณจะสังเกตเห็นทันทีเลยนั่นก็คือ รายการลำดับเลขที่อยู่ฝั่งขวามือของกระดาน รายการนี้จะแสดงประวัติการเดินหมากแต่ละครั้งที่เกิดขึ้น และมันจะอัพเดทตลอดเวลา ในขณะที่ี่เกมดำเนินไป
 
-You can close the tic-tac-toe game once you're familiar with it. We'll be starting from a simpler template in this tutorial. Our next step is to set you up so that you can start building the game.
+พอคุณคุ้นเคยกับตัวเกมแล้ว ก็ปิดมันไปได้เลย ในแบบฝึกหัดนี้เราจะเริ่มจากรูปแบบง่าย ๆ กันก่อน โดยขั้นตอนต่อไปเราจะมาติดตั้งเครื่องมือที่จำเป็นกันก่อน เพื่อให้คุณได้เริ่มสร้างเกมกัน
 
-### Prerequisites {#prerequisites}
+### ข้อกำหนดเบื้องต้น {#prerequisites}
 
-We'll assume that you have some familiarity with HTML and JavaScript, but you should be able to follow along even if you're coming from a different programming language. We'll also assume that you're familiar with programming concepts like functions, objects, arrays, and to a lesser extent, classes.
+เราจะถือสมมติฐานที่ว่าคุณมีความคุ้นเคยกับ HTML และ JavaScript มาพอสมควรแล้ว, แต่ถึงแม้ว่าคุณยังไม่คุ้นเคยหรือถนัดภาษาอื่นมา คุณก็ยังสามารถทำตามเราไปได้เช่นกัน อีกอย่างเราจะถือสมมติฐานที่ว่าคุณน่าจะคุ้นเคยกับแนวคิดการเขียนโปรแกรมเบื้องต้น เช่น ฟังก์ชั่น (Function), อ็อบเจกต์ (Object), อาร์เรย์ (Array) หรือน้อยที่สุดเลยก็ คลาส (Class)
 
-If you need to review JavaScript, we recommend reading [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript). Note that we're also using some features from ES6 -- a recent version of JavaScript. In this tutorial, we're using [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), and [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) statements. You can use the [Babel REPL](babel://es5-syntax-example) to check what ES6 code compiles to.
+ถ้าคุณอยากจะกลับไปทบทวน JavaScript สักหน่อย, เราแนะนำให้อ่าน [คู่มือนี้](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) แจ้งให้ทราบไว้ก่อนว่าเราใช้ฟีเจอร์บางอย่างจาก ES6 (JavaScript รุ่นล่าสุด) ด้วยเช่นกัน ในแบบฝึกหัดนี้ เราใช้ [ฟังก์ชั่นลูกศร](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [คลาส](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [ตัวแปรไม่คงที่ (`let`)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), และ [ตัวแปรคงที่ (`const`)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) คุณสามารถใช้ [บาเบล (Babel REPL)](babel://es5-syntax-example) เพื่อตรวจสอบโค้ด ES6 ที่ถูกแปลงแล้วจะออกมาเป็นลักษณะเช่นใด
 
-## Setup for the Tutorial {#setup-for-the-tutorial}
+## เตรียมพร้อมสำหรับแบบฝึกหัด {#setup-for-the-tutorial}
 
-There are two ways to complete this tutorial: you can either write the code in your browser, or you can set up a local development environment on your computer.
+ในการที่จะทำแบบฝึกหัดนี้จนจบสมบูรณ์คุณมี 2 ทางเลือก: คุณจะเขียนโค้ดในเบราว์เซอร์ (Browser), หรือติดตั้งชุดเครื่องมือสำหรับพัฒนาระบบบนเครื่องของคุณก็ได้
 
-### Setup Option 1: Write Code in the Browser {#setup-option-1-write-code-in-the-browser}
+### ตัวเลือกที่ 1: เขียนโค้ดในเบราว์เซอร์ {#setup-option-1-write-code-in-the-browser}
 
-This is the quickest way to get started!
+นี่เป็นทางที่เร็วที่สุดในการเริ่มต้น!
 
-First, open this **[Starter Code](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)** in a new tab. The new tab should display an empty tic-tac-toe game board and React code. We will be editing the React code in this tutorial.
+อันดับแรก, เปิด **[โค้ดเริ่มต้น](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)** ในหน้าแท็บใหม่. แท็บใหม่ควรจะแสดงหน้ากระดานเกมโอ-เอ็กซ์ว่าง ๆ และโค้ด React แล้วเราก็จะมาเริ่มแก้โค้ดในแบบฝึกหัดนี้กัน.
 
-You can now skip the second setup option, and go to the [Overview](#overview) section to get an overview of React.
+คุณสามารถข้ามตัวเลือกที่ 2, แล้วไปที่หมวด [เนื้อหารวบยอด](#overview) เพื่อให้เข้าใจเนื้อหารวบยอดเกี่ยวกับ React
 
-### Setup Option 2: Local Development Environment {#setup-option-2-local-development-environment}
+### ตัวเลือกที่ 2: ติดตั้งชุดเครื่องมือสำหรับพัฒนาระบบบนเครื่องของคุณ {#setup-option-2-local-development-environment}
 
-This is completely optional and not required for this tutorial!
+ตัวเลือกนี้ไม่บังคับและในแบบฝึกหัดนี้ไม่จำเป็นต้องทำแบบนี้ก็ได้!
 
 <br>
 
 <details>
 
-<summary><b>Optional: Instructions for following along locally using your preferred text editor</b></summary>
+<summary><b>คำแนะนำและไม่บังคับ: โปรดใช้โปรแกรมแก้ไขข้อความ (Text Editor) ที่คุณถนัดบนเครื่องของคุณ</b></summary>
 
-This setup requires more work but allows you to complete the tutorial using an editor of your choice. Here are the steps to follow:
+วิธีนี้จำเป็นต้องใช้เวลากับมันหน่อย แต่มันก็เปิดโอกาสให้คุณได้ทำแบบฝึกหัดนี้จนเสร็จโดยคุณก็ได้ใช้โปรแกรมที่คุณถนัดมือด้วยเช่นกัน ง่าย ๆ ก็ทำตามนี้เลย:
 
-1. Make sure you have a recent version of [Node.js](https://nodejs.org/en/) installed.
-2. Follow the [installation instructions for Create React App](/docs/create-a-new-react-app.html#create-react-app) to make a new project.
+1. ติดตั้ง [Node.js](https://nodejs.org/en/) รุ่นล่าสุด.
+2. ทำตาม [วิธีติดตั้ง Create React App](/docs/create-a-new-react-app.html#create-react-app) เพื่อสร้างโปรเจคใหม่
 
 ```bash
 npx create-react-app my-app
 ```
 
-3. Delete all files in the `src/` folder of the new project 
+3. ลบไฟล์ทั้งหมดในโฟลเดอร์ `src/` ในโปรเจคใหม่ที่เพิ่งสร้างขึ้นเมื่อครู่นี้
 
-> Note:
+> หมายเหตุ:
 >
->**Don't delete the entire `src` folder, just the original source files inside it.** We'll replace the default source files with examples for this project in the next step.
+>**อย่าลบโฟลเดอร์ `src` ทิ้ง, ให้ลบเฉพาะไฟล์ต้นแบบที่อยู่ข้างในเท่านั้น** เดี๋ยวเราจะสร้างไฟล์อื่น ๆ ทับลงไปในขั้นตอนต่อไป
 
 ```bash
 cd my-app
 cd src
 
-# If you're using a Mac or Linux:
+# ถ้าคุณใช้ Mac หรือ Linux:
 rm -f *
 
-# Or, if you're on Windows:
+# หรือ, ถ้าคุณใช้ Windows:
 del *
 
-# Then, switch back to the project folder
+# ต่อไป, กลับไปที่โฟลเดรอ์ของโปรเจค
 cd ..
 ```
 
-4. Add a file named `index.css` in the `src/` folder with [this CSS code](https://codepen.io/gaearon/pen/oWWQNa?editors=0100).
+4. สร้างไฟล์ใหม่ชื่อ `index.css` ในโฟลเดอร์ `src/` พร้อมด้วย [โค้ด CSS นี้](https://codepen.io/gaearon/pen/oWWQNa?editors=0100)
 
-5. Add a file named `index.js` in the `src/` folder with [this JS code](https://codepen.io/gaearon/pen/oWWQNa?editors=0010).
+5. สร้างไฟล์ใหม่ชื่อ `index.js` ในโฟลเดอร์ `src/` พร้อมด้วย [โค้ด JS นี้](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)
 
-6. Add these three lines to the top of `index.js` in the `src/` folder:
+6. เพิ่มโค้ด 3 บรรทัดนี้เข้าไปในส่วนบนสุดของไฟล์ `index.js` ในโฟลเดอร์ `src/`:
 
 ```js
 import React from 'react';
@@ -110,21 +110,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 ```
 
-Now if you run `npm start` in the project folder and open `http://localhost:3000` in the browser, you should see an empty tic-tac-toe field.
+ตอนนี้ถ้าคุณเรียกใช้คำสั่ง `npm start` ในโฟลเดอร์ของโปรเจคและเปิดเบราว์เซอร์แล้วไปที่ `http://localhost:3000`, คุณก็จะเห็นกระดานเกมโอ-เอ็กซ์ว่าง ๆ นั่นเอง
 
-We recommend following [these instructions](https://babeljs.io/docs/editors/) to configure syntax highlighting for your editor.
+เราแนะนำให้ทำตาม [คำแนะนำนี้](https://babeljs.io/docs/editors/) เพื่อกำหนดการเน้นไวยากรณ์ (Syntax Highlighting) สำหรับโปรแกรมแก้ไขข้อความของคุณ
 
 </details>
 
-### Help, I'm Stuck! {#help-im-stuck}
+### ช่วยด้วย, ติด!, ไปต่อไม่ได้แล้ว! {#help-im-stuck}
 
-If you get stuck, check out the [community support resources](/community/support.html). In particular, [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n) is a great way to get help quickly. If you don't receive an answer, or if you remain stuck, please file an issue, and we'll help you out.
+ถ้าคุณติดหรือไปต่อไม่ได้แล้ว, ลองไปค้นดู [ทรัพยากรสำหรับช่วยเหลือผู้อื่นจากชุมชนผู้ใช้ React](/community/support.html), โดยเฉพาะอย่างยิ่งถ้าคุณต้องการความช่วยเหลืออย่างเร่งด่วน [กลุ่มพูดคุย Reactiflux](https://discord.gg/0ZcbPKXt5bZjGY5n) ก็เป็นทางเลือกที่ยอดเยี่ยมเช่นกัน, ถ้าคุณยังไม่ได้รับการช่วยเหลือหรือคำตอบใด ๆ, หรือถ้าคุณยังติดตรงไหนและไปต่อไม่ได้อยู่, กรุณายื่นปัญหานั้นใน Github แล้วเราจะพยายามเต็มที่เพื่อช่วยคุณเอง
 
-## Overview {#overview}
+## เนื้อหารวบยอด {#overview}
 
-Now that you're set up, let's get an overview of React!
+ตอนนี้เราก็เตรียมตัวและติดตั้งทุกอย่างพร้อมแล้ว, เราก็จะมาเริ่มที่เนื้อหารวบยอดของ React กัน!
 
-### What Is React? {#what-is-react}
+### React คืออะไร? {#what-is-react}
 
 React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called "components".
 
