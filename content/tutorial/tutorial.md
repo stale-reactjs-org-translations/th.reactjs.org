@@ -126,16 +126,16 @@ import './index.css';
 
 ### React คืออะไร? {#what-is-react}
 
-React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called "components".
+React เป็น JavaScript ไลบรารี่สำหรับสร้าง UI ที่มีโครงสร้างอย่างยืดหยุ่นและมีประสิทธิภาพ (Declarative, Efficient, Flexible) ทำให้คุณสามารถสร้าง UI ที่มีความซับซ้อนได้ โดยการประกอบโค้ดหลาย ๆ ส่วนที่แยกการทำงานกันออกอย่างชัดเจนหรือแม้กระทั่ง UI ชิ้นเล็ก ๆ ที่คุณสร้างแยกไว้เข้าด้วยกัน ซึ่งในที่นี้เรียกว่า คอมโพเนนท์ (Component)
 
-React has a few different kinds of components, but we'll start with `React.Component` subclasses:
+React มีคอมโนเนนท์ต่าง ๆ อยู่สอง-สามแบบ, แต่เราจะเริ่มต้นกันที่ การสร้างคลาสย่อยจาก `React.Component` :
 
 ```javascript
 class ShoppingList extends React.Component {
   render() {
     return (
       <div className="shopping-list">
-        <h1>Shopping List for {this.props.name}</h1>
+        <h1>รายการซื้อสินค้าสำหรับ {this.props.name}</h1>
         <ul>
           <li>Instagram</li>
           <li>WhatsApp</li>
@@ -146,51 +146,51 @@ class ShoppingList extends React.Component {
   }
 }
 
-// Example usage: <ShoppingList name="Mark" />
+// ตัวอย่างการใช้งาน: <ShoppingList name="Mark" />
 ```
 
-We'll get to the funny XML-like tags soon. We use components to tell React what we want to see on the screen. When our data changes, React will efficiently update and re-render our components.
+เดี๋ยวเราจะได้สนุกโครงสร้างที่คล้าย ๆ XML กัน เราใช้คอมโนเนนท์เพื่อที่บอก React ในสิ่งที่เราต้องการบนหน้าจอ เมื่อข้อมูลของเรามีการเปลี่ยนแปลง React จะทำการปรับปรุงประสิทธิภาพและแสดงผลคอมโพเนนท์ของเราใหม่อีกครั้ง (Re-render)
 
-Here, ShoppingList is a **React component class**, or **React component type**. A component takes in parameters, called `props` (short for "properties"), and returns a hierarchy of views to display via the `render` method.
+ณ ที่นี้, `ShoppingList` เป็น **React คลาสคอมโพเนนท์**, หรือ **React คอมโพเนนท์** คอมโพเนนท์จะรับคุณสมบัติซึ่งในที่นี้เราจะเรียกว่า `props` (ย่อมาจาก "properties"), และคืนโครงสร้างของสิ่งที่เราต้องการจะแสดงผลด้วยวิธีการ `render`
 
-The `render` method returns a *description* of what you want to see on the screen. React takes the description and displays the result. In particular, `render` returns a **React element**, which is a lightweight description of what to render. Most React developers use a special syntax called "JSX" which makes these structures easier to write. The `<div />` syntax is transformed at build time to `React.createElement('div')`. The example above is equivalent to:
+วิธีการ `render` นั้นจะคืน *รูปร่างลักษณะ (Description)* ของสิ่งที่คุณต้องการจะเห็นผลหน้าจอ แล้ว React จะนำรูปร่างลักษณะที่ได้นั้นไปแสดงผลลัพธ์ออกมา, หรืออีกนัยหนึ่งวิธีการ `render` นั้นเรียกได้ว่าเป็นการคืน **ส่วนประกอบ (React element)** ของ React, ซึ่งเป็นรูปร่างลักษณะที่นำหนักเบาต่อการสร้างคอมโพเนนท์ นักพัฒนาส่วนใหญ่ใช้ไวยากรณ์พิเศษที่เรียกว่า "JSX" ซึ่งเป็นส่วนที่ทำให้สร้างโครงสร้างแบบนี้ได้อย่างง่าย ยกตัวอย่างเช่นตัว `<div />` จะถูกแปลงไปเป็น `React.createElement('div')` ดังนั้นตัวอย่างข้างบนก็จะเทียบเท่ากับ:
 
 ```javascript
 return React.createElement('div', {className: 'shopping-list'},
-  React.createElement('h1', /* ... h1 children ... */),
-  React.createElement('ul', /* ... ul children ... */)
+  React.createElement('h1', /* ... ลูกของ h1 ... */),
+  React.createElement('ul', /* ... ลูกของ ul ... */)
 );
 ```
 
-[See full expanded version.](babel://tutorial-expanded-version)
+[ดูฉบับเต็ม](babel://tutorial-expanded-version)
 
-If you're curious, `createElement()` is described in more detail in the [API reference](/docs/react-api.html#createelement), but we won't be using it in this tutorial. Instead, we will keep using JSX.
+ถ้าคุณอยากเรียนรู้เกี่ยวกับ `createElement()` มากกว่านี้ มีอธิบายใน [API อ้างอิงนี้](/docs/react-api.html#createelement) แต่เราจะไม่ใช้มันในแบบฝึกหัดนี้ เพราะเราจะยังคงใช้ JSX ต่อไป
 
-JSX comes with the full power of JavaScript. You can put *any* JavaScript expressions within braces inside JSX. Each React element is a JavaScript object that you can store in a variable or pass around in your program.
+JSX นั้นมากับพลังความสามารถของ JavaScript คุณสามารถใส่คำสั่งหรือ *อะไรก็ได้ (Any)* ที่เป็น JavaScript ใน JSX ซึ่งส่วนประกอบของ React แต่ละอันนั้นก็คือ JavaScript ออปเจคต์ ที่คุณสามารถเก็บไว้ในตัวแปรและส่งต่อไปที่อื่น ๆ ได้ในโปรแกรมของคุณ
 
-The `ShoppingList` component above only renders built-in DOM components like `<div />` and `<li />`. But you can compose and render custom React components too. For example, we can now refer to the whole shopping list by writing `<ShoppingList />`. Each React component is encapsulated and can operate independently; this allows you to build complex UIs from simple components.
+คอมโพเนนท์ `ShoppingList` ข้างบนนั้นทำได้เพียงแค่สร้าง DOM พวกที่เป็น `<div />` และ `<li />`. แต่คุณก็สามารถสร้างและประกอบมันได้เช่นกัน ตัวอย่างเช่น เราสามารถอ้างถึงตัวรายการซื้อสินค้าทั้งหมด ด้วยการเขียนโค้ดแค่ `<ShoppingList />` React คอมโนเนนท์แต่ละตัวนั้นจะแยกการทำงานและห่อหุ้มความสามารถของตัวเองไว้อย่างชัดเจน; ซึ่งด้วยเหตุผลนี้ทำให้เราสามารถที่จะสร้าง UI ที่ซับซ้อนได้จากคอมโพเนนท์ที่เรียบง่ายเหล่านี้นั่นเอง
 
-## Inspecting the Starter Code {#inspecting-the-starter-code}
+## ตรวจสอบโค้ดเริ่มต้น {#inspecting-the-starter-code}
 
-If you're going to work on the tutorial **in your browser,** open this code in a new tab: **[Starter Code](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**. If you're going to work on the tutorial **locally,** instead open `src/index.js` in your project folder (you have already touched this file during the [setup](#setup-option-2-local-development-environment)).
+ถ้าคุณกำลังที่จะทำแบบฝึกหัดนี้ใน **เบราเซอร์ของคุณ** เปิด **[โค้ดเริ่มต้น](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)** นี้ในแท็ปใหม่ ถ้าคุณกำลังที่จะทำแบบฝึกหัดนี้ **จากเครื่องของคุณเอง** ให้ไปที่โฟลเดอร์โปรเจคของคุณ แล้วไปที่ `src/index.js` แทน (ซึ่งคุณได้มีการแตะไฟล์นี้ไปแล้วนิดหน่อยตอนที่เราทำการ [ติดตั้ง](#setup-option-2-local-development-environment) กันไป)
 
-This Starter Code is the base of what we're building. We've provided the CSS styling so that you only need to focus on learning React and programming the tic-tac-toe game.
+โค้ดเริ่มต้นนี้คือฐานของสิ่งที่เรากำลังจะสร้าง เราได้เตรียม CSS ไว้ให้แล้ว ดังนั้นคุณจะพุ่งความสนใจไปที่การเรียนรู้ React และเขียนเกมโอ-เอ็กซ์อย่างเดียว
 
-By inspecting the code, you'll notice that we have three React components:
+จากในโค้ด คุณจะสังเกตได้ว่าเรามีคอมโพเนนท์อยู่ 3 ตัว:
 
 * Square
 * Board
 * Game
 
-The Square component renders a single `<button>` and the Board renders 9 squares. The Game component renders a board with placeholder values which we'll modify later. There are currently no interactive components.
+คอมโพเนนท์ Square นั้นจะทำหน้าที่แค่สร้าง `<button>` อย่างเดียวและคอมโพเนนท์ Board จะทำหน้าที่สร้างตาราง 9 ช่อง. คอมโพเนนท์ Game จะสร้างกระดานที่มีการใส่ค่าตั้งต้นลงไปซึ่งเราจะทำการแก้ไขทีหลัง ซึ่งตอนนี้ยังไม่มีคอมโพเนนท์ไหนที่ตอบโต้ได้
 
-### Passing Data Through Props {#passing-data-through-props}
+### ส่งข้อมูลผ่าน Props {#passing-data-through-props}
 
-To get our feet wet, let's try passing some data from our Board component to our Square component.
+มาทำให้เท้าเปียกกันหน่อย, เดี๋ยวเราจะลองส่งข้อมูลบางอย่างจากคอมโพเนนท์ Board ของเราต่อลงไปหาคอมโพเนนท์ Square กัน
 
-We strongly recommend typing code by hand as you're working through the tutorial and not using copy/paste. This will help you develop muscle memory and a stronger understanding.
+ในขณะที่ทำแบบฝึกหัดนี้ไป เราขอแนะนำให้เขียนโค้ดเองด้วยมือแทนการ คัดลอก/วาง (copy/paste) ซึ่งจะทำให้คุณพัฒนาความจำของกล้ามเนื้อ (Muscle memory) และความเข้าใจที่มากขึ้น
 
-In Board's `renderSquare` method, change the code to pass a prop called `value` to the Square:
+ในฟังก์ชั่น `renderSquare` ของคอมโพเนนท์ Board, เปลี่ยนโค้ดเพื่อส่งพร็อบชื่อว่า `value` บนคอมโพเนนท์ Square:
 
 ```js{3}
 class Board extends React.Component {
@@ -199,7 +199,7 @@ class Board extends React.Component {
   }
 ```
 
-Change Square's `render` method to show that value by replacing `{/* TODO */}` with `{this.props.value}`:
+เปลี่ยนฟังก์ชั่น `render` ของคอมโพเนนท์ Square เพื่อแสดงค่านั้น โดยการแทนที่ส่วน `{/* TODO */}` ด้วยโค้ด `{this.props.value}` นี้:
 
 ```js{5}
 class Square extends React.Component {
@@ -213,22 +213,22 @@ class Square extends React.Component {
 }
 ```
 
-Before:
+ก่อน:
 
 ![React Devtools](../images/tutorial/tictac-empty.png)
 
-After: You should see a number in each square in the rendered output.
+หลัง: คุณควรจะเห็นตัวเลขในแต่ละช่อง
 
 ![React Devtools](../images/tutorial/tictac-numbers.png)
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/aWWQOG?editors=0010)**
+**[ดูโค้ดเต็มของจุดนี้](https://codepen.io/gaearon/pen/aWWQOG?editors=0010)**
 
-Congratulations! You've just "passed a prop" from a parent Board component to a child Square component. Passing props is how information flows in React apps, from parents to children.
+ขอแสดงความยินดีด้วย! คุณเพิ่งทำการ "ส่งค่าผ่านทางพร็อบ" จากคอมโพเนนท์แม่ (Board)สู่คอมโพเนนท์ลูก (Square) การส่งค่าผ่านทางพร็อบ นั้นคือรูปแบบการไหลของข้อมูลในแอปพลิเคชั่นที่สร้างด้วย React, ...จากแม่สู่ลูก.
 
-### Making an Interactive Component {#making-an-interactive-component}
+### สร้างคอมโพเนนท์ที่ตอบโต้ได้ {#making-an-interactive-component}
 
-Let's fill the Square component with an "X" when we click it.
-First, change the button tag that is returned from the Square component's `render()` function to this:
+ใส่ "X" ในคอมโพเนนท์ Square ตอนเราคลิก
+อันดับแรก, เปลี่ยนส่วนของแท็ก button ที่คืนค่ามาตัวเก่า ในฟังก์ชั่น `render()` ของคอมโพเนนท์ Square ด้วยนี่:
 
 ```javascript{4}
 class Square extends React.Component {
@@ -242,11 +242,11 @@ class Square extends React.Component {
 }
 ```
 
-If you click on a Square now, you should see an alert in your browser.
+ตอนนี้ถ้าคุณคลิกบนคอมโพเนนท์ Square, คุณควรจะเห็นหน้าจอฟ้องขึ้นมาในเบราเซอร์ของคุณ
 
->Note
+>หมายเหตุ
 >
->To save typing and avoid the [confusing behavior of `this`](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/), we will use the [arrow function syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) for event handlers here and further below:
+>เพื่อช่วยให้คุณไม่ต้องพิมพ์เยอะและหลีกเลี่ยง [ความสับสนของการใช้ `this`](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/), ตรงนี้และต่อไป เราจะใช้ [ฟังก์ชั่นลูกศร](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) สำหรับตัวรับผลลัพธ์ (Event handlers) กัน:
 >
 >```javascript{4}
 >class Square extends React.Component {
@@ -260,13 +260,13 @@ If you click on a Square now, you should see an alert in your browser.
 >}
 >```
 >
->Notice how with `onClick={() => alert('click')}`, we're passing *a function* as the `onClick` prop. React will only call this function after a click. Forgetting `() =>` and writing `onClick={alert('click')}` is a common mistake, and would fire the alert every time the component re-renders.
+>สังเกตวิธีที่เขียน `onClick={() => alert('click')}`, เรากำลังทำการส่งwe're passing *ฟังก์ชั่น* เป็นพร็อบให้กับ `onClick` แล้ว React จะเรียกฟังก์ชั่นนี้เท่านั้น หลังจากการคลิกแต่ละครั้ง การลืม `() =>` และเขียน `onClick={alert('click')}` เป็นข้อผิดพลาดทั่วไป และจะทำให้เห็นหน้าจอฟ้องขึ้นมาทุกครั้งที่มีเรนเดอร์ใหม่
 
-As a next step, we want the Square component to "remember" that it got clicked, and fill it with an "X" mark. To "remember" things, components use **state**.
+ในขั้นต่อไป, เราต้องการให้คอมโพเนนท์ Square "จำ" ว่ามันได้ถูกคลิกไปแล้ว, และใส่ "X" ลงไป. เพื่อ "จำ" สิ่งต่าง ๆ, คอมโพเนนท์จะใช้ **สเตท (State)**.
 
-React components can have state by setting `this.state` in their constructors. `this.state` should be considered as private to a React component that it's defined in. Let's store the current value of the Square in `this.state`, and change it when the Square is clicked.
+คอมโพเนนท์ของ React components นั้นจะมีสเตทด้วยการกำหนด `this.state` ใน `constructors` และตัว `this.state` นั้นควรถือว่าเป็นของส่วนตัว (Private) ในแต่ละคอมโพเนนท์เมื่อถูกกำหนัดขึ้นมา เดี๋ยวเราจะมาเก็บค่าปัจจุบันของคอมโพเนนท์ Square ใน `this.state`, และเปลี่ยนมันเมื่อถูกคลิก
 
-First, we'll add a constructor to the class to initialize the state:
+อันดับแรก, เราจะเพิ่ม constructor เข้าไปในคลาสและกำหนดสเตทเริ่มต้น:
 
 ```javascript{2-7}
 class Square extends React.Component {
@@ -287,17 +287,17 @@ class Square extends React.Component {
 }
 ```
 
->Note
+>หมายเหตุ
 >
->In [JavaScript classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), you need to always call `super` when defining the constructor of a subclass. All React component classes that have a `constructor` should start it with a `super(props)` call.
+>ใน [คลาสของ JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), เมื่อนิยาม constructor ของคลาสย่อย คุณจำเป็นต้องเรียก `super` ก่อนเสมอ, คอมโพเนนท์ของ React ทุก ๆ ตัวที่เป็นคลาสและมี `constructor` ก็ควรจะเริ่มต้นด้วยการเรียก`super(props)` เช่นกัน
 
-Now we'll change the Square's `render` method to display the current state's value when clicked:
+ถึงตรงนี้เราจะมาเปลี่ยนฟังก์ชั่น `render` ของคอมโพเนนท์ Square เพื่อที่จะแสดงค่าของสเตทปัจจุบันเมื่อมีการคลิกไปแล้ว:
 
-* Replace `this.props.value` with `this.state.value` inside the `<button>` tag.
-* Replace the `onClick={...}` event handler with `onClick={() => this.setState({value: 'X'})}`.
-* Put the `className` and `onClick` props on separate lines for better readability.
+* แทนที่ `this.props.value` ด้วย `this.state.value` ในแท็ก `<button>`
+* แทนที่ `onClick={...}` ด้วย `onClick={() => this.setState({value: 'X'})}`
+* แยกพร็อบ `className` และ `onClick` ให้อยู่คนละบรรทัดเพื่อให้ง่ายต่อการอ่าน
 
-After these changes, the `<button>` tag that is returned by the Square's `render` method looks like this:
+หลังจากการเปลี่ยนแปลงครั้งนี้, แท็ก `<button>` ที่ถูกคืนมาจากฟังก์ชั่น`render` ของคอมโพเนนท์ Square จะมีหน้าตาแบบนี้:
 
 ```javascript{12-13,15}
 class Square extends React.Component {
@@ -321,28 +321,28 @@ class Square extends React.Component {
 }
 ```
 
-By calling `this.setState` from an `onClick` handler in the Square's `render` method, we tell React to re-render that Square whenever its `<button>` is clicked. After the update, the Square's `this.state.value` will be `'X'`, so we'll see the `X` on the game board. If you click on any Square, an `X` should show up.
+ด้วยการเรียก `this.setState` จาก `onClick` ในฟังก์ชั่น `render` ของคอมโพเนนท์ Square, เราบอก React ให้ทำการเรนเดอร์ Square ใหม่ ตอนไหนก็ตามที่มีการคลิก `<button>` หลังจากที่มีการอัพเดท, ค่า `this.state.value` ของคอมโพเนนท์ Square จะกลายเป็น `'X'`, ดังนั้นเราจะเห็น `X` บนกระดานเกม ดังนั้นถ้าคุณคลิกบนช่องไหนก็ตาม, ตัว `X` ก็ควรจะแสดงขึ้นมา
 
-When you call `setState` in a component, React automatically updates the child components inside of it too.
+เมื่อคุณเรียก `setState` ในคอมโพเนนท์, React จะทำการอัพเดทคอมโพเนนท์ลูกที่อยู่ข้างในเช่นกัน
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/VbbVLg?editors=0010)**
+**[ดูโค้ดเต็มของจุดนี้](https://codepen.io/gaearon/pen/VbbVLg?editors=0010)**
 
-### Developer Tools {#developer-tools}
+### เครื่องมือนักพัฒนา {#developer-tools}
 
-The React Devtools extension for [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) lets you inspect a React component tree with your browser's developer tools.
+ส่วนเสริม React Devtools สำหรับ [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) และ [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) ช่วยให้คุณตรวจสอบคอมโพเนนท์ React ผ่านเบราเซอร์ของคุณได้
 
 <img src="../images/tutorial/devtools.png" alt="React Devtools" style="max-width: 100%">
 
-The React DevTools let you check the props and the state of your React components.
+ตัว React DevTools ช่วยให้คุณตรวจสอบพร็อบและสเตทของคอมโพเนนท์ต่าง ๆ ได้
 
-After installing React DevTools, you can right-click on any element on the page, click "Inspect" to open the developer tools, and the React tab will appear as the last tab to the right.
+หลังจากติดตั้ง React DevTools, คุณสามารถคลิกขวาที่ไหนก็ได้บนหน้าเว็บ, คลิก "Inspect" เพื่อเปิดส่วนของเครื่องมือนักพัฒนาขึ้นมา, และแท็ปของ React จะปรากฎอยู่เป็นส่วนสุดท้ายทางขวามือสุด
 
-**However, note there are a few extra steps to get it working with CodePen:**
+**อย่างไรก็ตาม, มันก็มีขั้นตอนเพิ่มขึ้นเล็กน้อยถ้าจะทำให้มันทำการได้กับ CodePen:**
 
-1. Log in or register and confirm your email (required to prevent spam).
-2. Click the "Fork" button.
-3. Click "Change View" and then choose "Debug mode".
-4. In the new tab that opens, the devtools should now have a React tab.
+1. ล็อกอินหรือลงทะเบียนและทำการยืนยันอีเมล์ (จำเป็นเพื่อป้องกันสแปม)
+2. คลิกที่ปุ่ม "Fork"
+3. คลิก "Change View" แล้วเลือก "Debug mode"
+4. ในหน้าแท็ปใหม่ที่เปิดขึ้น, ในส่วนของเครื่องมือควรจะเห็นแท็ปของ React
 
 ## Completing the Game {#completing-the-game}
 
