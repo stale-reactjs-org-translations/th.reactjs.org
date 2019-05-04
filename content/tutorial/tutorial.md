@@ -14,7 +14,7 @@ redirect_from:
 
 แบบฝึกหัดนี้ไม่จำเป็นต้นมีพื้นฐาน React มาก่อนก็ทำได้
 
-## ก่อนที่เราจะเริ่มต้นทำแบบฝึกหัด {#before-we-start-the-tutorial}
+## ก่อนเริ่มต้นทำแบบฝึกหัด {#before-we-start-the-tutorial}
 
 ในขณะที่ทำตามแบบฝึกหัดนี้ไป เราก็จะได้เขียนเกมเล็ก ๆ เล่นกันสนุก ๆ **แต่คุณอาจข้ามส่วนนี้ไปก็ได้เพราะคุณไม่ได้สนใจที่จะเขียนเกมนี่นา -- แต่ลองดูหน่อยก็ไม่เสียหายอะไรนะ** สิ่งที่คุณจะได้เรียนรู้ในแบบฝึกหัดนี้ถือเป็นเทคนิคขึ้นพื้นฐานที่จำเป็นสำหรับพัฒนา React แอปพลิเคชั่น และยิ่งถ้าคุณฝึกจนเชี่ยวชาญแล้วล่ะก็ จะยิ่งทำให้คุณเข้าใจ React ได้อย่างลึกซึ้งเลยทีเดียว
 
@@ -297,7 +297,7 @@ class Square extends React.Component {
 * แทนที่ `onClick={...}` ด้วย `onClick={() => this.setState({value: 'X'})}`
 * แยกพร็อบ `className` และ `onClick` ให้อยู่คนละบรรทัดเพื่อให้ง่ายต่อการอ่าน
 
-หลังจากการเปลี่ยนแปลงครั้งนี้, แท็ก `<button>` ที่ถูกคืนมาจากฟังก์ชั่น`render` ของคอมโพเนนท์ Square จะมีหน้าตาแบบนี้:
+หลังจากการเปลี่ยนแปลงครั้งนี้, แท็ก `<button>` ที่ถูกคืนมาจากฟังก์ชั่น `render` ของคอมโพเนนท์ Square จะมีหน้าตาแบบนี้:
 
 ```javascript{12-13,15}
 class Square extends React.Component {
@@ -344,21 +344,21 @@ class Square extends React.Component {
 3. คลิก "Change View" แล้วเลือก "Debug mode"
 4. ในหน้าแท็ปใหม่ที่เปิดขึ้น, ในส่วนของเครื่องมือควรจะเห็นแท็ปของ React
 
-## Completing the Game {#completing-the-game}
+## จบเกม {#completing-the-game}
 
-We now have the basic building blocks for our tic-tac-toe game. To have a complete game, we now need to alternate placing "X"s and "O"s on the board, and we need a way to determine a winner.
+ตอนนี้เรามีส่วนที่เป็นฐานสำหรับเกมโอ-เอ็กซ์แล้ว เพื่อที่จะเขียนเกมให้เสร็จ, เราจำเป็นต้องมีการสลับการวางตำแหน่งของ "X" และ "O" บนกระดาน และเรายังจำเป็นต้องหาวิธีการที่จะกำหนดผู้ชนะ
 
-### Lifting State Up {#lifting-state-up}
+### ขยับสเตทขึ้น {#lifting-state-up}
 
-Currently, each Square component maintains the game's state. To check for a winner, we'll maintain the value of each of the 9 squares in one location.
+ปัจจุบัน, คอมโพเนนท์ Square แต่ละตัวเก็บสเตทของเกมไว้ในตัวมันเอง ดังนั้นเพื่อที่จะหาผู้ชนะ เราจำเป็นที่จะต้องเก็บค่าของตารางทั้ง 9 ช่องไว้ด้วยกันที่เดียว
 
-We may think that Board should just ask each Square for the Square's state. Although this approach is possible in React, we discourage it because the code becomes difficult to understand, susceptible to bugs, and hard to refactor. Instead, the best approach is to store the game's state in the parent Board component instead of in each Square. The Board component can tell each Square what to display by passing a prop, [just like we did when we passed a number to each Square](#passing-data-through-props).
+เราอาจคิดว่าแค่ให้คอมโพเนนท์ Board ถามสเตทจากคอมโพเนนท์ Square แต่ละตัวก็ได้นี่นา ถึงแม้ว่าจะทำแบบนั้นได้ใน React, แต่เราไม่อยากให้ทำเพราะว่าจะทำให้โค้ดเข้าใจยาก, เสี่ยงต่อการเกิดบั๊ก, และยากต่อการปรับแก้ไข ดังนั้นแทนที่จะเก็บสเตทของเกมไว้กับคอมโพเนนท์ Square แต่ละตัว ทางที่ดีที่สุดคือให้เก็บสเตทของเกมไว้ที่คอมโพเนนท์แม่ของคอมโพเนนท์ Board แทน ซึ่งคอมโพเนนท์ Board สามารถที่จะบอกให้คอมโพเนนท์ Square แต่ละตัวว่าต้องแสดงค่าอะไรโดยการส่งค่าผ่านพร็อบ, [เหมือนกับที่เราเคยทำตอนส่งค่าตัวเลขใหกับคอมโพเนนท์ Square แต่ละตัวนั่นเอง](#passing-data-through-props).
 
-**To collect data from multiple children, or to have two child components communicate with each other, you need to declare the shared state in their parent component instead. The parent component can pass the state back down to the children by using props; this keeps the child components in sync with each other and with the parent component.**
+**เพื่อที่จะเก็บข้อมูลจากคอมโพเนนท์ลูกหลายตัว, หรือการมีคอมโพเนนท์ลูก 2 ตัวติดต่อสื่อสารซึ่งกันและกัน, คุณจำเป็นต้องประกาศการใช้สเตทร่วมกันในคอมโพเนนท์แม่แทน ตัวคอมโพเนนท์แม่สามารถส่งสเตทกลับลงไปหาคอมโพเนนท์ลูกโดยการใช้พร็อบ; นี่จะทำให้คอมโพเนนท์ลูกมีค่าเดียวกันพร้อม ๆ กับคอมโพเนนท์แม่ด้วย**
 
-Lifting state into a parent component is common when React components are refactored -- let's take this opportunity to try it out.
+การขยับสเตทขึ้นไปไว้ที่คอมโพเนนท์แม่เป็นเรื่องปกติเมื่อมีการปรับแก้ไขคอมโพเนนท์ใน React -- งั้นเราก็ใช้โอกาสนี้มาลองกันเลย
 
-Add a constructor to the Board and set the Board's initial state to contain an array of 9 nulls corresponding to the 9 squares:
+เพิ่ม constructor ใส่ในคอมโพเนนท์ Board และตั้งค่าสเตทเริ่มต้นด้วยการประกาศตัวแปรอาเรย์มีค่า null อยู่ 9 ตัวซึ่งตรงกับ 9 ตารางนั่นเอง:
 
 ```javascript{2-7}
 class Board extends React.Component {
@@ -374,7 +374,7 @@ class Board extends React.Component {
   }
 ```
 
-When we fill the board in later, the `this.state.squares` array will look something like this:
+เมื่อเราเติมค่าลงไปในตารางทีหลัง ค่าของอาเรย์ `this.state.squares` จะเป็นแบบนี้:
 
 ```javascript
 [
@@ -384,7 +384,7 @@ When we fill the board in later, the `this.state.squares` array will look someth
 ]
 ```
 
-The Board's `renderSquare` method currently looks like this:
+ปัจจุบันฟังก์ชั่น `renderSquare` ของคอมโพเนนท์ Board เป็นแบบนี้:
 
 ```javascript
   renderSquare(i) {
@@ -392,9 +392,9 @@ The Board's `renderSquare` method currently looks like this:
   }
 ```
 
-In the beginning, we [passed the `value` prop down](#passing-data-through-props) from the Board to show numbers from 0 to 8 in every Square. In a different previous step, we replaced the numbers with an "X" mark [determined by Square's own state](#making-an-interactive-component). This is why Square currently ignores the `value` prop passed to it by the Board.
+ก่อนหน้านี้, เรา [ส่งพร็อบ `value` ผ่านลงไป](#passing-data-through-props) จากคอมโพเนนท์ Board เพื่อแสดงตัวเลขจาก 0 ถึง 8 ในทุกคอมโพเนนท์ Square ในขั้นตอนก่อนหน้านี้, เราแทนที่ตัวเลขเหล่านั้นด้วย "X" [โดยคอมโพเนนท์ Square เก็บไว้ในสเตทของตัวเอง](#making-an-interactive-component) ซึ่งทำให้ตอนนี้คอมโพเนนท์ Square ไม่สนใจพร็อบ `value` จากคอมโพเนนท์ Board ที่ส่งผ่านมาหาตัวมัน
 
-We will now use the prop passing mechanism again. We will modify the Board to instruct each individual Square about its current value (`'X'`, `'O'`, or `null`). We have already defined the `squares` array in the Board's constructor, and we will modify the Board's `renderSquare` method to read from it:
+ตอนนี้เราก็จะใช้วิธีการส่งพร็อบอีกครั้ง เราจะแก้ไขให้คอมโพเนนท์ Board แต่ละตัวได้รู้ว่าค่าปัจจุบันของตัวมันเองเป็นค่าไหน (`'X'`, `'O'`, หรือ `null`) ซึ่งเราได้ประกาศตัวแปรอาเรย์ `squares` ไปแล้วใน constructor ของคอมโพเนนท์ Board, และเราจะมาแก้ไขฟังก์ชั่น `renderSquare` ของคอมโพเนนท์ Board ให้อ่านค่าจากตรงนั้น:
 
 ```javascript{2}
   renderSquare(i) {
@@ -402,13 +402,13 @@ We will now use the prop passing mechanism again. We will modify the Board to in
   }
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/gWWQPY?editors=0010)**
+**[ดูโค้ดเต็มของจุดนี้](https://codepen.io/gaearon/pen/gWWQPY?editors=0010)**
 
-Each Square will now receive a `value` prop that will either be `'X'`, `'O'`, or `null` for empty squares.
+ตอนนี้คอมโพเนนท์ Square แต่ละตัวจะรับพร็อบ `value` ซึ่งจะเป็นค่า `'X'`, `'O'`, หรือ `null` สำหรับตารางเปล่า
 
-Next, we need to change what happens when a Square is clicked. The Board component now maintains which squares are filled. We need to create a way for the Square to update the Board's state. Since state is considered to be private to a component that defines it, we cannot update the Board's state directly from Square.
+ต่อไป, เราต้องเปลี่ยนว่าจะให้เกิดอะไรขึ้นเมื่อคอมโพเนนท์ Square ถูกคลิก ตอนนี้คอมโพเนนท์ Board เก็บค่าว่าตารางไหนถูกใส่ค่าลงไปแล้ว ที่นี้เราต้องหาทางทำให้คอมโพเนนท์ Square อัพเดทค่าในสเตทของคอมโพเนนท์ Board  เนื่องจากสเตทจัดเป็นค่าเฉพาะภายในคอมโพเนนท์ที่มันถูกประกาศขึ้น, ดังนั้นเราจึงไม่สามารถอัพเดทสเตทของคอมโพเนนท์ Board ได้โดยตรงจากคอมโพเนนท์ Square
 
-Instead, we'll pass down a function from the Board to the Square, and we'll have Square call that function when a square is clicked. We'll change the `renderSquare` method in Board to:
+ดังนั้นเราจะต้องส่งพร็อบที่เป็นฟังก์ชั่นจากคอมโพเนนท์ Board ลงไปหาคอมโพเนนท์ Square แทน, และเราจะให้คอมโพเนนท์ Square เรียกใช้ฟังก์ชั่นนั้นเมื่อตัวมันถูกคลิก เราจะปรับเปลี่ยนฟังก์ชั่น `renderSquare` ของคอมโพเนนท์ Board ให้เป็นดังนี้:
 
 ```javascript{5}
   renderSquare(i) {
@@ -421,17 +421,17 @@ Instead, we'll pass down a function from the Board to the Square, and we'll have
   }
 ```
 
->Note
+>หมายเหตุ
 >
->We split the returned element into multiple lines for readability, and added parentheses so that JavaScript doesn't insert a semicolon after `return` and break our code.
+>เราแยกโค้ดให้เป็นหลายบรรทัดเพื่อให้อ่านง่าย, และใส่วงเล็บเข้าไปเพื่อให้ JavaScript จะได้ไม่ต้องใส่เครื่องหมายอัฒภาค (Semicolon) ตามหลัง `return` และทำให้โค้ดพัง
 
-Now we're passing down two props from Board to Square: `value` and `onClick`. The `onClick` prop is a function that Square can call when clicked. We'll make the following changes to Square:
+ตอนนี้เราส่งพร็อบจากคอมโพเนนท์ Board ไปหาคอมโพเนนท์ Square อยู่ 2 ตัวนั่นคือ: `value` และ `onClick`. เจ้าตัวพร็อบ `onClick` เป็นฟังก์ชั่นที่คอมโพเนนท์ Square สามารถเรียกใช้ได้เมื่อถูกคลิก แล้วเราก็จะมาทำการปรับเปลี่ยนคอมโพเนนท์ Square ดังต่อไปนี้:
 
-* Replace `this.state.value` with `this.props.value` in Square's `render` method
-* Replace `this.setState()` with `this.props.onClick()` in Square's `render` method
-* Delete the `constructor` from Square because Square no longer keeps track of the game's state
+* แทนที่ `this.state.value` ด้วย `this.props.value` ในฟังก์ชั่น `render` ของคอมโพเนนท์ Square
+* แทนที่ `this.setState()` ด้วย `this.props.onClick()` ในฟังก์ชั่น `render` ของคอมโพเนนท์ Square
+* ลบ `constructor` จากคอมโพเนนท์ Square เพราะมันไม่จำเป็นต้องเก็บสเตทของเกมในตัวมันเองอีกต่อไป
 
-After these changes, the Square component looks like this:
+หลังจากที่เราได้ทำตามขั้นตอนข้างบนไปแล้ว, คอมโพเนนท์ Square ควรจะเป็นแบบนี้:
 
 ```javascript{1,2,6,8}
 class Square extends React.Component {
@@ -448,19 +448,19 @@ class Square extends React.Component {
 }
 ```
 
-When a Square is clicked, the `onClick` function provided by the Board is called. Here's a review of how this is achieved:
+เมื่อคอมโพเนนท์ Square ถูกคลิก, พร็อบ `onClick` ที่ถูกส่งมาจากคอมโพเนนท์ Board จะถูกเรียกใช้ และนี่คือขั้นตอนที่มันเกิดขึ้น:
 
-1. The `onClick` prop on the built-in DOM `<button>` component tells React to set up a click event listener.
-2. When the button is clicked, React will call the `onClick` event handler that is defined in Square's `render()` method.
-3. This event handler calls `this.props.onClick()`. The Square's `onClick` prop was specified by the Board.
-4. Since the Board passed `onClick={() => this.handleClick(i)}` to Square, the Square calls `this.handleClick(i)` when clicked.
-5. We have not defined the `handleClick()` method yet, so our code crashes. If you click a square now, you should see a red error screen saying something like "this.handleClick is not a function".
+1. พร็อบ `onClick` ที่อยู่ใน DOM ของคอมโพเนนท์ `<button>` บอก React ตั้งค่ารอรับการกดปุ่มคลิก
+2. เมื่อปุ่มถูกคลิก, React จะเรียกใช้ `onClick` ที่ถูกประกาศไว้ในฟังก์ชั่น `render()` ของคอมโพเนนท์ Square
+3. ทำให้เกิดการเรียกใช้ `this.props.onClick()` พร็อบ `onClick` ของคอมโพเนนท์ Square ที่ถูกระบุมาจากคอมโพเนนท์ Board
+4. เนื่องจากคอมโพเนนท์ Board ได้ส่ง `onClick={() => this.handleClick(i)}` ไปหาคอมโพเนนท์ Square, ดังนั้นคอมโพเนนท์ Square จึงเรียกใช้ `this.handleClick(i)` เมื่อมันถูกคลิก
+5. เรายังไม่ได้ประกาศฟังก์ชั่น `handleClick()` กันเลย, ดังนั้นโค้ดของเราเลยพัง ถ้าคุณลองคลิกที่ช่องตารางตอนนี้, คุณควรจะเห็นหน้าจอเออเรอร์สีแดงบอกประมาณว่า "this.handleClick is not a function".
 
->Note
+>หมายเหตุ
 >
->The DOM `<button>` element's `onClick` attribute has a special meaning to React because it is a built-in component. For custom components like Square, the naming is up to you. We could give any name to the Square's `onClick` prop or Board's `handleClick` method, and the code would work the same. In React, it's conventional to use `on[Event]` names for props which represent events and `handle[Event]` for the methods which handle the events.
+>ตัว DOM `onClick` ที่เป็นคุณสมบัติของ `<button>` นั้นมีความหมายพิเศษกับ React เพราะว่ามันเป็นคอมโพเนนท์ที่มีอยู่แล้ว สำหรับคอมโพเนนท์ที่ถูกสร้างขึ้นอย่าง Square, ขึ้นอยู่กับคุณว่าจะตั้งชื่อยังไง เราจะตั้งชื่ออะไรก็ได้ให้กับพร็อบ `onClick` ของคอมโพเนนท์ Square หรือฟังก์ชั่น `handleClick` ของคอมโพเนนท์ Board, และโค้ดก็ยังทำงานเหมือนเดิม ใน React, มันง่ายและชัดเจนที่จะใช้ `on[Event]` เป็นชื่อสำหรับพร็อบซึ่งมันแสดงให้เห็นถึงสิ่งที่จะเกิดขึ้น `handle[Event]` สำหรับฟังก์ชั่นซึ่งรอรับการกระทำสักอย่าง
 
-When we try to click a Square, we should get an error because we haven't defined `handleClick` yet. We'll now add `handleClick` to the Board class:
+เมื่อเราลองคลิกที่คอมโพเนนท์ Square สักตัว, เราควรจะเห็นเออเรอร์เพราะว่าเรายังไม่ได้ประกาศฟังก์ชั่น `handleClick` เลย ดังนั้นเราจะมาใส่ฟังก์ชั่น `handleClick` ในคอมโพเนนท์ Board กัน:
 
 ```javascript{9-13}
 class Board extends React.Component {
@@ -513,63 +513,63 @@ class Board extends React.Component {
 }
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/ybbQJX?editors=0010)**
+**[ดูโค้ดเต็มของจุดนี้](https://codepen.io/gaearon/pen/ybbQJX?editors=0010)**
 
-After these changes, we're again able to click on the Squares to fill them, the same as we had before. However, now the state is stored in the Board component instead of the individual Square components. When the Board's state changes, the Square components re-render automatically. Keeping the state of all squares in the Board component will allow it to determine the winner in the future.
+หลังจากการเปลี่ยนแปลงเหล่านี้, เราก็ยังคงสามารถที่จะคลิกบนคอมโพเนนท์ Square เพื่อเติมค่าในตารางได้เหมือนเดิม, เหมือนที่เคยทำได้มาก่อน อย่างไรก็ตาม, ตอนนี้สเตทถูกเก็บไว้ที่คอมโพเนนท์ Board แทนที่จะแยกเก็บไว้ที่คอมโพเนนท์ Square แต่ละตัว ดังนั้นเมื่อสเตทของคอมโพเนนท์ Board มีการเปลี่ยนแปลง, คอมโพเนนท์ Square ทุกตัวก็จะทำการ `re-render` อัตโนมัติ การเก็บสเตทของตารางทุกช่องไว้ที่คอมโพเนนท์ Board จะทำให้เราสามารถหาผู้ชนะได้ในอนาคต
 
-Since the Square components no longer maintain state, the Square components receive values from the Board component and inform the Board component when they're clicked. In React terms, the Square components are now **controlled components**. The Board has full control over them.
+เนื่องจากคอมโพเนนท์ Square ไม่จำเป็นต้องเก็บสเตทอีกต่อไป, ตัวคอมโพเนนท์ Square รับค่าจากคอมโพเนนท์ Board และสื่อสารกลับไปหาคอมโพเนนท์ Board เมื่อตัวมันถูกคลิก ตามนิยามของ React, ตอนนี้คอมโพเนนท์ Square ถูกเรียกว่า **คอมโพเนนท์ที่ถูกควบคุม** เพราะว่าคอมโพเนนท์ Board เป็นตัวควบคุมพวกมันถุกตัว
 
-Note how in `handleClick`, we call `.slice()` to create a copy of the `squares` array to modify instead of modifying the existing array. We will explain why we create a copy of the `squares` array in the next section.
+สังเกตในฟังก์ชั่น `handleClick`, เราเรียกใช้ `.slice()` เพื่อที่จะสร้างสำเนาของอาเรย์ `squares` เพื่อทำการแก้ไขค่าแทนที่เราจะแก้ค่าที่มีอยู่แล้วแทน เดี๋ยวเราจะมาอธิบายให้ฟังว่าทำไมเราต้องสร้างสำเนาของอาเรย์ `squares` ในหัวข้อต่อไป
 
-### Why Immutability Is Important {#why-immutability-is-important}
+### ทำไม การไม่เปลี่ยนรูป (Immutability) จึงมีความสำคัญ {#why-immutability-is-important}
 
-In the previous code example, we suggested that you use the `.slice()` operator to create a copy of the `squares` array to modify instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
+ในโค้ดตัวอย่างก่อนหน้านี้, เราแนะนำให้คุณใช้ `.slice()` เพื่อสร้างสำเนาของอาเรย์ `squares` แทนที่จะไปแก้ไขข้อมูลที่มีอยู่ในอาเรย์นั้นตรง ๆ ตอนนี้เราจะพูดถึง การไม่เปลี่ยนรูป (immutability) และทำไมจึงเป็นเรื่องสำคัญที่ต้องเรียนรู้
 
-There are generally two approaches to changing data. The first approach is to *mutate* the data by directly changing the data's values. The second approach is to replace the data with a new copy which has the desired changes.
+วิธีการเปลี่ยนแปลงข้อมูลนั้น โดยทั่วไปจะมีอยู่ 2 วิธีด้วยกัน วิธีการแรก คือ *การเปลี่ยนรูป (mutate)* โดยการเปลี่ยนแปลงค่าของข้อมูลโดยตรง วิธีการที่สอง คือ การแทนที่ข้อมูลด้วยสำเนาใหม่ซึ่งมีการเปลี่ยนแปลงเฉพาะส่วนที่ต้องการ
 
-#### Data Change with Mutation {#data-change-with-mutation}
+#### การเปลี่ยนแปลงข้อมูลโดย วิธีการเปลี่ยนรูป {#data-change-with-mutation}
 ```javascript
 var player = {score: 1, name: 'Jeff'};
 player.score = 2;
-// Now player is {score: 2, name: 'Jeff'}
+// ตอนนี้ตัวแปร player จะมีค่าเป็น {score: 2, name: 'Jeff'}
 ```
 
-#### Data Change without Mutation {#data-change-without-mutation}
+#### การเปลี่ยนแปลงข้อมูลโดย ไม่ใช้วิธีการเปลี่ยนรูป{#data-change-without-mutation}
 ```javascript
 var player = {score: 1, name: 'Jeff'};
 
 var newPlayer = Object.assign({}, player, {score: 2});
-// Now player is unchanged, but newPlayer is {score: 2, name: 'Jeff'}
+// ตอนนี้ตัวแปร player จะไม่มีการเปลี่ยนแปลง, แต่ตัวแปร newPlayer จะมีค่าเป็น {score: 2, name: 'Jeff'}
 
-// Or if you are using object spread syntax proposal, you can write:
+// หรือถ้าคุณใช้วิธีการแตกไวยากรณ์ (Spread syntax), คุณสามารถเขียนแบบนี้ได้:
 // var newPlayer = {...player, score: 2};
 ```
 
-The end result is the same but by not mutating (or changing the underlying data) directly, we gain several benefits described below.
+สุดท้ายผลลัพธ์ที่ได้ก็เหมือนกันแต่โดยการที่ไม่ใช้วิธี การเปลี่ยนรูป (หรือเปลี่ยนแปลงข้อมูลพื้นฐาน) โดยตรง, เราได้ประโยชน์หลายประการดังที่อธิบายไว้ด้างล่าง
 
-#### Complex Features Become Simple {#complex-features-become-simple}
+#### ฟีเจอร์ที่ซับซ้อนกลายเป็นเรื่องง่าย {#complex-features-become-simple}
 
-Immutability makes complex features much easier to implement. Later in this tutorial, we will implement a "time travel" feature that allows us to review the tic-tac-toe game's history and "jump back" to previous moves. This functionality isn't specific to games -- an ability to undo and redo certain actions is a common requirement in applications. Avoiding direct data mutation lets us keep previous versions of the game's history intact, and reuse them later.
+การไม่เปลี่ยนรูป ทำให้ฟีเจอร์ที่ซับซ้อนกลายเป็นเรื่องที่ทำได้ง่ายมากขึ้น ในช่วงท้าย ๆ ของแบบฝึกหัดนี้, เราจะมาสร้าง "การเดินทางข้ามเวลา" กัน ซึ่งจะเป็นฟีเจอร์ที่ทำให้เราได้เห็นประวัติการเดินหมากเกมโอ-เอ็กซ์ของเรา และ "โดดกลับ" ไปที่การเดินหมากครั้งก่อนหน้านั้น ฟังก์ชั่นนี้ไม่เฉพาะสำหรับเกมเท่านั้น -- แต่ความสามารถในการที่สามารถ ย้อนกลับ และ ทำซ้ำ ถือว่าเป็นความต้องการโดยทั่วไปในแอปพลิเคชั่นอื่น ๆ ด้วย ด้วยการหลีกเลี่ยงการเปลี่ยนแปลงข้อมูลโดยตรงทำให้เราสามารถเก็บข้อมูลของเกมครั้งก่อน ๆ ได้อย่างครบถ้วน, และนำกลับมาใช้ได้ใหม่ภายหลัง
 
-#### Detecting Changes {#detecting-changes}
+#### การตรวจจับการเปลี่ยนแปลง {#detecting-changes}
 
-Detecting changes in mutable objects is difficult because they are modified directly. This detection requires the mutable object to be compared to previous copies of itself and the entire object tree to be traversed.
+เป็นเรื่องที่ยากมากในการตรวจจับการเปลี่ยนแปลงในออปเจคที่สามารถเปลี่ยนแปลงได้ เพราะว่ามันมีการแก้ไขตรง ๆ การตรวจจับแบบนี้ต้องให้ออปเจคนั้นเปรียบเทียบตัวมันเองกับตัวมันก่อนที่ยังไม่ถูกเปลี่ยนและต้องสำรวจโครงสร้างออปเจคทั้งหมดด้วย
 
-Detecting changes in immutable objects is considerably easier. If the immutable object that is being referenced is different than the previous one, then the object has changed.
+การตรวจจับการเปลี่ยนแปลงในออปเจคที่ไม่เปลี่ยนรูปถือว่าทำได้ง่ายกว่า ถ้าออปเจคตัวใหม่ที่ใช้เปรียบเทียบแตกต่างจากตัวก่อนหน้านี้, นั่นถือว่ามีการเปลี่ยนแปลงเกิดขึ้น
 
-#### Determining When to Re-Render in React {#determining-when-to-re-render-in-react}
+#### พิจารณาว่าเมื่อใดที่จะ Re-Render ใน React {#determining-when-to-re-render-in-react}
 
-The main benefit of immutability is that it helps you build _pure components_ in React. Immutable data can easily determine if changes have been made which helps to determine when a component requires re-rendering.
+ประโยชน์หลัก ๆ ของ การไม่เปลี่ยนรูป คือช่วยให้คุณสร้าง _คอมโพเนนท์บริสุทธิ์ (Pure components)_ ใน React ข้อมูลที่ไม่เปลี่ยนรูปสามารถระบุได้อย่างง่ายดายว่ามีการเปลี่ยนแปลงใดเกิดขึ้นบ้างซึ่งช่วยในการพิจารณาว่าเมื่อใดที่ต้อง re-rendering
 
-You can learn more about `shouldComponentUpdate()` and how you can build *pure components* by reading [Optimizing Performance](/docs/optimizing-performance.html#examples).
+คุณสามารถเรียนรู้เพิ่มเติมเกี่ยวกับ `shouldComponentUpdate()` และวิธีการสร้าง *คอมโพเนนท์บริสุทธิ์ (Pure components)* โดยการอ่าน [การปรับปรุงประสิทธิภาพ](/docs/optimizing-performance.html#examples)
 
-### Function Components {#function-components}
+### คอมโพเนนท์แบบฟังก์ชั่น {#function-components}
 
-We'll now change the Square to be a **function component**.
+ตอนนี้เราจะเปลี่ยนคอมโพเนนท์ Square ให้เป็น **คอมโพเนนท์แบบฟังก์ชั่น** กัน
 
-In React, **function components** are a simpler way to write components that only contain a `render` method and don't have their own state. Instead of defining a class which extends `React.Component`, we can write a function that takes `props` as input and returns what should be rendered. Function components are less tedious to write than classes, and many components can be expressed this way.
+ใน React, **คอมโพเนนท์แบบฟังก์ชั่น** เป็นวิธีที่ง่ายกว่าในการเขียนคอมโพเนนท์เพราะมันมีเพียงแค่ฟังก์ชั่น `render`  และไม่ต้องเขียนสเตทเอง แทนที่จะสร้างเป็นคลาสซึ่งขยาย (Extends) ต่อจาก `React.Component`, เราสามารถเขียนฟังก์ชั่นที่รอรับ `props` และคืนสิ่งที่ควรจะแสดง คอมโพเนนท์แบบฟังก์ชั่นนั้นน่าเบื่อน้อยกว่าการเขียนคลาส, และหลาย ๆ คอมโพเนนท์ก็ใช้วิธีการแบบนี้ได้เช่นกัน
 
-Replace the Square class with this function:
+แทนที่คอมโพเนนท์ Square ด้วยฟังก์ชั่นนี้:
 
 ```javascript
 function Square(props) {
@@ -581,19 +581,19 @@ function Square(props) {
 }
 ```
 
-We have changed `this.props` to `props` both times it appears.
+เราได้เปลี่ยน `this.props` ไปเป็น `props` ในทั้งสองที่ที่ปรากฎอยู่
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/QvvJOv?editors=0010)**
+**[ดูโค้ดเต็มของจุดนี้](https://codepen.io/gaearon/pen/QvvJOv?editors=0010)**
 
->Note
+>หมายเหตุ
 >
->When we modified the Square to be a function component, we also changed `onClick={() => this.props.onClick()}` to a shorter `onClick={props.onClick}` (note the lack of parentheses on *both* sides).
+>เมื่อเราแก้คอมโพเนนท์ Square ให้เป็นคอมโพเนนท์แบบฟังก์ชั่น, เราก็เปลี่ยน `onClick={() => this.props.onClick()}` ให้สั้นลงเป็น `onClick={props.onClick}` เช่นกัน (สังเกตว่าเราจะไม่ใส่วงเล็บไว้ *ทั้งสองข้าง*)
 
-### Taking Turns {#taking-turns}
+### ผลัดกันเดิน {#taking-turns}
 
-We now need to fix an obvious defect in our tic-tac-toe game: the "O"s cannot be marked on the board.
+ตอนนี้เราจะมาแก้ไขข้อบกพร่องที่เห็นได้ชัดเจนในเกมโอ-เอ็กซ์ของเรา นั่นคือ: การที่ไม่สามารถทำเครื่องหมาย "O" บนกระดานได้
 
-We'll set the first move to be "X" by default. We can set this default by modifying the initial state in our Board constructor:
+เราจะให้ "X" เป็นค่าเริ่มต้นในการเดินครั้งแรก เราสามารถตั้งค่าเริ่มต้นนี้ด้วยการแก้ไขสเตทเริ่มต้นใน constructor ของคอมโพเนนท์ Board:
 
 ```javascript{6}
 class Board extends React.Component {
@@ -606,7 +606,7 @@ class Board extends React.Component {
   }
 ```
 
-Each time a player moves, `xIsNext` (a boolean) will be flipped to determine which player goes next and the game's state will be saved. We'll update the Board's `handleClick` function to flip the value of `xIsNext`:
+ทุกครั้งที่ผู้เล่นทำการเดินหมาก, `xIsNext` (ตัวแปรแบบ boolean) จะสลับค่า (true เป็น false หรือ false เป็น true) เพื่อดูว่าผู้เล่นคนไหนจะเป็นคนเดินต่อไปและสเตทของเกมจะถูกบันทึกไว้ เราจะปรับฟังก์ชั่น `handleClick` ของคอมโพเนนท์ Board เพื่อให้สามารถสลับค่าของ `xIsNext` ดังนี้:
 
 ```javascript{3,6}
   handleClick(i) {
@@ -619,19 +619,19 @@ Each time a player moves, `xIsNext` (a boolean) will be flipped to determine whi
   }
 ```
 
-With this change, "X"s and "O"s can take turns. Try it!
+ด้วยการเปลี่ยนแปลงนี้, "X" และ "O" จะสามารถผลัดกันเดินได้ ลองเล่นดู!
 
-Let's also change the "status" text in Board's `render` so that it displays which player has the next turn:
+เดี๋ยวเรามาเปลี่ยนข้อความ "status" ในฟังก์ชั่น `render` ของคอมโพเนนท์ Board ด้วยเช่นกัน เพื่อให้แสดงผลว่าผู้เล่นคนไหนจะเป็นคนเดินหมากต่อไป:
 
 ```javascript{2}
   render() {
-    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+    const status = 'ผู้เล่นคนต่อไป: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
-      // the rest has not changed
+      // ที่เหลือไม่ต้องเปลี่ยน
 ```
 
-After applying these changes, you should have this Board component:
+หลังจากการเปลี่ยนแปลงเหล่านี้, คอมโพเนนท์ Board ของคุณควรจะเป็นแบบนี้:
 
 ```javascript{6,11-16,29}
 class Board extends React.Component {
@@ -662,7 +662,7 @@ class Board extends React.Component {
   }
 
   render() {
-    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+    const status = 'ผู้เล่นคนต่อไป: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
       <div>
@@ -688,11 +688,11 @@ class Board extends React.Component {
 }
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/KmmrBy?editors=0010)**
+**[ดูโค้ดเต็มของจุดนี้](https://codepen.io/gaearon/pen/KmmrBy?editors=0010)**
 
-### Declaring a Winner {#declaring-a-winner}
+### ประกาศผู้ชนะ {#declaring-a-winner}
 
-Now that we show which player's turn is next, we should also show when the game is won and there are no more turns to make. Copy this helper function and paste it at the end of the file:
+ตอนนี้เราสามารถแสดงให้เห็นได้ว่าผู้เล่นคนไหนจะเป็นคนเดินหมากต่อไป, เราก็ควรจะแสดงผลด้วยว่าใครคือผู้ชนะและไม่เหลือหมากให้เดินแล้ว คัดลอกฟังก์ชั่นตัวช่วยด้านล่างนี้และวางไว้ท้ายสุดของไฟล์:
 
 ```javascript
 function calculateWinner(squares) {
@@ -716,25 +716,25 @@ function calculateWinner(squares) {
 }
 ```
 
-Given an array of 9 squares, this function will check for a winner and return `'X'`, `'O'`, or `null` as appropriate.
+ฟังก์ชั่นนี้จะรับอาเรย์ 9 ช่อง, แล้วจะตรวจสอบหาผู้ชนะและส่งคืนค่า `'X'`, `'O'`, หรือ `null` ตามความเหมาะสม
 
-We will call `calculateWinner(squares)` in the Board's `render` function to check if a player has won. If a player has won, we can display text such as "Winner: X" or "Winner: O". We'll replace the `status` declaration in Board's `render` function with this code:
+เราจะเรียกใช้ฟังก์ชั่น `calculateWinner(squares)` ในฟังก์ชั่น `render` ของคอมโพเนนท์ Board เพื่อตรวจสอบหาผู้ชนะ ถ้าผู้เล่นคนใดคนหนึ่งชนะ, เราก็แสดงข้อความเช่น "ผู้ชนะ: X" หรือ "ผู้ชนะ: O" เราจะแทนที่ค่าของตัวแปร `status` ในฟังก์ชั่น `render` ของคอมโพเนนท์ Board ด้วยโค้ดนี้:
 
 ```javascript{2-8}
   render() {
     const winner = calculateWinner(this.state.squares);
     let status;
     if (winner) {
-      status = 'Winner: ' + winner;
+      status = 'ผู้ชนะ: ' + winner;
     } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'ผู้เล่นคนต่อไป: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
     return (
-      // the rest has not changed
+      // ที่เหลือไม่ต้องเปลี่ยน
 ```
 
-We can now change the Board's `handleClick` function to return early by ignoring a click if someone has won the game or if a Square is already filled:
+ตอนนี้เราก็จะมาเปลี่ยนฟังก์ชั่น `handleClick` ในคอมโพเนนท์ Board เพื่อให้ไม่ต้องสนใจการคลิกเมื่อมีผู้ชนะไปแล้วหรือเมื่อคอมโพเนนท์ Square นั้นได้ถูกใส่ค่าลงไปแล้ว:
 
 ```javascript{3-5}
   handleClick(i) {
@@ -750,25 +750,25 @@ We can now change the Board's `handleClick` function to return early by ignoring
   }
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/LyyXgK?editors=0010)**
+**[ดูโค้ดเต็มของจุดนี้](https://codepen.io/gaearon/pen/LyyXgK?editors=0010)**
 
-Congratulations! You now have a working tic-tac-toe game. And you've just learned the basics of React too. So *you're* probably the real winner here.
+ของแสดงความยินดีด้วย! ตอนนี้คุณมีเกมโอ-เอ็กซ์ที่เล่นได้จริงแล้ว และคุณก็ได้เรียนรู้พื้นฐานของ React ด้วยเช่นกัน ดังนั้นก็ถือได้ว่าตรงนี้ *คุณ* คือ ผู้ชนะตัวจริง
 
-## Adding Time Travel {#adding-time-travel}
+## เพิ่มการเดินทางข้ามเวลา {#adding-time-travel}
 
-As a final exercise, let's make it possible to "go back in time" to the previous moves in the game.
+ในฐานะนี่เป็นแบบทดสอบสุดท้าย, มาทำให้เกมมีการ "การย้อนเวลากลับ" ไปที่การเดินหมากก่อนหน้ากันเถอะ
 
-### Storing a History of Moves {#storing-a-history-of-moves}
+### เก็บประวัติการเดิน {#storing-a-history-of-moves}
 
-If we mutated the `squares` array, implementing time travel would be very difficult.
+ถ้าเราทำการเปลี่ยนรูปอาเรย์ `squares`, การจะทำให้มีการย้อนเวลาจะเป็นเรื่องที่ทำได้ยากมาก
 
-However, we used `slice()` to create a new copy of the `squares` array after every move, and [treated it as immutable](#why-immutability-is-important). This will allow us to store every past version of the `squares` array, and navigate between the turns that have already happened.
+อย่างไรก็ตาม, เราได้ใช้ฟังก์ชั่น `slice()` เพื่อสร้างสำเนาของอาเรย์ `squares` หลังจากที่มีการเดินหมากทุกตา, และ [เรายึดมั่นในการไม่เปลี่ยนแปลงรูป](#why-immutability-is-important) ด้วยเหตุนี้จะทำให้เราสามารถที่จะเก็บข้อมูลย้อนหลังทุก ๆ เวอร์ชั่นของอาเรย์ `squares` ไว้ได้, และสลับไปมาระหว่างหมากที่เคยเดินมาแล้วได้
 
-We'll store the past `squares` arrays in another array called `history`. The `history` array represents all board states, from the first to the last move, and has a shape like this:
+เราจะเก็บข้อมูลย้อนหลังของอาเรย์ `squares` ไว้ในอีกอาเรย์ที่ชื่อ `history` ตัวอาเรย์ `history` นั้นจะแสดงสเตทของกระดานทั้งหมด, ตั้งแต่การเดินครั้งแรกจนถึงครั้งสุดท้าย, และจะมีรูปแบบดังนี้:
 
 ```javascript
 history = [
-  // Before first move
+  // ก่อนการเดินครั้งที่หนึ่ง
   {
     squares: [
       null, null, null,
@@ -776,7 +776,7 @@ history = [
       null, null, null,
     ]
   },
-  // After first move
+  // หลังจากการเดินครั้งที่หนึ่ง
   {
     squares: [
       null, null, null,
@@ -784,7 +784,7 @@ history = [
       null, null, null,
     ]
   },
-  // After second move
+  // หลังจากการเดินครั้งที่สอง
   {
     squares: [
       null, null, null,
@@ -796,15 +796,15 @@ history = [
 ]
 ```
 
-Now we need to decide which component should own the `history` state.
+ตอนนี้เราจะมาตัดสินใจว่าจะเก็บสเตท `history` ไว้ที่คอมโพเนนท์ไหน
 
-### Lifting State Up, Again {#lifting-state-up-again}
+### ขยับสเตทขึ้น, อีกครั้ง {#lifting-state-up-again}
 
-We'll want the top-level Game component to display a list of past moves. It will need access to the `history` to do that, so we will place the `history` state in the top-level Game component.
+เราต้องการให้คอมโพเนนท์ Game ที่อยู่ชั้นบนสุดเป็นตัวแสดงรายการหมากที่เคยเดินมาทั้งหมด ซึ่งมันจำเป็นจะต้องเข้าถึงข้อมูล `history` ถึงจะทำแบบนั้นได้, ดังนั้นเราจะวางสเตท `history` ไว้ที่คอมโพเนนท์ Game
 
-Placing the `history` state into the Game component lets us remove the `squares` state from its child Board component. Just like we ["lifted state up"](#lifting-state-up) from the Square component into the Board component, we are now lifting it up from the Board into the top-level Game component. This gives the Game component full control over the Board's data, and lets it instruct the Board to render previous turns from the `history`.
+การวางสเตท `history` ไว้ในคอมโพเนนท์ Game ที่อยู่ชั้นบนสุด ทำให้เราสามารถลบสเตท `squares` ออกจากคอมโพเนนท์ Board ที่เป็นลูกของมันได้ เหมือนที่เราเคย ["ยกสเตทขึ้น"](#lifting-state-up) จากคอมโพเนนท์ Square ไปไว้ที่คอมโพเนนท์ Board, ตอนนี้เราจะยกมันขึ้นจากคอมโพเนนท์ Board ไปไว้ที่คอมโพเนนท์ Game ที่อยู่ชั้นบนสุด แบบนี้จะทำให้คอมโพเนนท์ Game เป็นตัวควบคุมข้อมูลของคอมโพเนนท์ Board ทั้งหมด, และให้มันเป็นตัวคอยสั่งคอมโพเนนท์ Board ให้เรนเดอร์จากการเดินหมากครั้งก่อน จากข้อมูลของสเตท `history`
 
-First, we'll set up the initial state for the Game component within its constructor:
+ก่อนอื่น, เราจะตั้งค่าสเตทเริ่มต้นไว้ใน `constructor`ของคอมโพเนนท์ Game:
 
 ```javascript{2-10}
 class Game extends React.Component {
@@ -826,7 +826,7 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
+          <ol>{/* สิ่งที่ต้องทำ */}</ol>
         </div>
       </div>
     );
@@ -834,13 +834,13 @@ class Game extends React.Component {
 }
 ```
 
-Next, we'll have the Board component receive `squares` and `onClick` props from the Game component. Since we now have a single click handler in Board for many Squares, we'll need to pass the location of each Square into the `onClick` handler to indicate which Square was clicked. Here are the required steps to transform the Board component:
+ต่อไป, เราจะให้คอมโพเนนท์ Board รับพร็อบ `squares` และพร็อบ `onClick` จากคอมโพเนนท์ Game เนื่องจากในคอมโพเนนท์ Board เรารองรับการคลิกแค่เพียงครั้งเดียวและส่งให้แก่คอมโพเนนท์ Square หลายตัว, เราจำเป็นต้องส่งตำแหน่งของคอมโพเนนท์ Square แต่ละตัวไปใน `onClick` เพื่อระบุว่าคอมโพเนนท์ Square ที่ถูกคลิก นี่คือขั้นตอนที่จำเป็นทั้งหมดเพื่อที่จะเปลี่ยนแปลงคอมโพเนนท์ Board:
 
-* Delete the `constructor` in Board.
-* Replace `this.state.squares[i]` with `this.props.squares[i]` in Board's `renderSquare`.
-* Replace `this.handleClick(i)` with `this.props.onClick(i)` in Board's `renderSquare`.
+* ลบ `constructor` ในคอมโพเนนท์ Board
+* แทนที่ `this.state.squares[i]` ด้วย `this.props.squares[i]` ในฟังก์ชั่น `renderSquare` ของคอมโพเนนท์ Board
+* แทนที่ `this.handleClick(i)` ด้วย `this.props.onClick(i)` ในฟังก์ชั่น `renderSquare` ของคอมโพเนนท์ Board
 
-The Board component now looks like this:
+ตอนนี้คอมโพเนนท์ Board จะมีหน้าตาเป็นแบบนี้:
 
 ```javascript{17,18}
 class Board extends React.Component {
@@ -869,9 +869,9 @@ class Board extends React.Component {
     const winner = calculateWinner(this.state.squares);
     let status;
     if (winner) {
-      status = 'Winner: ' + winner;
+      status = 'ผู้ชนะ: ' + winner;
     } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'ผู้เล่นคนต่อไป: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
     return (
@@ -898,7 +898,7 @@ class Board extends React.Component {
 }
 ```
 
-We'll update the Game component's `render` function to use the most recent history entry to determine and display the game's status:
+เราจะปรับฟังก์ชั่น `render` ของคอมโพเนนท์ Game เพื่อให้ใช้ข้อมูลจากประวัติการเดินล่าสุดเพื่อกำหนดและแสดงสถานะของเกม:
 
 ```javascript{2-11,16-19,22}
   render() {
@@ -908,9 +908,9 @@ We'll update the Game component's `render` function to use the most recent histo
 
     let status;
     if (winner) {
-      status = 'Winner: ' + winner;
+      status = 'ผู้ชนะ: ' + winner;
     } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'ผู้เล่นคนต่อไป: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
     return (
@@ -923,14 +923,14 @@ We'll update the Game component's `render` function to use the most recent histo
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{/* TODO */}</ol>
+          <ol>{/* สิ่งที่ต้องทำ */}</ol>
         </div>
       </div>
     );
   }
 ```
 
-Since the Game component is now rendering the game's status, we can remove the corresponding code from the Board's `render` method. After refactoring, the Board's `render` function looks like this:
+เนื่องจากตอนนี้คอมโพเนนท์ Game เป็นตัวเรนเดอร์สถานะของเกม, เราก็จะสามารถลบโค้ดเหล่านี้ออกจากฟังก์ชั่น `render` ของคอมโพเนนท์ Board ได้ หลังจากที่ปรับโค้ดไปแล้ว, ฟังก์ชั่น `render` ของคอมโพเนนท์ Board จะมีหน้าตาเป็นแบบนี้:
 
 ```js{1-4}
   render() {
@@ -956,7 +956,7 @@ Since the Game component is now rendering the game's status, we can remove the c
   }
 ```
 
-Finally, we need to move the `handleClick` method from the Board component to the Game component. We also need to modify `handleClick` because the Game component's state is structured differently. Within the Game's `handleClick` method, we concatenate new history entries onto `history`.
+สุดท้าย, เราจำเป็นต้องย้ายฟังก์ชั่น `handleClick` จากคอมโพเนน์ Board ไปคอมโพเนนท์ Game เราจำเป็นต้องแก้ไขฟังก์ชั่น `handleClick` ด้วยเช่นกันเพราะว่าสเตทของคอมโพเนนท์ Game มีโครงสร้างที่แตกต่างกัน ภายในฟังก์ชั่น `handleClick` ของคอมโพเนนท์ Game, เราจะรวมประวัติรายการใหม่เข้ากับ `history`
 
 ```javascript{2-4,10-12}
   handleClick(i) {
@@ -976,30 +976,30 @@ Finally, we need to move the `handleClick` method from the Board component to th
   }
 ```
 
->Note
+>หมายเหตุ
 >
->Unlike the array `push()` method you might be more familiar with, the `concat()` method doesn't mutate the original array, so we prefer it.
+>คุณอาจคุ้นเคยกับฟังก์ชั่น `push()` ของอาเรย์, แต่ว่าฟังก์ชั่น `concat()` นั้นต่างออกไปเพราะมันไม่ได้ทำการเปลี่ยนแปลงอาเรย์ต้นฉบับ, ดังนั้นเราจึงแนะนำให้ใช้
 
-At this point, the Board component only needs the `renderSquare` and `render` methods. The game's state and the `handleClick` method should be in the Game component.
+ถึงจุดนี้, คอมโพเนนท์ Board ต้องการเพียงแค่ฟังก์ชั่น `renderSquare` และ `render` ส่วนสเตทของเกมและฟังก์ชั่น `handleClick` ควรไปอยู่ในคอมโพเนนท์ Game
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/EmmOqJ?editors=0010)**
+**[ดูโค้ดเต็มของจุดนี้](https://codepen.io/gaearon/pen/EmmOqJ?editors=0010)**
 
-### Showing the Past Moves {#showing-the-past-moves}
+### แสดงการเดินที่ผ่านมา {#showing-the-past-moves}
 
-Since we are recording the tic-tac-toe game's history, we can now display it to the player as a list of past moves.
+เนื่องจากเราได้บันทึกประวัติการเดินเกมโอ-เอ็กซ์ไว้, ตอนนี้เราก็สามารถที่จะแสดงรายการเหล่านั้นให้ผู้เล่นดูได้
 
-We learned earlier that React elements are first-class JavaScript objects; we can pass them around in our applications. To render multiple items in React, we can use an array of React elements.
+เราได้เรียนรู้ก่อนหน้านี้แล้วว่าส่วนประกอบของ React นั้นเป็นอ็อปเจคของ JavaScript; เราสามารถส่งต่อพวกมันไปมาในแอปพลิเคชั่นของเราได้ เพื่อเรนเดอร์รายการหลาย ๆ อันใน React, เราสามารถใช้อาเรย์ของส่วนประกอบของ React ได้
 
-In JavaScript, arrays have a [`map()` method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) that is commonly used for mapping data to other data, for example:
+ใน JavaScript, อาเรย์มี [ฟังก์ชั่น `map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) ซึ่งโดยทั่วไปจะใช้สำหรับการประกอบข้อมูลให้เป็นข้อมูลอื่น, ตัวอย่างเช่น:
 
 ```js
 const numbers = [1, 2, 3];
 const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 ```
 
-Using the `map` method, we can map our history of moves to React elements representing buttons on the screen, and display a list of buttons to "jump" to past moves.
+ด้วยการใช้ฟังก์ชั่น `map`, เราสามารถประกอบประวัติการเดินของเราให้เป็นส่วนประกอบของ React แทนปุ่มบนหน้าจอ, และแสดงรายการของปุ่มเพื่อ "กระโดด" ไปที่การเดินครั้งก่อน
 
-Let's `map` over the `history` in the Game's `render` method:
+เดี๋ยวเราจะมา `map` ข้อมูล `history` ในฟังก์ชั่น `render` ของคอมโพเนนท์ Game กัน:
 
 ```javascript{6-15,34}
   render() {
@@ -1009,8 +1009,8 @@ Let's `map` over the `history` in the Game's `render` method:
 
     const moves = history.map((step, move) => {
       const desc = move ?
-        'Go to move #' + move :
-        'Go to game start';
+        'ไปที่การเดิน #' + move :
+        'ไปที่เริ่มเกม';
       return (
         <li>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
@@ -1020,9 +1020,9 @@ Let's `map` over the `history` in the Game's `render` method:
 
     let status;
     if (winner) {
-      status = 'Winner: ' + winner;
+      status = 'ผู้ชนะ: ' + winner;
     } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'ผู้เล่นคนต่อไป: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
     return (
@@ -1042,62 +1042,62 @@ Let's `map` over the `history` in the Game's `render` method:
   }
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
+**[ดูโค้ดเต็มของจุดนี้](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
-For each move in the tic-tac-toes's game's history, we create a list item `<li>` which contains a button `<button>`. The button has a `onClick` handler which calls a method called `this.jumpTo()`. We haven't implemented the `jumpTo()` method yet. For now, we should see a list of the moves that have occurred in the game and a warning in the developer tools console that says:
+สำหรับการเดินแต่ละครั้งในประวัติของเกมโอ-เอ็กซ์, เราสร้างรายการของ `<li>` ซึ่งมีปุ่ม `<button>` ตัวปุ่มนั้นจะมีฟังก์ชั่น `onClick` เพื่อที่จะรองรับการคลิกแล้วจะเรียกใช้ฟังก์ชั่น `this.jumpTo()` ณ ตรงนี้เราจะยังไม่ทำฟังก์ชั่น `jumpTo()` แต่ตอนนี้, เราควรจะเห็นรายการการเดินที่เกิดขึ้นภายในเกมและคำเตือนในหน้าจอคอนโซลของนักพัฒนาที่กล่าวว่า:
 
->  Warning:
->  Each child in an array or iterator should have a unique "key" prop. Check the render method of "Game".
+>  คำเตือน:
+>  ลูกในอาเรย์แต่ละตัวควรจะมีค่าของพร็อบ "key" ที่ไม่ซ้ำกัน ตรวจสอบฟังก์ชั่น `render` ของ "คอมโพเนนท์ Game"
 
-Let's discuss what the above warning means.
+เรามาพูดถึงความหมายของคำเตือนข้างต้นกันดีกว่า
 
-### Picking a Key {#picking-a-key}
+### การเลือก Key {#picking-a-key}
 
-When we render a list, React stores some information about each rendered list item. When we update a list, React needs to determine what has changed. We could have added, removed, re-arranged, or updated the list's items.
+ตอนเราเรนเดอร์รายการสักอย่าง, React เก็บข้อมูลบางอย่างที่เกี่ยวกับแต่ละรายการที่ถูกเรนเดอร์จากรายการเหล่านั้น เมื่อเราทำการปรับปรุงรายการ, React ต้องตรวจสอบว่าอะไรที่มีการเปลี่ยนแปลง เราสามารถเพิ่ม, ลบ, เปลี่ยนตำแหน่ง, หรือปรับปรุงรายการ
 
-Imagine transitioning from
-
-```html
-<li>Alexa: 7 tasks left</li>
-<li>Ben: 5 tasks left</li>
-```
-
-to
+ลองนึกภาพการเปลี่ยนจาก
 
 ```html
-<li>Ben: 9 tasks left</li>
-<li>Claudia: 8 tasks left</li>
-<li>Alexa: 5 tasks left</li>
+<li>Alexa: เหลืออีก 7 งาน</li>
+<li>Ben: เหลืออีก 5 งาน</li>
 ```
 
-In addition to the updated counts, a human reading this would probably say that we swapped Alexa and Ben's ordering and inserted Claudia between Alexa and Ben. However, React is a computer program and does not know what we intended. Because React cannot know our intentions, we need to specify a *key* property for each list item to differentiate each list item from its siblings. One option would be to use the strings `alexa`, `ben`, `claudia`. If we were displaying data from a database, Alexa, Ben, and Claudia's database IDs could be used as keys.
+ไปเป็น
 
 ```html
-<li key={user.id}>{user.name}: {user.taskCount} tasks left</li>
+<li>Ben: เหลืออีก 9 งาน</li>
+<li>Claudia: เหลืออีก 8 งาน</li>
+<li>Alexa: เหลืออีก 5 งาน</li>
 ```
 
-When a list is re-rendered, React takes each list item's key and searches the previous list's items for a matching key. If the current list has a key that didn't exist before, React creates a component. If the current list is missing a key that existed in the previous list, React destroys the previous component. If two keys match, the corresponding component is moved. Keys tell React about the identity of each component which allows React to maintain state between re-renders. If a component's key changes, the component will be destroyed and re-created with a new state.
+นอกเหนือจากการปรับจำนวนแล้ว, คนที่อ่านคงพูดได้ว่าว่า เราเปลี่ยนตำแหน่งของ Alexa และ Ben และเพิ่ม Claudia เข้าไปอยู่ในตำแหน่งระหว่าง Alexa และ Ben อย่างไรก็ตาม, React เป็นโปรแกรมคอมพิวเตอร์ซึ่งไม่รู้ว่าเราตั้งใจจะทำอะไร เพราะว่า React ไม่สามารถรู้เจตนาของเรา, เราจำเป็นต้องระบุ *key* เข้าไปในแต่ละรายการเพื่อแยกความแตกต่างจากพี่น้องของมัน ทางเลือกหนึ่งคือการใช้ข้อความ `alexa`, `ben`, `claudia` ถ้าเราแสดงข้อมูลจากฐานข้อมูล, ควรจะใช้ ID ของ Alexa, Ben, และ Claudia จากฐานข้อมูลเป็นคีย์แทน
 
-`key` is a special and reserved property in React (along with `ref`, a more advanced feature). When an element is created, React extracts the `key` property and stores the key directly on the returned element. Even though `key` may look like it belongs in `props`, `key` cannot be referenced using `this.props.key`. React automatically uses `key` to decide which components to update. A component cannot inquire about its `key`.
+```html
+<li key={user.id}>{user.name}: เหลืออีก {user.taskCount} งาน</li>
+```
 
-**It's strongly recommended that you assign proper keys whenever you build dynamic lists.** If you don't have an appropriate key, you may want to consider restructuring your data so that you do.
+เมื่อรายการมีการแสดงผลใหม่, React จะเอาคีย์ของรายการแต่ละตัวและไปค้นหารายการก่อนหน้านี้ที่มีคีย์ที่ตรงกัน ถ้ารายการปัจจุบันมีคีย์ที่ไม่เคยมีอยู่มาก่อน, React จะสร้างคอมโพเนนท์ขึ้น ถ้ารายการปัจจุบันไม่มีคีย์ที่เคยมีอยู่จากรายการก่อนหน้านี้, React จะทำลายคอมโพเนนท์ก่อนหน้า ถ้าคีย์ทั้งสองตรงกัน, คอมโพเนนท์ที่สอดคล้องกันนั้นจะถูกย้าย คีย์ของคอมโพเนน์แต่ละตัวบอก React เกี่ยวกับตัวตนของคอมโพเนนท์เหล่านั้นซึ่งทำให้ React สามารถรักษาสถานะระหว่างการแสดงผลซ้ำได้ ถ้าคีย์ของคอมโพเนนท์มีการเปลี่ยนแปลง, คอมโพเนนท์จะถูกทำลายและสร้างใหม่ด้วยสเตทใหม่
 
-If no key is specified, React will present a warning and use the array index as a key by default. Using the array index as a key is problematic when trying to re-order a list's items or inserting/removing list items. Explicitly passing `key={i}` silences the warning but has the same problems as array indices and is not recommended in most cases.
+ใน React `key` เป็นคุณสมบัติพิเศษและสงวนไว้ (พร้อมด้วย `ref` ซึ่งเป็นฟีเจอร์ขั้นสูงตัวหนึ่ง) เมื่อส่วนประกอบถูกสร้างขึ้น, React จะแยก `key` ออกและเก็บคีย์ไว้โดยตรงที่ส่วนประกอบที่ถูกส่งคืนไป ถึงแม้ว่า `key` อาจดูเหมือนมันเป็นส่วนหนึ่งของ `props`, `key` ไม่สามารถอ้างถึงโดยการใช้ `this.props.key` ได้ ซึ่ง React จะใช้ `key` เพื่อตัดสินใจว่าคอมโพเนนท์ไหนจะถูกปรับปรุงโดยอัตโนมัติ คอมโพเนนท์จะไม่สามารถรู้ `key` ของตัวมันเอง
 
-Keys do not need to be globally unique; they only need to be unique between components and their siblings.
+**ขอแนะนำอย่างยิ่งให้คุณกำหนดคีย์ที่เหมาะสมเมื่อใดก็ตามที่คุณสร้างรายการแบบที่เปลี่ยนแปลงอยู่เสมอ** ถ้าคุณไม่สามารถระบุคีย์ที่เหมาะสมได้, คุณอาจต้องพิจารณาปรับโครงสร้างข้อมูลของคุณใหม่
+
+หากไม่มีการระบุคีย์, React จะแสดงคำเตือนและใช้ตำแหน่งของอาเรย์เป็นคีย์ค่าเริ่มต้น ใช้ตำแหน่งของอาเรย์เป็นคีย์นั้นค่อนข้างจะเป็นปัญหาเมื่อพยายามที่จะย้ายตำแหน่งของในรายการหรือเพิ่ม/ลบของออกจากรายการ การส่งค่า `key={i}` ถึงจะทำให้คำเตือนหายไปแต่ก็ทำให้เกิดปัญหาเดิมอยู่ดี และส่วนใหญ่เราก็ไม่แนะนำให้ทำเช่นนั้นด้วยเช่นกัน
+
+คีย์ไม่จำเป็นต้องเป็นเอกลักษณ์เฉพาะในภาพใหญ่; แต่จำเป็นระหว่างคอมโพเนนท์และพี่น้องของมัน
 
 
-### Implementing Time Travel {#implementing-time-travel}
+### สร้างการเดินทางข้ามเวลา {#implementing-time-travel}
 
-In the tic-tac-toe game's history, each past move has a unique ID associated with it: it's the sequential number of the move. The moves are never re-ordered, deleted, or inserted in the middle, so it's safe to use the move index as a key.
+ในประวัติของเกมโอ-เอ็กซ์, การเดินแต่ละครั้งที่ผ่านมาจะมี ID เฉพาะผูกกับมันไว้: มันคือจำนวนต่อเนื่องของการเดิน การเดินแต่ละครั้งจะไม่มีการเปลี่ยนตำแหน่ง, ลบ, หรือแทรกเพิ่มเข้าไปตรงกลาง, ดังนั้นมันจึงปลอดภัยที่จะใช้ตำแหน่งการเดินเป็นคีย์ได้
 
-In the Game component's `render` method, we can add the key as `<li key={move}>` and React's warning about keys should disappear:
+ในฟังก์ชั่น `render` ของคอมโพเนนท์ Game, เราสามารถเพิ่มคีย์เป็น `<li key={move}>` และคำเตือนเกี่ยวกับคีย์จาก React ก็จะหายไป:
 
 ```js{6}
     const moves = history.map((step, move) => {
       const desc = move ?
-        'Go to move #' + move :
-        'Go to game start';
+        'ไปที่การเดิน #' + move :
+        'ไปที่เริ่มเกม';
       return (
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
@@ -1106,11 +1106,11 @@ In the Game component's `render` method, we can add the key as `<li key={move}>`
     });
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/PmmXRE?editors=0010)**
+**[ดูโค้ดเต็มของจุดนี้](https://codepen.io/gaearon/pen/PmmXRE?editors=0010)**
 
-Clicking any of the list item's buttons throws an error because the `jumpTo` method is undefined. Before we implement `jumpTo`, we'll add `stepNumber` to the Game component's state to indicate which step we're currently viewing.
+ตอนนี้ไม่ว่าจะคลิกปุ่มไหนในรายการก็จะทำให้เกิดเออเรอร์เพื่อว่าเรายังไม่ประกาศฟังก์ชั่น `jumpTo` ก่อนที่เราจะสร้างฟังก์ชั่น `jumpTo`, เราจะเพิ่ม `stepNumber` เข้าไปสเตทของในคอมโพเนนท์ Game เพื่อที่จะระบุว่าขั้นตอนไหนที่เรากำลังดูอยู่
 
-First, add `stepNumber: 0` to the initial state in Game's `constructor`:
+เริ่มแรก, เพิ่มค่าเริ่มต้นของสเตท `stepNumber: 0` ไว้ใน `constructor` ของคอมโพเนนท์ Game:
 
 ```js{8}
 class Game extends React.Component {
@@ -1126,11 +1126,11 @@ class Game extends React.Component {
   }
 ```
 
-Next, we'll define the `jumpTo` method in Game to update that `stepNumber`. We also set `xIsNext` to true if the number that we're changing `stepNumber` to is even:
+ต่อไป, เราประกาศฟังก์ชั่น `jumpTo` ในคอมโพเนนท์ Game เพื่อให้ปรับค่า `stepNumber` เราก็ทำให้ค่า `xIsNext` เป็น `true` ด้วยเช่นกัน ถ้าค่าตัวเลขที่เราเปลี่ยนที่ `stepNumber` เป็นเลขคู่:
 
 ```javascript{5-10}
   handleClick(i) {
-    // this method has not changed
+    // ฟังก์ชั่นนี้ไม่ต้องเปลี่ยน
   }
 
   jumpTo(step) {
@@ -1141,15 +1141,15 @@ Next, we'll define the `jumpTo` method in Game to update that `stepNumber`. We a
   }
 
   render() {
-    // this method has not changed
+    // ฟังก์ชั่นนี้ไม่ต้องเปลี่ยน
   }
 ```
 
-We will now make a few changes to the Game's `handleClick` method which fires when you click on a square.
+ตอนนี้เราจะทำการเปลี่ยนแปลงฟังก์ชั่น `handleClick` ของคอมโพเนนท์ Game สักเล็กน้อยซึ่งจะยิงคำสั่งเมื่อมีการคลิกที่ตารางแต่ละช่อง
 
-The `stepNumber` state we've added reflects the move displayed to the user now. After we make a new move, we need to update `stepNumber` by adding `stepNumber: history.length` as part of the `this.setState` argument. This ensures we don't get stuck showing the same move after a new one has been made.
+สเตท `stepNumber` ที่เราได้เพิ่่มเข้าไปนั้นสะท้อนถึงการแสดงการเดินของผู้เล่นปัจจุบัน หลังจากที่เราทำการเดินครั้งใหม่, เราจะเป็นต้องปรับค่า `stepNumber` ด้วยการเพิ่ม `stepNumber: history.length` เป็นส่วนหนึ่งของ `this.setState` อาร์กิวเมนต์ เพื่อให้แน่ใจว่าเราไม่แสดงค่าเดิมหลังจากที่ได้มีการครั้งใหม่แล้ว
 
-We will also replace reading `this.state.history` with `this.state.history.slice(0, this.state.stepNumber + 1)`. This ensures that if we "go back in time" and then make a new move from that point, we throw away all the "future" history that would now become incorrect.
+เราจะทำการแทนที่การอ่าน `this.state.history` ด้วย `this.state.history.slice(0, this.state.stepNumber + 1)` เพื่อให้แน่ใจว่า "เมื่อเราย้อนเวลากลับไป" และทำการเดินหมากใหม่ตรงจุดนั้น, เราทิ้งประวัติการเดิน "ในอนาคต" ไปให้หมดเพราะนั่นจะทำให้เกิดความไม่ถูกต้องได้
 
 ```javascript{2,13}
   handleClick(i) {
@@ -1170,7 +1170,7 @@ We will also replace reading `this.state.history` with `this.state.history.slice
   }
 ```
 
-Finally, we will modify the Game component's `render` method from always rendering the last move to rendering the currently selected move according to `stepNumber`:
+สุดท้าย, เราจะแก้ไขฟังก์ชั่น `render` ของคอมโพเนนท์ Game จากที่เคยแสดงการเดินครั้งท้ายสุดไปเป็นแสดงการเดินที่ถูกเลือกจากขึ้นอยู่กับ `stepNumber`:
 
 ```javascript{3}
   render() {
@@ -1178,33 +1178,33 @@ Finally, we will modify the Game component's `render` method from always renderi
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
 
-    // the rest has not changed
+    // ที่เหลือไม่ต้องเปลี่ยน
 ```
 
-If we click on any step in the game's history, the tic-tac-toe board should immediately update to show what the board looked like after that step occurred.
+ถ้าเราคลิกในช่วงไหนในประวัติของเกม, กระดานเกมโอ-เอ็กซ์จะมีการปรับปรุงทันทีเพื่อแสดงผลของกระดานไหนที่กำลังเกิดขึ้นอยู่
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**
+**[ดูโค้ดเต็มของจุดนี้](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**
 
-### Wrapping Up {#wrapping-up}
+### สรุป {#wrapping-up}
 
-Congratulations! You've created a tic-tac-toe game that:
+ขอแสดงความยินดีด้วย! เราได้สร้างเกมโอ-เอ็กซ์แล้ว:
 
-* Lets you play tic-tac-toe,
-* Indicates when a player has won the game,
-* Stores a game's history as a game progresses,
-* Allows players to review a game's history and see previous versions of a game's board.
+* ให้คุณเล่นเกมโอ-เอ็กซ์,
+* ระบุว่าผู้เล่นคนไหนชนะเกม,
+* เก็บประวัติของเกมไว้ในขณะที่เกมยังคงดำเนินไป,
+* อนุญาตให้ผู้เล่นสามารถดูประวัติเกมย้อนหลังในกระดาน
 
-Nice work! We hope you now feel like you have a decent grasp on how React works.
+ทำได้ดีมาก! เราหวังว่าคุณจะรู้สึกว่าคุณเข้าใจวิธีการทำงานของ React ได้ดีมากขึ้น
 
-Check out the final result here: **[Final Result](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**.
+ตรวจสอบผลลัพธ์สุดท้ายที่นี่: **[ผลลัพธ์สุดท้าย](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**.
 
-If you have extra time or want to practice your new React skills, here are some ideas for improvements that you could make to the tic-tac-toe game which are listed in order of increasing difficulty:
+ถ้าคุณมีเวลาเหลือหรือต้องการจะฝึกฝนความสามารถ React ของคุณ, นี่คือแนวคิดสำหรับการปรับปรุงเกมโอเอ็กซ์ให้ดีขึ้น ซึ่งรายการเหล่านี้เรียกตามระดับความยาก:
 
-1. Display the location for each move in the format (col, row) in the move history list.
-2. Bold the currently selected item in the move list.
-3. Rewrite Board to use two loops to make the squares instead of hardcoding them.
-4. Add a toggle button that lets you sort the moves in either ascending or descending order.
-5. When someone wins, highlight the three squares that caused the win.
-6. When no one wins, display a message about the result being a draw.
+1. แสดงตำแหน่งของแต่ละการเดินในรูปแบบ (คอลัมภ์, แถว) ในรายการของประวัติของเกม
+2. ทำตัวหนาให้กับรายการที่ถูกเลือก ในรายการการเดิน
+3. เขียนคอมโพเนนท์ Board ใหม่เพื่อให้ใช้การวนลูป 2 ครั้งแทนที่จะเป็นการเขียนโค้ดทื่อ ๆ ลงไป
+4. เพิ่มปุ่มสลับเพื่อให้คุณสามารถเรียงการเดินจากน้อยไปมากและมากไปน้อยได้
+5. เมื่อมีผู้ชนะ, ไฮไลท์ช่องสามช่องของคนที่ชนะ
+6. เมื่อไม่มีผู้ชนะ, แสดงข้อความว่าผลเป็นเสมอกัน
 
-Throughout this tutorial, we touched on React concepts including elements, components, props, and state. For a more detailed explanation of each of these topics, check out [the rest of the documentation](/docs/hello-world.html). To learn more about defining components, check out the [`React.Component` API reference](/docs/react-component.html).
+ตลอดแบบฝึกหัดนี้, เราได้สัมผัสกับแนวคิดของ React ประกอบไปด้วย ส่วนประกอบ (Elements), คอมโพเนนท์ (Components), พร็อบ (Props), และ สเตท (State) สำหรับคำอธิบายโดยละเอียดเพิ่มเติมของแต่ละหัวข้อเหล่านี้, สามารถดู [จากส่วนที่เหลือของเอกสาร](/docs/hello-world.html) ได้ หรือเพื่อเรียนรู้เกี่ยวกับการสร้างคอมโพเนนท์ให้มากกว่านี้, สามารถดูที่ [เอกสามารถอ้างอิงของ `React.Component` API](/docs/react-component.html) ได้
