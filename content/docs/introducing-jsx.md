@@ -9,20 +9,20 @@ next: rendering-elements.html
 พิจารณาการประกาศตัวแปรนี้:
 
 ```js
-const element = <h1>สวัสดี, ชาวโลก!</h1>;
+const element = <h1>Hello, World!</h1>;
 ```
 
 แท็กไวยากรณ์ตลก ๆ นี้ไม่ใช่ทั้งสตริงหรือ HTML
 
 มันเรียกว่า JSX และมันเป็นส่วนขยายไวยากรณ์ของ JavaScript เราแนะนำให้ใช้กับ React เพื่ออธิบายว่า UI ควรมีลักษณะอย่างไร JSX อาจะทำให้คุณนึกถึงภาษาเทมเพลท แต่มันมาพร้อมพลังความสามารถเต็มรูปแบบของ JavaScript
 
-JSX ผลิต "องค์ประกอบ (Element)" ของ React เราจะมาสำรวจการแสดงผลให้กับ DOM ใน [หัวข้อถัดไป](/docs/rendering-elements.html) ด้านล่าง, คุณจะเจอพื้นฐานของ JSX ที่จำเป็นสำหรับการเริ่มต้นใช้งาน
+JSX สร้าง "องค์ประกอบ (Element)" ของ React เราจะมาสำรวจการทำให้มันแสดงผลที่ DOM ใน [หัวข้อถัดไป](/docs/rendering-elements.html) ด้านล่าง, คุณจะเจอพื้นฐานของ JSX ที่จำเป็นสำหรับการเริ่มต้นใช้งาน
 
 ### ทำไมต้องเป็น JSX? {#why-jsx}
 
 React อ้าแขนรับความจริงที่ว่า ตรรกะสำหรับการแสดงผลนั้นเชื่อมโยงกับตรรกะ UI อื่น ๆ โดยเนื้อแท้ เช่น วิธิจัดการเหตุการณ์, วิธีการที่สเตทเปลี่ยนแปลงตลอดเวลา, และวิธีการเตรียมข้อมูลสำหรับการแสดงผล
 
-แทนการแยกเทคโนโลยี *อย่างปลอม ๆ* โดยใส่มาร์กอัปและตรรกะในไฟล์แยกต่างหาก, React [แยก *ข้อกังวล*](https://en.wikipedia.org/wiki/Separation_of_concerns) กับคู่ยูนิตที่หลวม ๆ เรียกว่า "คอมโพเนนท์" ที่ประกอบไปด้วยทั้งสองอย่าง เราจะกลับมาพูดเรื่องคอมโพเนนท์ใน [หัวข้อต่อไปข้างหน้า](/docs/components-and-props.html), แต่ถ้าคุณยังรู้สึกไม่สะดวกใจที่จะใส่มาร์กอัปใน JS, [การบรรยายนี้](https://www.youtube.com/watch?v=x7cQ3mrcKaY) อาจโน้มน้าวใจคุณก็เป็นได้
+แทนการแยกเทคโนโลยี *อย่างปลอม ๆ* โดยใส่มาร์กอัปและลอจิคในไฟล์แยกต่างหาก, React [แบ่งโค้ดออกเป็นส่วน ๆ](https://en.wikipedia.org/wiki/Separation_of_concerns) ด้วยคู่ยูนิตแบบหลวม ๆ เรียกว่า "คอมโพเนนท์" ที่ประกอบไปด้วยทั้งสองอย่าง เราจะกลับมาพูดเรื่องคอมโพเนนท์ใน [หัวข้อต่อไปข้างหน้า](/docs/components-and-props.html), แต่ถ้าคุณยังรู้สึกไม่สะดวกใจที่จะใส่มาร์กอัปใน JS, [การบรรยายนี้](https://www.youtube.com/watch?v=x7cQ3mrcKaY) อาจโน้มน้าวใจคุณก็เป็นได้
 
 React [ไม่บังคับ](/docs/react-without-jsx.html) ว่างต้องใช้ JSX, แต่คนส่วนใหญ่พบว่ามันมีประโยชน์ในฐานะเป็นเครื่องช่วยเพื่อให้เห็นภาพเมื่อทำงานกับ UI ภายในโค้ด JavaScript นอกจากนี้ยังช่วยให้ React แสดงข้อผิดพลาดและข้อความเตือนที่มีประโยชน์มากขึ้นด้วย
 
@@ -105,7 +105,7 @@ const element = <img src={user.avatarUrl}></img>;
 
 >**คำเตือน:**
 >
->เนื่องจาก JSX นั้นใกล้กับ JavaScript มากกว่า HTML, React DOM ใช้รูปแบบ `camelCase` ในการตั้งชื่อแอตทริบิวต์แทนการใช้ชื่อแอตทริบิวต์ของ HTML ตรง ๆ 
+>เนื่องจาก JSX นั้นใกล้เคียงกับ JavaScript มากกว่า HTML, React DOM ใช้รูปแบบ `camelCase` ในการตั้งชื่อแอตทริบิวต์แทนการใช้ชื่อแอตทริบิวต์ของ HTML ตรง ๆ 
 >
 >ตัวอย่างเช่น `class` กลายเป็น [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) ใน JSX และ `tabindex` กลายเป็น [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex) เป็นต้น
 
@@ -149,7 +149,7 @@ Babel คอมไพล์ JSX ลงไปที่การเรียก `R
 ```js
 const element = (
   <h1 className="greeting">
-    สวัสดี, ชาวโลก!
+    Hello, World!
   </h1>
 );
 ```
@@ -158,7 +158,7 @@ const element = (
 const element = React.createElement(
   'h1',
   {className: 'greeting'},
-  'สวัสดี, ชาวโลก!'
+  'Hello, World!'
 );
 ```
 
@@ -170,7 +170,7 @@ const element = {
   type: 'h1',
   props: {
     className: 'greeting',
-    children: 'สวัสดี, ชาวโลก!'
+    children: 'Hello, World!'
   }
 };
 ```
