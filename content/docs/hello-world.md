@@ -6,45 +6,45 @@ prev: cdn-links.html
 next: introducing-jsx.html
 ---
 
-The smallest React example looks like this:
+ตัวอย่าง React แบบน้อยที่สุด จะเป็นแบบนี้:
 
 ```js
 ReactDOM.render(
-  <h1>Hello, world!</h1>,
+  <h1>Hello, World!</h1>,
   document.getElementById('root')
 );
 ```
 
-It displays a heading saying "Hello, world!" on the page.
+มันแสดงหัวข้อว่า "Hello, World!" บนหน้านั้น
 
-[](codepen://hello-world)
+[ทดลองบน Codepen](codepen://hello-world)
 
-Click the link above to open an online editor. Feel free to make some changes, and see how they affect the output. Most pages in this guide will have editable examples like this one.
+คลิกลิ้งค์ข้างบนเพื่อเปิดตัวแก้ไขออนไลน์ อย่าลังลังที่จะทำการเปลี่ยนแปลงบางอย่าง และดูว่ามันมีผลอย่างไร หน้าส่วนใหญ่ในคู่มือนี้จะมีตัวอย่างที่สามารถแก้ไขได้เหมือนแบบนี้
 
 
-## How to Read This Guide {#how-to-read-this-guide}
+## วิธีอ่านคู่มือนี้ {#how-to-read-this-guide}
 
-In this guide, we will examine the building blocks of React apps: elements and components. Once you master them, you can create complex apps from small reusable pieces.
+ในคู่มือนี้ เราจะตรวจสอบส่วนต่าง ๆ ของแอป React กัน เช่น ส่วนประกอบ (Element) และ คอมโพเนนท์ (Component) เมื่อคุณเชี่ยวชาญขึ้นแล้ว คุณสามารถสร้างแอปที่ซับซ้อนจากชิ้นส่วนเล็ก ๆ ที่นำมาใช้ซ้ำได้
 
->Tip
+>เกร็ดความรู้
 >
->This guide is designed for people who prefer **learning concepts step by step**. If you prefer to learn by doing, check out our [practical tutorial](/tutorial/tutorial.html). You might find this guide and the tutorial complementary to each other.
+>คู่มือนี้ออกแบบมาสำหรับผู้ที่ต้องการ **แนวคิดการเรียนรู้ทีละขั้นตอน** ถ้าคุณชอบเรียนรู้ด้วยการลงมือทำ ลองดู [แบบฝึกหัดภาคปฏิบัติ](/tutorial/tutorial.html) คุณอาจพบว่าคู่มือนี้และแบบฝึกหัดนั้นสามารถเติมเต็มซึ่งกันและกันได้
 
-This is the first chapter in a step-by-step guide about main React concepts. You can find a list of all its chapters in the navigation sidebar. If you're reading this from a mobile device, you can access the navigation by pressing the button in the bottom right corner of your screen.
+นี่คือบทแรกในการแนะนำเกี่ยวกับแนวคิดหลักของ React แบบทีละขั้นตอน คุณสามารถค้นหารายการของบททั้งหมดได้ในแถบนำทางด้านข้าง หากคุณกำลังอ่านสิ่งนี้จากอุปกรณ์มือถือ คุณสามารถเข้าถึงแถบนำทางโดยการกดปุ่มที่มุมล่างขวาของหน้าจอ
 
-Every chapter in this guide builds on the knowledge introduced in earlier chapters. **You can learn most of React by reading the “Main Concepts” guide chapters in the order they appear in the sidebar.** For example, [“Introducing JSX”](/docs/introducing-jsx.html) is the next chapter after this one.
+ทุกบทในคู่มือนี้จะเสริมสร้างความรู้ที่ได้จากบทอื่น ๆ ก่อนหน้านี้ **คุณสามารถเรียนรู้ React ส่วนใหญ่ได้ โดยอ่านบทแนะนำ "แนวคิดหลัก" ตามลำดับที่ปรากฏในแถบด้านข้าง** ตัวอย่างเช่น [“แนะนำ JSX”](/docs/introducing-jsx.html) เป็นบทต่อไปหลังจากบทนี้
 
-## Knowledge Level Assumptions {#knowledge-level-assumptions}
+## สมมติฐานระดับความรู้ {#knowledge-level-assumptions}
 
-React is a JavaScript library, and so we'll assume you have a basic understanding of the JavaScript language. **If you don't feel very confident, we recommend [going through a JavaScript tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) to check your knowledge level** and enable you to follow along this guide without getting lost. It might take you between 30 minutes and an hour, but as a result you won't have to feel like you're learning both React and JavaScript at the same time.
+React เป็น JavaScript ไลบราลี่, ดังนั้นเราจะสมมติว่าคุณมีความเข้าใจพื้นฐานเกี่ยวกับภาษา JavaScript **ถ้าคุณรู้สึกว่าไม่มั่นใจมากเท่าไหร่, เราแนะนำให้ไปอ่าน [แบบฝึกหัด JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) ตัวนี้ก่อน เพื่อวัดระดับความรู้ของคุณ** และให้คุณทำตามคู่มือนี้ได้โดยไม่หลงทาง คุณอาจใช้เวลาราว ๆ 30 นาทีถึงหนึ่งชั่วโมง แต่จะช่วยให้คุณไม่ต้องรู้สึกว่าเหมือนกำลังเรียนรู้ทั้ง React และ JavaScript ในเวลาเดียวกัน
 
->Note
+>หมายเหตุ
 >
->This guide occasionally uses some of the newer JavaScript syntax in the examples. If you haven't worked with JavaScript in the last few years, [these three points](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) should get you most of the way.
+>ในคู่มือนี้จะใช้ไวยากรณ์ JavaScript ที่ใหม่กว่าบางครั้ง หากคุณไม่ได้ทำงานกับ JavaScript เลยในช่วงไม่กี่ปีที่ผ่านมานี้ [เกร็ดความรู้ 3 หัวข้อนี้](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) ก็พอจะช่วยคุณได้มากอยู่
 
 
-## Let's Get Started! {#lets-get-started}
+## มาเริ่มกันเลย! {#lets-get-started}
 
-Keep scrolling down, and you'll find the link to the [next chapter of this guide](/docs/introducing-jsx.html) right before the website footer.
+เลื่อนลงไปเรื่อย ๆ และคุณจะพบลิงค์ไปยัง [บทต่อไปของคู่มือนี้](/docs/introducing-jsx.html) อยู่ก่อนส่วนท้ายของเว็บไซต์
 
 
