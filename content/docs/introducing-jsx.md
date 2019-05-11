@@ -1,40 +1,40 @@
 ---
 id: introducing-jsx
-title: Introducing JSX
+title: แนะนำ JSX
 permalink: docs/introducing-jsx.html
 prev: hello-world.html
 next: rendering-elements.html
 ---
 
-Consider this variable declaration:
+พิจารณาการประกาศตัวแปรนี้:
 
 ```js
-const element = <h1>Hello, world!</h1>;
+const element = <h1>Hello, World!</h1>;
 ```
 
-This funny tag syntax is neither a string nor HTML.
+แท็กไวยากรณ์ตลก ๆ นี้ไม่ใช่ทั้งสตริงหรือ HTML
 
-It is called JSX, and it is a syntax extension to JavaScript. We recommend using it with React to describe what the UI should look like. JSX may remind you of a template language, but it comes with the full power of JavaScript.
+มันเรียกว่า JSX และมันเป็นส่วนขยายไวยากรณ์ของ JavaScript เราแนะนำให้ใช้กับ React เพื่ออธิบายว่า UI ควรมีลักษณะอย่างไร JSX อาจะทำให้คุณนึกถึงภาษาเทมเพลท แต่มันมาพร้อมพลังความสามารถเต็มรูปแบบของ JavaScript
 
-JSX produces React "elements". We will explore rendering them to the DOM in the [next section](/docs/rendering-elements.html). Below, you can find the basics of JSX necessary to get you started.
+JSX สร้าง "องค์ประกอบ (Element)" ของ React เราจะมาสำรวจการทำให้มันแสดงผลที่ DOM ใน [หัวข้อถัดไป](/docs/rendering-elements.html) ด้านล่าง, คุณจะเจอพื้นฐานของ JSX ที่จำเป็นสำหรับการเริ่มต้นใช้งาน
 
-### Why JSX? {#why-jsx}
+### ทำไมต้องเป็น JSX? {#why-jsx}
 
-React embraces the fact that rendering logic is inherently coupled with other UI logic: how events are handled, how the state changes over time, and how the data is prepared for display.
+React อ้าแขนรับความจริงที่ว่า ตรรกะสำหรับการแสดงผลนั้นเชื่อมโยงกับตรรกะ UI อื่น ๆ โดยเนื้อแท้ เช่น วิธิจัดการเหตุการณ์, วิธีการที่สเตทเปลี่ยนแปลงตลอดเวลา, และวิธีการเตรียมข้อมูลสำหรับการแสดงผล
 
-Instead of artificially separating *technologies* by putting markup and logic in separate files, React [separates *concerns*](https://en.wikipedia.org/wiki/Separation_of_concerns) with loosely coupled units called "components" that contain both. We will come back to components in a [further section](/docs/components-and-props.html), but if you're not yet comfortable putting markup in JS, [this talk](https://www.youtube.com/watch?v=x7cQ3mrcKaY) might convince you otherwise.
+แทนการแยกเทคโนโลยี *อย่างปลอม ๆ* โดยใส่มาร์กอัปและลอจิคในไฟล์แยกต่างหาก, React [แบ่งโค้ดออกเป็นส่วน ๆ](https://en.wikipedia.org/wiki/Separation_of_concerns) ด้วยคู่ยูนิตแบบหลวม ๆ เรียกว่า "คอมโพเนนท์" ที่ประกอบไปด้วยทั้งสองอย่าง เราจะกลับมาพูดเรื่องคอมโพเนนท์ใน [หัวข้อต่อไปข้างหน้า](/docs/components-and-props.html), แต่ถ้าคุณยังรู้สึกไม่สะดวกใจที่จะใส่มาร์กอัปใน JS, [การบรรยายนี้](https://www.youtube.com/watch?v=x7cQ3mrcKaY) อาจโน้มน้าวใจคุณก็เป็นได้
 
-React [doesn't require](/docs/react-without-jsx.html) using JSX, but most people find it helpful as a visual aid when working with UI inside the JavaScript code. It also allows React to show more useful error and warning messages.
+React [ไม่บังคับ](/docs/react-without-jsx.html) ว่างต้องใช้ JSX, แต่คนส่วนใหญ่พบว่ามันมีประโยชน์ในฐานะเป็นเครื่องช่วยเพื่อให้เห็นภาพเมื่อทำงานกับ UI ภายในโค้ด JavaScript นอกจากนี้ยังช่วยให้ React แสดงข้อผิดพลาดและข้อความเตือนที่มีประโยชน์มากขึ้นด้วย
 
-With that out of the way, let's get started!
+พอหอมปากหอมคอละ, มาเริ่มกันเลยดีกว่า!
 
-### Embedding Expressions in JSX {#embedding-expressions-in-jsx}
+### การฝังนิพจน์ใน JSX {#embedding-expressions-in-jsx}
 
-In the example below, we declare a variable called `name` and then use it inside JSX by wrapping it in curly braces:
+ในตัวอย่างด้านล่าง, เราประกาศตัวแปรชื่อ `name` และจากนั้นเราใช้มันใน JSX โดยห่อไว้ในเครื่องหมายปีกกา:
 
 ```js{1,2}
 const name = 'Josh Perez';
-const element = <h1>Hello, {name}</h1>;
+const element = <h1>สวัสดี, {name}</h1>;
 
 ReactDOM.render(
   element,
@@ -42,9 +42,9 @@ ReactDOM.render(
 );
 ```
 
-You can put any valid [JavaScript expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) inside the curly braces in JSX. For example, `2 + 2`, `user.firstName`, or `formatName(user)` are all valid JavaScript expressions.
+คุณสามารถใส่ [นิพจน์ JavaScript ที่ถูกต้อง](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) ใด ๆ ด้านในวงเล็บปีกกาใน JSX ได้ ตัวอย่างเช่น `2 + 2`, `user.firstName`, หรือ `formatName(user)` เป็นนิพจน์ JavaScript ที่ถูกต้องทั้งหมด
 
-In the example below, we embed the result of calling a JavaScript function, `formatName(user)`, into an `<h1>` element.
+ในตัวอย่างด้านล่าง, เราฝังผลลัพธ์ของการเรียกใช้ฟังก์ชัน JavaScript `formatName(user)` ไว้ใน `<h1>` ที่ตัวแปร `element`
 
 ```js{12}
 function formatName(user) {
@@ -58,7 +58,7 @@ const user = {
 
 const element = (
   <h1>
-    Hello, {formatName(user)}!
+    สวัสดี, {formatName(user)}!
   </h1>
 );
 
@@ -68,88 +68,88 @@ ReactDOM.render(
 );
 ```
 
-[](codepen://introducing-jsx)
+[ทดลองบน Codepen](codepen://introducing-jsx)
 
-We split JSX over multiple lines for readability. While it isn't required, when doing this, we also recommend wrapping it in parentheses to avoid the pitfalls of [automatic semicolon insertion](https://stackoverflow.com/q/2846283).
+เราแยก JSX เป็นหลายบรรทัดเพื่อให้อ่านง่าย ซึ่งจริง ๆ แล้วก็ไม่จำเป็น เมื่อทำเช่นนี้ นอกจากนี้เรายังแนะนำให้ห่อไว้ในวงเล็บเพื่อหลีกเลี่ยงข้อผิดพลาดของ [การแทรกเครื่องหมายเซมิโคลอน (;) โดยอัตโนมัติ](https://stackoverflow.com/q/2846283).
 
-### JSX is an Expression Too {#jsx-is-an-expression-too}
+### JSX เป็นนิพจน์เช่นกัน {#jsx-is-an-expression-too}
 
-After compilation, JSX expressions become regular JavaScript function calls and evaluate to JavaScript objects.
+หลังจากการคอมไพล์, นิพจน์ JSX จะกลายเป็นการเรียกใช้ฟังก์ชัน JavaScript ปกติและประเมินผลเป็น JavaScript อ็อปเจค
 
-This means that you can use JSX inside of `if` statements and `for` loops, assign it to variables, accept it as arguments, and return it from functions:
+ซึ่งหมายความว่าคุณสามารถใช้ JSX ได้ในเงื่อนไข `if` และการวนซ้ำตามลำดับแบบ `for`, กำหนดค่าให้กับตัวแปร, แบบรับเป็นอาร์กิวเมนท์, และส่งคืนค่าจากฟังก์ชัน:
 
 ```js{3,5}
 function getGreeting(user) {
   if (user) {
-    return <h1>Hello, {formatName(user)}!</h1>;
+    return <h1>สวัสดี, {formatName(user)}!</h1>;
   }
-  return <h1>Hello, Stranger.</h1>;
+  return <h1>สวัสดี, คนแปลกหน้า</h1>;
 }
 ```
 
-### Specifying Attributes with JSX {#specifying-attributes-with-jsx}
+### การระบุแอตทริบิวต์ใน JSX {#specifying-attributes-with-jsx}
 
-You may use quotes to specify string literals as attributes:
+คุณสามารถใช้เครื่องหมายคำพูด เมื่อเป็นตัวอักษรสตริง ในแอตทริบิวต์:
 
 ```js
 const element = <div tabIndex="0"></div>;
 ```
 
-You may also use curly braces to embed a JavaScript expression in an attribute:
+คุณอาจใช้วงเล็บปีกกา เมื่อฝังนิพจน์ JavaScript ในแอตทริบิวต์:
 
 ```js
 const element = <img src={user.avatarUrl}></img>;
 ```
 
-Don't put quotes around curly braces when embedding a JavaScript expression in an attribute. You should either use quotes (for string values) or curly braces (for expressions), but not both in the same attribute.
+อย่าใส่เครื่องหมายคำพูดรอบวงเล็บปีกกาเมื่อทำการฝังนิพจน์ JavaScript ในแอตทริบิวต์ คุณควรใช้อัญประกาศ (สำหรับค่าสตริง) หรือ วงเล็บปีกกา (สำหรับนิพจน์) แต่ไม่ใช่ทั้งสองอย่างในแอตทริบิวต์เดียวกัน
 
->**Warning:**
+>**คำเตือน:**
 >
->Since JSX is closer to JavaScript than to HTML, React DOM uses `camelCase` property naming convention instead of HTML attribute names.
+>เนื่องจาก JSX นั้นใกล้เคียงกับ JavaScript มากกว่า HTML, React DOM ใช้รูปแบบ `camelCase` ในการตั้งชื่อแอตทริบิวต์แทนการใช้ชื่อแอตทริบิวต์ของ HTML ตรง ๆ 
 >
->For example, `class` becomes [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) in JSX, and `tabindex` becomes [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex).
+>ตัวอย่างเช่น `class` กลายเป็น [`className`](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) ใน JSX และ `tabindex` กลายเป็น [`tabIndex`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/tabIndex) เป็นต้น
 
-### Specifying Children with JSX {#specifying-children-with-jsx}
+### การระบุลูกใน JSX {#specifying-children-with-jsx}
 
-If a tag is empty, you may close it immediately with `/>`, like XML:
+ถ้าแท็กนั้นว่างเปล่า, คุณสามารถปิดได้ทันทีด้วย `/>` เหมือน XML:
 
 ```js
 const element = <img src={user.avatarUrl} />;
 ```
 
-JSX tags may contain children:
+JSX แท็กอาจมีลูก ๆ ด้วย:
 
 ```js
 const element = (
   <div>
-    <h1>Hello!</h1>
-    <h2>Good to see you here.</h2>
+    <h1>สวัสดี!</h1>
+    <h2>ดีจังที่ได้เจอคุณที่นี่</h2>
   </div>
 );
 ```
 
-### JSX Prevents Injection Attacks {#jsx-prevents-injection-attacks}
+### JSX ป้องกันการโจมตีจากการยิง {#jsx-prevents-injection-attacks}
 
-It is safe to embed user input in JSX:
+การฝังอินพุตของผู้ใช้ใน JSX นั้นเป็นเรื่องที่ปลอดภัย:
 
 ```js
 const title = response.potentiallyMaliciousInput;
-// This is safe:
+// แบบนี้ปลอดภัย:
 const element = <h1>{title}</h1>;
 ```
 
-By default, React DOM [escapes](https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) any values embedded in JSX before rendering them. Thus it ensures that you can never inject anything that's not explicitly written in your application. Everything is converted to a string before being rendered. This helps prevent [XSS (cross-site-scripting)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
+โดยค่าเริ่มต้น, React DOM [สกัด](https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) ค่าใด ๆ ที่ฝังอยู่ใน JSX ก่อนเรนเดอร์ ดังนั้นจึงมั่นใจได้ว่าคุณจะไม่สามารถยิงสิ่งใดก็ตามที่ไม่ได้เขียนไว้ในแอปพลิเคชันของคุณอย่างชัดเจน ทุกอย่างถูกแปลงเป็นสตริงก่อนที่จะแสดงผล ซึ่งช่วยป้องกัน [XSS (การโจมตีด้วยสคริปต์ข้ามไซต์)](https://en.wikipedia.org/wiki/Cross-site_scripting)
 
-### JSX Represents Objects {#jsx-represents-objects}
+### JSX เป็นตัวแทนของอ็อปเจค {#jsx-represents-objects}
 
-Babel compiles JSX down to `React.createElement()` calls.
+Babel คอมไพล์ JSX ลงไปที่การเรียก `React.createElement()`
 
-These two examples are identical:
+ตัวอย่างสองตัวอย่างนี้เหมือนกัน:
 
 ```js
 const element = (
   <h1 className="greeting">
-    Hello, world!
+    Hello, World!
   </h1>
 );
 ```
@@ -158,27 +158,27 @@ const element = (
 const element = React.createElement(
   'h1',
   {className: 'greeting'},
-  'Hello, world!'
+  'Hello, World!'
 );
 ```
 
-`React.createElement()` performs a few checks to help you write bug-free code but essentially it creates an object like this:
+`React.createElement()` ทำการตรวจสอบสองสามครั้งเพื่อช่วยคุณเขียนโค้ดที่ไม่มีข้อบกพร่อง แต่โดยพื้นฐานแล้วมันจะสร้างอ็อปเจคเช่นนี้:
 
 ```js
-// Note: this structure is simplified
+// หมายเหตุ: โครงสร้างนี้ทำให้เข้าใจง่ายขึ้น
 const element = {
   type: 'h1',
   props: {
     className: 'greeting',
-    children: 'Hello, world!'
+    children: 'Hello, World!'
   }
 };
 ```
 
-These objects are called "React elements". You can think of them as descriptions of what you want to see on the screen. React reads these objects and uses them to construct the DOM and keep it up to date.
+อ็อปเจคเหล่านี้เรียกว่า "องค์ประกอบ" ของ React  คุณสามารถคิดว่าพวกมันเป็นคำอธิบายของสิ่งที่คุณต้องการจะเห็นบนหน้าจอ React อ่านอ็อปเจคเหล่านี้และใช้พวกมันเพื่อสร้าง DOM และปรับปรุงให้ทันสมัยอยู่เสมอ
 
-We will explore rendering React elements to the DOM in the next section.
+เราจะสำรวจการแสดงผลองค์ประกอบของ React ต่อ DOM ในหัวข้อถัดไป
 
->**Tip:**
+>**เกร็ดความรู้:**
 >
->We recommend using the ["Babel" language definition](https://babeljs.io/docs/editors) for your editor of choice so that both ES6 and JSX code is properly highlighted. This website uses the [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) color scheme which is compatible with it.
+>เราแนะนำให้ใช้ [นิยามภาษาของ "Babel"](https://babeljs.io/docs/editors) สำหรับเครื่องมือแก้ไขข้อความที่คุณเลือกเพื่อให้ทั้ง ES6 และรหัส JSX ถูกเน้นอย่างถูกต้อง เว็บไซต์นี้ใช้ [โทนที Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) ซึ่งมันเข้ากันดี
