@@ -1,6 +1,6 @@
 ---
 id: rendering-elements
-title: Rendering Elements
+title: การแสดงผลองค์ประกอบ
 permalink: docs/rendering-elements.html
 redirect_from:
   - "docs/displaying-data.html"
@@ -8,68 +8,68 @@ prev: introducing-jsx.html
 next: components-and-props.html
 ---
 
-Elements are the smallest building blocks of React apps.
+องค์ประกอบเป็นกลุ่มของหน่วยที่เล็กที่สุดที่ถูกสร้างใน React แอปพลิเคชั่น
 
-An element describes what you want to see on the screen:
+องค์ประกอบแต่ละตัวจะบอกลักษณะสิ่งที่คุณต้องการจะเห็นบนหน้าจอ:
 
 ```js
 const element = <h1>Hello, world</h1>;
 ```
 
-Unlike browser DOM elements, React elements are plain objects, and are cheap to create. React DOM takes care of updating the DOM to match the React elements.
+ต่างจากองค์ประกอบของ DOM ที่อยู่ในเบราเซอร์, องค์ประกอบของ React นั้นเป็นอ็อปเจคธรรมดา, และราคาถูกในการสร้าง, ตัว React DOM จะคอยจัดการปรับปรุง DOM ให้ตรงกับองค์ประกอบของ React
 
->**Note:**
+>**หมายเหตุ:**
 >
->One might confuse elements with a more widely known concept of "components". We will introduce components in the [next section](/docs/components-and-props.html). Elements are what components are "made of", and we encourage you to read this section before jumping ahead.
+>บางคนอาจจะสับสนเรื่องขององค์ประกอบกับแนวคิดที่รู้จักกันดีอย่าง "คอมโพเนนท์" เดี๋ยวเราจะมาแนะนำให้รู้จักกับคอมโพเนนท์ใน [หัวข้อถัดไป](/docs/components-and-props.html) คอมโพเนนท์หนึ่งตัวคือสิ่งที่ "สร้างมาจาก" องค์ประกอบเหล่านี้นั่นเอง และเราแนะนำให้คุณอ่านหัวข้อนี้ก่อนที่จะโดดข้ามไปในหัวข้อถัดไป
 
-## Rendering an Element into the DOM {#rendering-an-element-into-the-dom}
+## การแสดงผลองค์ประกอบลงใน DOM {#rendering-an-element-into-the-dom}
 
-Let's say there is a `<div>` somewhere in your HTML file:
+สมมติว่ามี `<div>` อยู่ที่ไหนสักที่ในไฟล์ HTML ของคุณ:
 
 ```html
 <div id="root"></div>
 ```
 
-We call this a "root" DOM node because everything inside it will be managed by React DOM.
+เราเรียกสิ่งนี้ว่า "รูท" โหนด DOM เพราะทุกอย่างภายในนั้นจะถูกจัดการโดย React DOM
 
-Applications built with just React usually have a single root DOM node. If you are integrating React into an existing app, you may have as many isolated root DOM nodes as you like.
+แอปพลิเคชันที่ถูกสร้างจากแค่ React มักจะมีรูทโหนด DOM เพียงอันเดียว ถ้าคุณกำลังต้องการจะผสานรวม React เข้ากับแอปที่มีอยู่แล้ว, คุณอาจมีรูทโหนด DOM ที่แยกได้มากเท่าที่คุณต้องการ
 
-To render a React element into a root DOM node, pass both to `ReactDOM.render()`:
+ในการแสดงผลองค์ประกอบของ React เข้าไปในรูทโหนด DOM ต้องส่งทั้งสองอย่างไปยังฟังก์ชั่น `ReactDOM.render()`:
 
 `embed:rendering-elements/render-an-element.js`
 
-[](codepen://rendering-elements/render-an-element)
+[ทดลองบน Codepen](codepen://rendering-elements/render-an-element)
 
-It displays "Hello, world" on the page.
+ผลลัพธ์คือมันจะแสดง "Hello, world" บนหน้า
 
-## Updating the Rendered Element {#updating-the-rendered-element}
+## การปรับปรุงการแสดงผลขององค์ประกอบ {#updating-the-rendered-element}
 
-React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object). Once you create an element, you can't change its children or attributes. An element is like a single frame in a movie: it represents the UI at a certain point in time.
+องค์ประกอบของ React นั้นคือ [สิ่งที่ไม่เปลี่ยนรูป](https://en.wikipedia.org/wiki/Immutable_object) ทันทีที่คุณสร้างองค์ประกอบขึ้นมาหนึ่งตัว, คุณจะไม่สามารถเปลี่ยนลูก ๆ หรือแอตทริบิวต์ของมันได้ องค์ประกอบก็เหมือนเฟรมหนึ่งเฟรมในหนัง: มันเป็นตัวแทนของ UI ณ เวลาใดเวลาหนึ่งเท่านั้น
 
-With our knowledge so far, the only way to update the UI is to create a new element, and pass it to `ReactDOM.render()`.
+ด้วยความรู้ของเราจนถึงตอนนี้, ทางเดียวที่จะปรับปรุง UI ได้คือสร้างองค์ประกอบใหม่, และส่งต่อไปยังฟังก์ชั่น `ReactDOM.render()`
 
-Consider this ticking clock example:
+ลองพิจารณาตัวอย่างนาฬิกาที่กำลังเดินอยู่นี้:
 
 `embed:rendering-elements/update-rendered-element.js`
 
-[](codepen://rendering-elements/update-rendered-element)
+[ทดลองบน Codepen](codepen://rendering-elements/update-rendered-element)
 
-It calls `ReactDOM.render()` every second from a [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback.
+มันจะเรียกใช้ฟังก์ชั่น `ReactDOM.render()` ทุกวินาทีจากการตอบกลับของฟังก์ชั่น [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)
 
->**Note:**
+>**หมายเหตุ:**
 >
->In practice, most React apps only call `ReactDOM.render()` once. In the next sections we will learn how such code gets encapsulated into [stateful components](/docs/state-and-lifecycle.html).
+>ในทางปฏิบัติ, แอป React ส่วนใหญ่จะเรียกใช้ฟังก์ชั่น `ReactDOM.render()` เพียงครั้งเดียวเท่านั้น ในหัวข้อต่อไปเราจะมาเรียนรู้ว่าการห่อหุ้มโค้ดไว้ใน [สเตทฟูลคอมโพเนนท์](/docs/state-and-lifecycle.html) ทำอย่างไร
 >
->We recommend that you don't skip topics because they build on each other.
+>เราขอแนะนำให้คุณอย่าข้ามหัวข้อเพราะว่าเนื้อหามันต่อเนื่องกัน
 
-## React Only Updates What's Necessary {#react-only-updates-whats-necessary}
+## React จะปรับปรุงเฉพาะสิ่งที่จำเป็นเท่านั้น {#react-only-updates-whats-necessary}
 
-React DOM compares the element and its children to the previous one, and only applies the DOM updates necessary to bring the DOM to the desired state.
+React DOM จะเปรียบเทียบองค์ประกอบและลูก ๆ กับองค์ประกอบก่อนหน้า, และทำการปรับปรุง DOM เฉพาะส่วนที่จำเป็นเพื่อให้ DOM เข้าสู่สถานะที่ต้องการ
 
-You can verify by inspecting the [last example](codepen://rendering-elements/update-rendered-element) with the browser tools:
+คุณสามารถพิสูจน์โดยการตรวจสอบ [ตัวอย่างล่าสุด](codepen://rendering-elements/update-rendered-element) ด้วยเครื่องมือของเบราเซอร์:
 
-![DOM inspector showing granular updates](../images/docs/granular-dom-updates.gif)
+![ตัวตรวจสอบ DOM แสดงการปรับปรุงที่ละเอียด](../images/docs/granular-dom-updates.gif)
 
-Even though we create an element describing the whole UI tree on every tick, only the text node whose contents has changed gets updated by React DOM.
+แม้ว่าเราจะสร้างองค์ประกอบเพื่ออธิบาย UI ใหม่ทั้งหมดทุกครั้งที่นาฬิกาเดิน, แต่ว่าจะมีเฉพาะโหนดข้อความที่เนื้อหามีการเปลี่ยนแปลงเท่านั้นได้รับการปรับปรุงโดย React DOM
 
-In our experience, thinking about how the UI should look at any given moment rather than how to change it over time eliminates a whole class of bugs.
+จากประสบการณ์ของเรา, การคิดว่า UI ควรจะเป็นอย่างไรเฉพาะช่วงเวลาใดเวลาหนึ่ง แทนการคิดว่าเมื่อเวลาผ่านไปจะเปลี่ยนมันเป็นอย่างไร จะสามารถกำจัดข้อผิดพลาดได้เยอะทีเดียว
