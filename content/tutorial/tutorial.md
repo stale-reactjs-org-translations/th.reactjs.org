@@ -523,11 +523,7 @@ class Board extends React.Component {
 
 ### ทำไม การไม่เปลี่ยนรูป (Immutability) จึงมีความสำคัญ {#why-immutability-is-important}
 
-<<<<<<< HEAD
 ในโค้ดตัวอย่างก่อนหน้านี้, เราแนะนำให้คุณใช้ `.slice()` เพื่อสร้างสำเนาของอาเรย์ `squares` แทนที่จะไปแก้ไขข้อมูลที่มีอยู่ในอาเรย์นั้นตรง ๆ ตอนนี้เราจะพูดถึง การไม่เปลี่ยนรูป (immutability) และทำไมจึงเป็นเรื่องสำคัญที่ต้องเรียนรู้
-=======
-In the previous code example, we suggested that you use the `.slice()` method to create a copy of the `squares` array to modify instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
->>>>>>> 1f27bba9484f26ec6dab383b09730ad7ed59f732
 
 วิธีการเปลี่ยนแปลงข้อมูลนั้น โดยทั่วไปจะมีอยู่ 2 วิธีด้วยกัน วิธีการแรก คือ *การเปลี่ยนรูป (mutate)* โดยการเปลี่ยนแปลงค่าของข้อมูลโดยตรง วิธีการที่สอง คือ การแทนที่ข้อมูลด้วยสำเนาใหม่ซึ่งมีการเปลี่ยนแปลงเฉพาะส่วนที่ต้องการ
 
