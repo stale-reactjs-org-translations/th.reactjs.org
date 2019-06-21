@@ -1,6 +1,6 @@
 ---
 id: components-and-props
-title: Components and Props
+title: คอมโพเนนท์และพรอพส์
 permalink: docs/components-and-props.html
 redirect_from:
   - "docs/reusable-components.html"
@@ -16,13 +16,13 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
-Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. This page provides an introduction to the idea of components. You can find a [detailed component API reference here](/docs/react-component.html).
+คอมโพเนนท์นั้นทำให้เราสามารถมองและแบ่งส่วนติดต่อผู้ใช้งานออกเป็นส่วนย่อยๆที่ไม่มีความเกี่ยวข้องกันและสามารถนำไปใช้ซ้ำในที่อื่นๆได้ ในหัวข้อนี้เราจะมาเริ่มต้นทำความรู้จักกับแนวคิดของคอมโพเนนท์กัน ในส่วนของ[รายละเอียดการใช้งาน API ของคอมโพเนนท์สามารถดูได้ที่นี่](/docs/react-component.html)
 
-Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.
+โดยแนวคิดแล้วคอมโพเนนท์นั้นคล้ายกับฟังก์ชัน JavaScript โดยที่มันรับข้อมูล (เรียกว่า "พรอพส์") เข้ามาแล้วตอบกลับด้วย React element ซึ่งเป็นสิ่งที่ถูกนำไปแสดงบนหน้าจอ
 
-## Function and Class Components {#function-and-class-components}
+## ฟังก์ชันและคลาสคอมโพเนนท์ {#function-and-class-components}
 
-The simplest way to define a component is to write a JavaScript function:
+วิธีที่ง่ายที่สุดในการสร้างคอมโพเนนท์คือการเขียนขึ้นมาด้วย JavaScript ฟังก์ชัน
 
 ```js
 function Welcome(props) {
@@ -30,9 +30,10 @@ function Welcome(props) {
 }
 ```
 
-This function is a valid React component because it accepts a single "props" (which stands for properties) object argument with data and returns a React element. We call such components "function components" because they are literally JavaScript functions.
+ฟังก์ชันนี้ถือเป็น React คอมโพเนนท์เพราะมันรับข้อมูล "พรอพส์" (มาจากภาษาอังกฤษคำว่า Properties) อ็อปเจคและตอบกลับไปด้วย React element เราเรียกคอมโพเนนท์ลักษณะนี้ว่า "ฟังก์ชันคอมโพเนนท์" เพราะรูปแบบการเขียนของมันเป็นแบบฟังก์ชันของ JavaScript
 
-You can also use an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) to define a component:
+เรายังสามารถสร้างคอมโพเนนท์โดยใช้ [คลาส ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes)
+
 
 ```js
 class Welcome extends React.Component {
@@ -42,27 +43,27 @@ class Welcome extends React.Component {
 }
 ```
 
-The above two components are equivalent from React's point of view.
+ในมุมมองของ React แล้วทั้งสองคอมโพเนนท์ด้านบนนั้นเหมือนกัน
 
-Classes have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html). Until then, we will use function components for their conciseness.
+คลาสนั้นมีคุณสมบัติอื่นๆเพิ่มเติม ซึ่งเราจะพูดถึงมันใน[หัวข้อถัดไป](/docs/state-and-lifecycle.html) จนกว่าจะถึงตรงนั้นเราจะใช้ฟังก์ชันคอมโพเนน์เพื่อความสั้นและกระชับ
 
-## Rendering a Component {#rendering-a-component}
+## การแสดงผลของคอมโพเนนท์ {#rendering-a-component}
 
-Previously, we only encountered React elements that represent DOM tags:
+ก่อนหน้านี้เราได้เห็น React element ที่สร้างขึ้นมาจากแทก DOM
 
 ```js
 const element = <div />;
 ```
 
-However, elements can also represent user-defined components:
+แต่นอกจากนั้นแล้ว React element ยังสามารถจากคอมโพเนนท์ที่สร้างขึ้นเองได้อีกด้วย
 
 ```js
 const element = <Welcome name="Sara" />;
 ```
 
-When React sees an element representing a user-defined component, it passes JSX attributes to this component as a single object. We call this object "props".
+เมื่อ React พบว่ามี element ที่เป็นคอมโพเนนท์แบบที่สร้างขึ้นมาเอง มันจะทำการแปลงแอตทริบิวต์ของ JSX นั้นให้เป็นอ็อปเจคที่เรียกว่า "พรอพส์" แล้วส่งค่าเข้าไปให้กับคอมโพเนนท์
 
-For example, this code renders "Hello, Sara" on the page:
+จาก Code ตัวอย่างนี้ หน้าจอจะทำการแสดงผลคำว่า "Hello, Sara" ออกมา
 
 ```js{1,5}
 function Welcome(props) {
@@ -76,26 +77,26 @@ ReactDOM.render(
 );
 ```
 
-[](codepen://components-and-props/rendering-a-component)
+[ทดลองเขียนบน CodePen](codepen://components-and-props/rendering-a-component)
 
-Let's recap what happens in this example:
+เรามาลองดูกันว่ามีอะไรเกิดขึ้นบ้างในตัวอย่างนี้
 
-1. We call `ReactDOM.render()` with the `<Welcome name="Sara" />` element.
-2. React calls the `Welcome` component with `{name: 'Sara'}` as the props.
-3. Our `Welcome` component returns a `<h1>Hello, Sara</h1>` element as the result.
-4. React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
+1. เราเรียก `ReactDOM.render()` ด้วย `<Welcome name="Sara" />`
+2. React เรียกดูคอมโพเนนท์ `Welcome` ด้วยพรอพส์ `{name: 'Sara'}`
+3. คอมโพเนนท์ `Welcome` ของเรานั้นตอบกลับด้วย element `<h1>Hello, Sara</h1>`
+4. React DOM ทำการแก้ไข DOM ให้กลายเป็น `<h1>Hello, Sara</h1>`.
 
->**Note:** Always start component names with a capital letter.
+>**สังเกต:** การตั้งชื่อคอมโพเนนท์ให้ขึ้นต้นด้วยภาษาอังกฤษตัวพิมพ์ใหญ่เสมอ
 >
->React treats components starting with lowercase letters as DOM tags. For example, `<div />` represents an HTML div tag, but `<Welcome />` represents a component and requires `Welcome` to be in scope.
+>React มองคอมโพเนนท์ที่ชื่อขึ้นต้นด้วยภาษาอังกฤษตัวพิมพ์เล็กว่าเป็นแทกของ DOM. เช่น React มอง `<div />` นั้นเป็น HTML div แทก แต่มอง `<Welcome />` ว่าเป็นคอมโพเนนท์ และการจะแสดงผลได้นั้นจะต้องมี `Welcome` อยู่ภายในสโคป 
 >
->To learn more about the reasoning behind this convention, please read [JSX In Depth](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized).
+>เหตุผลเบื้องหลังของการตั้งข้อกำหนดนี้สามารถเรียนรู้เพิ่มเติมได้จาก [เจาะลึก JSX](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized)
 
-## Composing Components {#composing-components}
+## ส่วนประกอบของคอมโพเนนท์ {#composing-components}
 
-Components can refer to other components in their output. This lets us use the same component abstraction for any level of detail. A button, a form, a dialog, a screen: in React apps, all those are commonly expressed as components.
+คอมโพเนนท์สามารถอ้างอิงและใช้งานคอมโพเนนท์อื่นๆได้ ซึ่งทำให้เราสามารถใช้งานคอมโพเนนท์ได้ในทุกระดับเช่น ปุ่ม, ฟอร์ม, กล่องข้อความ หรือแม้กระทั่งทั้งหน้าจอ ทุกสิ่งทุกอย่างใน React นั้นถูกแสดงผ่านทางคอมโพเนนท์
 
-For example, we can create an `App` component that renders `Welcome` many times:
+ยกตัวอย่างเช่น เราสามารถสร้างคอมโพเนนท์​ `App` ที่แสดงผลคอมโพเนนท์ `Welcome` หลายๆครั้งได้
 
 ```js{8-10}
 function Welcome(props) {
@@ -118,15 +119,13 @@ ReactDOM.render(
 );
 ```
 
-[](codepen://components-and-props/composing-components)
+[ทดลองเขียนบน CodePen](codepen://components-and-props/composing-components)
 
-Typically, new React apps have a single `App` component at the very top. However, if you integrate React into an existing app, you might start bottom-up with a small component like `Button` and gradually work your way to the top of the view hierarchy.
+โดยทั่วไปแล้ว แอพที่เขียนด้วย React นั้นจะมีคอมโพเนนท์ `App` อยู่บนสุด แต่อย่างไรก็ตาม มีบางกรณี เราอาจกำลังทำการผสาน React เข้าไปในแอพเดิมที่มีอยู่แล้ว ในกรณีเช่นนี้เราอาจจะเริ่มจากการเขียนคอมโพเนนท์เล็กๆเช่น `Button` ก่อน แล้วค่อยๆขยายการใช้งานเพิ่มขึ้นไปเรื่อยๆแบบล่างขึ้นบน
 
-## Extracting Components {#extracting-components}
+## การแบ่งส่วนของคอมโพเนนท์ {#extracting-components}
 
-Don't be afraid to split components into smaller components.
-
-For example, consider this `Comment` component:
+อย่าลังเลที่จะแบ่งส่วนคอมโพเนนท์ใหญ่ให้ออกเป็นคอมโพเนนท์เล็กๆ ยกตัวอย่างการแบ่งคอมโพเนนท์ `Comment` ออกส่วนย่อยๆ
 
 ```js
 function Comment(props) {
@@ -152,13 +151,13 @@ function Comment(props) {
 }
 ```
 
-[](codepen://components-and-props/extracting-components)
+[ทดลองเขียนบน CodePen](codepen://components-and-props/extracting-components)
 
-It accepts `author` (an object), `text` (a string), and `date` (a date) as props, and describes a comment on a social media website.
+คอมโพเนนท์นี้รับ `author` (เป็นอ็อปเจค), `text` (เป็น string) และรับ `date` (เป็น date) เข้ามาเป็นพรอพส์แล้วทำการแสดงผลข้อความ Comment ขึ้นไปบนเว็บไซต์เครือข่ายสังคม
 
-This component can be tricky to change because of all the nesting, and it is also hard to reuse individual parts of it. Let's extract a few components from it.
+การแก้ไขคอมโพเนนท์นี้อาจทำได้ยากเนื่องจากถูกสร้างขึ้นมาแบบมี element หลายตัวที่ทับซ้อนกัน และการจะนำส่วนต่างๆแยกออกไปใช้นั้นยังทำได้ยาก เรามาลองแบ่งมันออกเป็นหลายๆคอมโพเนนท์กันดู
 
-First, we will extract `Avatar`:
+เริ่มจากคอมโพเนนท์ `Avatar`
 
 ```js{3-6}
 function Avatar(props) {
@@ -171,11 +170,11 @@ function Avatar(props) {
 }
 ```
 
-The `Avatar` doesn't need to know that it is being rendered inside a `Comment`. This is why we have given its prop a more generic name: `user` rather than `author`.
+คอมโพเนนท์ `Avatar` ไม่จำเป็นต้องรู้ว่ามันจะถูกนำไปแสดงในคอมโพเนนท์ `Comment` ดังนั้นเราจึงตั้งชื่อพรอพส์ของมันกลางๆได้ว่า `user` แทนที่จะเป็น `author`
 
-We recommend naming props from the component's own point of view rather than the context in which it is being used.
+เราแนะนำให้ตั้งชื่อพรอพส์ตามมุมมองของคอมโพเนนท์เองมากกว่าที่จะเป็นบริบทที่มันถูกนำไปใช้
 
-We can now simplify `Comment` a tiny bit:
+ตอนนี้คอมโพเนนท์ `Comment` ดูเรียบง่ายขึ้นมาอีกนิด
 
 ```js{5}
 function Comment(props) {
@@ -198,7 +197,7 @@ function Comment(props) {
 }
 ```
 
-Next, we will extract a `UserInfo` component that renders an `Avatar` next to the user's name:
+ต่อไปเราจะทำการแยกคอมโพเนนท์ `UserInfo` ออกมา โดยคอมโพเนนท์นี้แสดงผลคอมโพเนนท์ `Avatar` และชื่อของผู้ใช้
 
 ```js{3-8}
 function UserInfo(props) {
@@ -213,7 +212,7 @@ function UserInfo(props) {
 }
 ```
 
-This lets us simplify `Comment` even further:
+คอมโพเนนท์ `Comment` ดูเรียบง่ายเพิ่มขึ้นมาอีกนิด
 
 ```js{4}
 function Comment(props) {
@@ -231,13 +230,13 @@ function Comment(props) {
 }
 ```
 
-[](codepen://components-and-props/extracting-components-continued)
+[ทดลองเขียนบน CodePen](codepen://components-and-props/extracting-components-continued)
 
-Extracting components might seem like grunt work at first, but having a palette of reusable components pays off in larger apps. A good rule of thumb is that if a part of your UI is used several times (`Button`, `Panel`, `Avatar`), or is complex enough on its own (`App`, `FeedStory`, `Comment`), it is a good candidate to be a reusable component.
+การแบ่งส่วนคอมโพเนนท์อาจจะดูเป็นงานที่ดูจุกจิกในตอนแรก แต่การมีชุดของคอมโพเนนท์ที่สามารถนำไปใช้ซ้ำได้เยอะๆส่งผลดีต่อการพัฒนาในแอพที่ใหญ่ขึ้น หลักการง่ายๆคือถ้ามีส่วนของการแสดงผลที่นำไปใช้หลายๆครั้ง (เช่น `Button`, `Panel`, `Avatar`) หรือคอมโพเนนท์ที่ซับซ้อน (อย่างเช่น `App`, `FeedStory`, `Comment`) การสร้างมันให้เป็นคอมโพเนนท์ก็เป็นตัวเลือกดี
 
-## Props are Read-Only {#props-are-read-only}
+## พรอพส์นั้นต้องไม่เปลี่ยนแปลง {#props-are-read-only}
 
-Whether you declare a component [as a function or a class](#function-and-class-components), it must never modify its own props. Consider this `sum` function:
+ไม่ว่าเราจะสร้างคอมโพเนนท์แบบ[ฟังก์ชันหรือคลาส](#function-and-class-components) ตัวคอมโพเนนท์นั้นจะต้องไม่มีการแก้ไขพรอพส์ภายในตัวมันเอง ลองพิจารณาจากฟังก์ชัน `sum` ดังต่อไปนี้
 
 ```js
 function sum(a, b) {
@@ -245,9 +244,9 @@ function sum(a, b) {
 }
 ```
 
-Such functions are called ["pure"](https://en.wikipedia.org/wiki/Pure_function) because they do not attempt to change their inputs, and always return the same result for the same inputs.
+เราเรียกฟังก์ชันแบบนี้ว่าเป็น ["Pure ฟังก์ชัน"](https://en.wikipedia.org/wiki/Pure_function) เพราะว่ามันไม่มีการแก้ไขค่าที่มันรับเข้ามา และถ้าค่าที่มันรับเข้าไปเป็นแบบเดิมมันก็จะส่งผลลัพธ์ที่เป็นแบบเดิมออกมาเสมอ
 
-In contrast, this function is impure because it changes its own input:
+ในทางตรงกันข้าม ฟังก์ชันต่อไปนี้เป็นแบบ Impure เพราะว่ามันมีการเปลี่ยนแปลงค่าที่มันรับเข้าไป
 
 ```js
 function withdraw(account, amount) {
@@ -255,8 +254,9 @@ function withdraw(account, amount) {
 }
 ```
 
-React is pretty flexible but it has a single strict rule:
+React นั้นค่อนข้างยืดหยุ่นมาก แต่มีกฎที่เข้มงวดอยู่ข้อเดียวคือ
 
-**All React components must act like pure functions with respect to their props.**
+**ทุกคอมโพเนนท์ของ React จะต้องให้ความสำคัญกับพรอพส์ของมันแบบเดียวกับ Pure ฟังก์ชันเสมอ**
 
-Of course, application UIs are dynamic and change over time. In the [next section](/docs/state-and-lifecycle.html), we will introduce a new concept of "state". State allows React components to change their output over time in response to user actions, network responses, and anything else, without violating this rule.
+เป็นเรื่องปกติที่ส่วนติดต่อผู้ใช้งานนั้นจะต้องมีการเปลี่ยนแปลงได้ ใน[หัวข้อถัดไป](/docs/state-and-lifecycle.html) เราจะมาทำความรู้จักกับ "สเตท" โดยสเตทนั้นทำให้คอมโพเนนท์ของ React มีการเปลี่ยนแปลงตอบสนองกับการใช้งานของผู้ใช้, เมื่อได้รับข้อมูลจาก network หรือเหตุการณ์ใดๆโดยที่ไม่ผิดกฎที่สำคัญข้างต้นได้
+
