@@ -1,6 +1,6 @@
 ---
 id: handling-events
-title: Handling Events
+title: การจัดการเหตุการณ์
 permalink: docs/handling-events.html
 prev: state-and-lifecycle.html
 next: conditional-rendering.html
@@ -8,12 +8,12 @@ redirect_from:
   - "docs/events-ko-KR.html"
 ---
 
-Handling events with React elements is very similar to handling events on DOM elements. There are some syntactic differences:
+การจัดการเหตุการณ์ที่เกิดบน React elements นั้นมีความคล้ายคลึงกับการจัดการเหตุการณ์บน DOM elements มาก มีวิธีการเขียนที่ต่างกันเพียงเล็กน้อย
 
-* React events are named using camelCase, rather than lowercase.
-* With JSX you pass a function as the event handler, rather than a string.
+* เหตุการณ์ที่เกิดบน React นั้นตั้งชื่อด้วยแบบ camelCase แทนที่จะเป็นภาษาอังกฤษตัวพิมพ์เล็ก
+* เราส่งค่าฟังก์ชั่นเข้ามาเป็นตัวจัดการเหตุการณ์ใน JSX เลย แทนที่จะเป็นเพียง string
 
-For example, the HTML:
+ยกตัวอย่างเช่น ในกรณีที่เป็น HTML:
 
 ```html
 <button onclick="activateLasers()">
@@ -21,7 +21,7 @@ For example, the HTML:
 </button>
 ```
 
-is slightly different in React:
+จะเห็นว่าแตกต่างจาก React เพียงเล็กน้อย
 
 ```js{1}
 <button onClick={activateLasers}>
@@ -29,7 +29,7 @@ is slightly different in React:
 </button>
 ```
 
-Another difference is that you cannot return `false` to prevent default behavior in React. You must call `preventDefault` explicitly. For example, with plain HTML, to prevent the default link behavior of opening a new page, you can write:
+สิ่งที่แตกต่างอีกอย่างใน React คือเราไม่สามารถใช้การคืนค่า `false` ในการป้องกันสิ่งที่จะเกิดขึ้นหลังจากเหตุการณ์นั้น เราต้องเรียก `preventDefault` เลย ยกตัวอย่างเช่นถ้าต้องการจะป้องกันการเปิดหน้าใหม่หลังจากกดที่ลิงค์ ในกรณีที่เป็น HTML นั้นสามารถเขียนได้ในลักษณะนี้
 
 ```html
 <a href="#" onclick="console.log('The link was clicked.'); return false">
@@ -37,7 +37,7 @@ Another difference is that you cannot return `false` to prevent default behavior
 </a>
 ```
 
-In React, this could instead be:
+ส่วนใน React นั้นสามารถเขียนได้ในลักษณะนี้
 
 ```js{2-5,8}
 function ActionLink() {
@@ -54,7 +54,7 @@ function ActionLink() {
 }
 ```
 
-Here, `e` is a synthetic event. React defines these synthetic events according to the [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/), so you don't need to worry about cross-browser compatibility. See the [`SyntheticEvent`](/docs/events.html) reference guide to learn more.
+`e` ในที่นี้เป็นข้อมูลที่สังเคราะห์ขึ้นจากเหตุการณ์นั้น โดย React สร้างขึ้นมาตาม[ข้อกำหนดของ W3C](https://www.w3.org/TR/DOM-Level-3-Events/) ดังนั้นจึงไม่ต้องกังวลกับการรองรับการใช้งานในหลายบราว์เซอร์ ดูรายละเอียดเพิ่มเติมได้ที่ [`SyntheticEvent`](/docs/events.html) 
 
 When using React you should generally not need to call `addEventListener` to add listeners to a DOM element after it is created. Instead, just provide a listener when the element is initially rendered.
 
