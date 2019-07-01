@@ -151,4 +151,4 @@ class LoggingButton extends React.Component {
 
 การเขียนทั้งสองบรรทัดบนนั้นเหมือนกัน โดยใช้[ฟังก์ชั่นแบบลูกศร](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) และ [`Function.prototype.bind`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind) ตามลำดับ
 
-โดยทั้งสองแบบนั้นจะได้รับ `e` ซึ่งเป็นข้อมูลเหตุการณ์ของ React โดยมันจะถูกส่งเข้าไปลำดับที่สองต่อจาก ID ถ้าเขียนแบบฟังก์ชั่นลูกศร เราต้องเขียน `e` ลงไปเองให้ชัดเจนเลย แต่ในแบบ `bind` ค่าของ `e` นั้นจะถูกส่งต่อเข้าไปเองโดยอัตโนมัต
+โดยทั้งสองแบบนั้นจะได้รับ `e` ซึ่งเป็นข้อมูลเหตุการณ์ของ React โดยมันจะถูกส่งเข้าไปลำดับที่สองต่อจาก ID ถ้าเขียนแบบฟังก์ชั่นลูกศร เราต้องเขียน `e` ลงไปเองให้ชัดเจนเลย แต่ในแบบ `bind` ค่าของ `e` นั้นจะถูกส่งต่อเข้าไปเองโดยอัตโนมัติ
