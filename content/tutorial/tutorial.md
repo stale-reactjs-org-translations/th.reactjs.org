@@ -16,11 +16,7 @@ redirect_from:
 
 ## ก่อนเริ่มต้นทำแบบฝึกหัด {#before-we-start-the-tutorial}
 
-<<<<<<< HEAD
 ในขณะที่ทำตามแบบฝึกหัดนี้ไป เราก็จะได้เขียนเกมเล็ก ๆ เล่นกันสนุก ๆ **แต่คุณอาจข้ามส่วนนี้ไปก็ได้เพราะคุณไม่ได้สนใจที่จะเขียนเกมนี่นา -- แต่ลองดูหน่อยก็ไม่เสียหายอะไรนะ** สิ่งที่คุณจะได้เรียนรู้ในแบบฝึกหัดนี้ถือเป็นเทคนิคขึ้นพื้นฐานที่จำเป็นสำหรับพัฒนา React แอปพลิเคชั่น และยิ่งถ้าคุณฝึกจนเชี่ยวชาญแล้วล่ะก็ จะยิ่งทำให้คุณเข้าใจ React ได้อย่างลึกซึ้งเลยทีเดียว
-=======
-We will build a small game during this tutorial. **You might be tempted to skip it because you're not building games -- but give it a chance.** The techniques you'll learn in the tutorial are fundamental to building any React app, and mastering it will give you a deep understanding of React.
->>>>>>> ed9d73105a93239f94d84c619e84ae8adec43483
 
 >เกร็ดความรู้
 >
