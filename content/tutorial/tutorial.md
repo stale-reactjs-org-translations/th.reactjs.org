@@ -335,7 +335,11 @@ class Square extends React.Component {
 
 ตัว React DevTools ช่วยให้คุณตรวจสอบพร็อบและสเตทของคอมโพเนนท์ต่าง ๆ ได้
 
+<<<<<<< HEAD
 หลังจากติดตั้ง React DevTools, คุณสามารถคลิกขวาที่ไหนก็ได้บนหน้าเว็บ, คลิก "Inspect" เพื่อเปิดส่วนของเครื่องมือนักพัฒนาขึ้นมา, และแท็ปของ React จะปรากฎอยู่เป็นส่วนสุดท้ายทางขวามือสุด
+=======
+After installing React DevTools, you can right-click on any element on the page, click "Inspect" to open the developer tools, and the React tabs ("⚛️ Components" and "⚛️ Profiler") will appear as the last tabs to the right. Use "⚛️ Components" to inspect the component tree.
+>>>>>>> 8b30ae43439818009213da86eca872a3d869c5eb
 
 **อย่างไรก็ตาม, มันก็มีขั้นตอนเพิ่มขึ้นเล็กน้อยถ้าจะทำให้มันทำการได้กับ CodePen:**
 
