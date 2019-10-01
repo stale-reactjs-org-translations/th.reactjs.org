@@ -1,6 +1,6 @@
 ---
 id: forms
-title: Forms
+title: ฟอร์ม
 permalink: docs/forms.html
 prev: lists-and-keys.html
 next: lifting-state-up.html
@@ -9,7 +9,7 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
-HTML form elements work a little bit differently from other DOM elements in React, because form elements naturally keep some internal state. For example, this form in plain HTML accepts a single name:
+HTML element ประเภท ฟอร์ม (form) จะทำงานแตกต่างจาก DOM element ประเภทอื่นๆ ใน React เล็กน้อย เนื่องจากโดยปกติ element ประเภทฟอร์ม จะมีการเก็บ state ไว้เป็นของตัวเองอยู่แล้ว (ไม่เกี่ยวกับ state ของ React) ดังตัวอย่างด้านล่างที่เป็นแบบฟอร์ม HTML ทั่วไปที่รับข้อมูลเพียงหนึ่งอย่างคือ ชื่อ
 
 ```html
 <form>
@@ -21,15 +21,15 @@ HTML form elements work a little bit differently from other DOM elements in Reac
 </form>
 ```
 
-This form has the default HTML form behavior of browsing to a new page when the user submits the form. If you want this behavior in React, it just works. But in most cases, it's convenient to have a JavaScript function that handles the submission of the form and has access to the data that the user entered into the form. The standard way to achieve this is with a technique called "controlled components".
+ตัวอย่างฟอร์มด้านบนนี้จะมีความสามารถเหมือนกับ HTML ฟอร์มทั่วไป ที่จะเปลี่ยนบราวเซอร์ไปหน้าเพจใหม่เมื่อผู้ใช้งานกดปุ่ม submit หากคุณต้องการให้ฟอร์มของคุณมีการทำงานแบบนี้ใน React คุณไม่จำเป็นต้องทำอะไรเพิ่มจากนี้เลย แต่โดยส่วนใหญ่แล้ว การจัดการเกี่ยวกับฟอร์มจะทำได้ง่ายและสะดวกมากกว่า หากสามารถใช้ฟังก์ชัน JavaScript ที่สามารถเข้าถึงข้อมูลที่ผู้ใช้งานได้กรอกผ่านฟอร์มนั้น ๆ ในการควบคุมการส่งฟอร์ม วิธีมาตรฐานที่จะสามารถทำสิ่งที่กล่าวมานี้ได้ คือใช้เทคนิคที่เรียกว่า "คอนโทรลคอมพ์โพเนนท์" (controlled components)
 
-## Controlled Components {#controlled-components}
+## คอนโทรลคอมโพเนนท์ {#controlled-components}
 
-In HTML, form elements such as `<input>`, `<textarea>`, and `<select>` typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with [`setState()`](/docs/react-component.html#setstate).
+ในภาษา HTML, element ประเภทฟอร์ม ตัวอย่างเช่น `<input>`, `<textarea>`, และ `<select>` จะมีการจัดการเก็บ state ของตัวเองและอัพเดทเมื่อผู้ใช้งานกรอกข้อมูลเพิ่ม. สำหรับ React, state จะถูกเก็บไว้ในคอมโพเนนท์ และสามารถอัพเดทได้เพียงวิธีเดียว นั่นคือการเรียกฟังก์ชัน [`setState()`](/docs/react-component.html#setstate).
 
-We can combine the two by making the React state be the "single source of truth". Then the React component that renders a form also controls what happens in that form on subsequent user input. An input form element whose value is controlled by React in this way is called a "controlled component".
+เราสามารถรวม 2 สิ่งนี้เข้าด้วยกันโดยใช้ state ของ React ในการเก็บข้อมูลอินพุทของผู้ใช้ หรือที่เรียกว่า "ความจริงเพียงหนึ่งเดียว" (single source of truth) จากนั้น คอมโพเนนท์ React ที่เรนเดอร์ฟอร์มนี้ ก็จะควบคุมสิ่งที่เกิดขึ้นกับฟอร์มนั้นเมื่อผู้ใช้งานกรอกข้อมูลเพิ่มเติมด้วย. Element ประเภทฟอร์มที่ข้อมูลอินพุทจากผู้ใช้ถูกควบคุมด้วย React นี้เรียกว่า "คอนโทรลคอมโพเนนท์" (controlled component)
 
-For example, if we want to make the previous example log the name when it is submitted, we can write the form as a controlled component:
+ตัวอย่างเช่น หากเราต้องการให้ตัวอย่างฟอร์มที่ถูกกล่าวถึงก่อนหน้านี้ log ข้อมูลชื่อที่ผู้ใช้กรอกเข้ามา เมื่อกดปุ่ม submit เราสามารถเขียนฟอร์มเป็นคอนโทรลคอมโพเนนท์ได้ดังนี้
 
 ```javascript{4,10-12,24}
 class NameForm extends React.Component {
@@ -64,11 +64,11 @@ class NameForm extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/VmmPgp?editors=0010)
+[**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/VmmPgp?editors=0010)
 
-Since the `value` attribute is set on our form element, the displayed value will always be `this.state.value`, making the React state the source of truth. Since `handleChange` runs on every keystroke to update the React state, the displayed value will update as the user types.
+เนื่องจากเราได้ใส่แอตทริบิวต์ `value` ไปให้กับ element ของฟอร์ม, ค่าที่จะถูกแสดงบนหน้าจอจะเป็นค่า `this.state.value` เสมอ ทำให้ state ของ React มีสถานะเป็น "ความจริงเพียงหนึ่งเดียว" (single source of truth) และฟังก์ชัน `handleChange` จะถูกรันทุกครั้งเมื่อมีอินพุทใหม่เข้ามา ทำให้ค่าที่ถูกแสดงบนหน้าจอจะอัพเดททุกครั้งที่ผู้ใช้พิมพ์
 
-With a controlled component, every state mutation will have an associated handler function. This makes it straightforward to modify or validate user input. For example, if we wanted to enforce that names are written with all uppercase letters, we could write `handleChange` as:
+เมื่อเราใช้คอนโทรลคอมโพเนนท์, ทุก ๆ ค่าของ state ที่จะมีการเปลี่ยนแปลง จะมีฟังก์ชันสำหรับควบคุมการเปลี่ยนแปลงควบคู่ไปด้วยเสมอ จึงทำให้การแก้ไขหรือว่าตรวจสอบอินพุทของผู้ใช้เป็นไปได้อย่างง่ายดาย ตัวอย่างเช่น หากเราต้องการให้ชื่อที่ผู้ใช้กรอกเข้ามาเป็นตัวอักษรพิมพ์ใหญ่เสมอ เราสามารถทำได้ด้วยการเขียนฟังก์ชัน `handleChange` ดังนี้:
 
 ```javascript{2}
 handleChange(event) {
