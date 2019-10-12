@@ -118,11 +118,7 @@ import './index.css';
 
 ### ช่วยด้วย, ติด!, ไปต่อไม่ได้แล้ว! {#help-im-stuck}
 
-<<<<<<< HEAD
 ถ้าคุณติดหรือไปต่อไม่ได้แล้ว, ลองไปค้นดู [ทรัพยากรสำหรับช่วยเหลือผู้อื่นจากชุมชนผู้ใช้ React](/community/support.html), โดยเฉพาะอย่างยิ่งถ้าคุณต้องการความช่วยเหลืออย่างเร่งด่วน [กลุ่มพูดคุย Reactiflux](https://discord.gg/0ZcbPKXt5bZjGY5n) ก็เป็นทางเลือกที่ยอดเยี่ยมเช่นกัน, ถ้าคุณยังไม่ได้รับการช่วยเหลือหรือคำตอบใด ๆ, หรือถ้าคุณยังติดตรงไหนและไปต่อไม่ได้อยู่, กรุณายื่นปัญหานั้นใน Github แล้วเราจะพยายามเต็มที่เพื่อช่วยคุณเอง
-=======
-If you get stuck, check out the [community support resources](/community/support.html). In particular, [Reactiflux Chat](https://discord.gg/reactiflux) is a great way to get help quickly. If you don't receive an answer, or if you remain stuck, please file an issue, and we'll help you out.
->>>>>>> 647b639259919f96e9b667bf41ec16621e1b84dc
 
 ## เนื้อหารวบยอด {#overview}
 
@@ -339,11 +335,7 @@ class Square extends React.Component {
 
 ตัว React DevTools ช่วยให้คุณตรวจสอบพร็อบและสเตทของคอมโพเนนท์ต่าง ๆ ได้
 
-<<<<<<< HEAD
-หลังจากติดตั้ง React DevTools, คุณสามารถคลิกขวาที่ไหนก็ได้บนหน้าเว็บ, คลิก "Inspect" เพื่อเปิดส่วนของเครื่องมือนักพัฒนาขึ้นมา, และแท็ปของ React จะปรากฎอยู่เป็นส่วนสุดท้ายทางขวามือสุด
-=======
-After installing React DevTools, you can right-click on any element on the page, click "Inspect" to open the developer tools, and the React tabs ("⚛️ Components" and "⚛️ Profiler") will appear as the last tabs to the right. Use "⚛️ Components" to inspect the component tree.
->>>>>>> 647b639259919f96e9b667bf41ec16621e1b84dc
+หลังจากติดตั้ง React DevTools, คุณสามารถคลิกขวาที่ไหนก็ได้บนหน้าเว็บ, คลิก "Inspect" เพื่อเปิดส่วนของเครื่องมือนักพัฒนาขึ้นมา, และแท็ปของ React ("* Components" และ "* Profiler") จะปรากฎอยู่เป็นส่วนสุดท้ายทางขวามือสุด ใช้ "* Components" เพื่อตรวจสอบ component tree
 
 **อย่างไรก็ตาม, มันก็มีขั้นตอนเพิ่มขึ้นเล็กน้อยถ้าจะทำให้มันทำการได้กับ CodePen:**
 
