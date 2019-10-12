@@ -6,9 +6,9 @@ prev: conditional-rendering.html
 next: forms.html
 ---
 
-First, let's review how you transform lists in JavaScript.
+เราจะเริ่มจากการรีวิวในการปรับเปลี่ยน lists ใน JavaScript
 
-Given the code below, we use the [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) function to take an array of `numbers` and double their values. We assign the new array returned by `map()` to the variable `doubled` and log it:
+จากโค๊ดที่อยู่ด้านล่าง เราใช้ฟังก์ชั่น [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) โดยการใส่ array ของ `numbers` แล้วนำตัวเลขเหล่านี้มาคูณสอง โดยเรานำ array ผลลัพธ์ที่ได้มาจาก `map()` ใส่ลงไปในตัวแปร `doubled` จากนั้นก็บันทึกมันออกมา
 
 ```javascript{2}
 const numbers = [1, 2, 3, 4, 5];
@@ -16,15 +16,15 @@ const doubled = numbers.map((number) => number * 2);
 console.log(doubled);
 ```
 
-This code logs `[2, 4, 6, 8, 10]` to the console.
+ผลการบันทึกที่ได้จาก console คือ `[2, 4, 6, 8, 10]`
 
-In React, transforming arrays into lists of [elements](/docs/rendering-elements.html) is nearly identical.
+ใน React การเปลี่ยน arrays ให้มาอยู่ในรูปของ list ของ [elements](/docs/rendering-elements.html) นั้นแทบจะเหมือนกันใน JavaScript
 
-### Rendering Multiple Components {#rendering-multiple-components}
+### การแสดงผลหลายคอมโพเนนท์(Rendering Multiple Components) {#rendering-multiple-components}
 
-You can build collections of elements and [include them in JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) using curly braces `{}`.
+คุณสามารถสร้างกลุ่มของ elements และ [รวมพวกมันเข้าไว้ใน JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) โดยการใช้วงเล็บปีกกา `{}`
 
-Below, we loop through the `numbers` array using the JavaScript [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) function. We return a `<li>` element for each item. Finally, we assign the resulting array of elements to `listItems`:
+ด้านล่างนี้ เราทำการลูป array ของ `numbers` โดยใช้ฟังก์ชั่น [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) ของ Javascript จากนั้นเราคืนค่าเป็น element ของ `<li>` สำหรับทุกๆ ค่าตัวเลขใน `numbers` และสุดท้ายเราได้กำหนดค่าผลลัพธ์ของ array ไปยัง `listItems`:
 
 ```javascript{2-4}
 const numbers = [1, 2, 3, 4, 5];
@@ -33,7 +33,7 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-We include the entire `listItems` array inside a `<ul>` element, and [render it to the DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
+จากนั้นเรานำ `listItems` array ไปไว้ภายใน `<ul>` และ[แสดงผลมันไปยัง DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
 
 ```javascript{2}
 ReactDOM.render(
@@ -42,15 +42,15 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
+[**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
 
-This code displays a bullet list of numbers between 1 and 5.
+โค๊ดนี้จะแสดงผลเป็น bullet list ของตัวเลขตั้งแต่ 1 ถึง 5
 
-### Basic List Component {#basic-list-component}
+### พื้นฐานของ List คอมโพเนนท์(Basic List Component) {#basic-list-component}
 
-Usually you would render lists inside a [component](/docs/components-and-props.html).
+ปกติแล้วเราจะแสดงผล lists ภายใน[คอมโพเนนท์](/docs/components-and-props.html)
 
-We can refactor the previous example into a component that accepts an array of `numbers` and outputs a list of elements.
+โดยเราจะแก้ใขจากตัวอย่างก่อนหน้าให้เป็นคอมโพเนนท์ที่รับค่า array ของ `numbers` และแสดงผลลัพธ์ออกมาเป็น list ของ elements
 
 ```javascript{3-5,7,13}
 function NumberList(props) {
@@ -70,9 +70,10 @@ ReactDOM.render(
 );
 ```
 
-When you run this code, you'll be given a warning that a key should be provided for list items. A "key" is a special string attribute you need to include when creating lists of elements. We'll discuss why it's important in the next section.
+เมื่อคุณรันโค๊ดนี้ คุณจะได้ได้รับคำเตือนว่า list items นั้นควรจะมีค่าของ key ด้วย ซึ่ง "key" เป็นคุณลักษณะพิเศษ ที่คุณจำเป็นต้องเพิ่มเข้ามาเมื่อคุณสร้าง list ของ elements และเราจะพูดความสำคัญของมันในส่วนต่อไปอีกที
 
-Let's assign a `key` to our list items inside `numbers.map()` and fix the missing key issue.
+การกำหนดค่า `key` ให้กับ list items ของเราภายใน  `numbers.map()`  เพื่อจะแก้ใขในประเด็นที่ค่าของ key
+ไม่ปรากฏ
 
 ```javascript{4}
 function NumberList(props) {
@@ -94,11 +95,11 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
+[**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
 
 ## Keys {#keys}
 
-Keys help React identify which items have changed, are added, or are removed. Keys should be given to the elements inside the array to give the elements a stable identity:
+Keys นั้นช่วย React ในการระบุว่า items ไหนมีการเปลี่ยนแปลง ถูกเพิ่มเข้ามา หรือ ถูกเอาออกไป โดย key ที่ถูกกำหนดอยู่ใน elements ภายใน array ควรจะมีความมั่นคง(stable)ในการระบุ element นั้น:
 
 ```js{3}
 const numbers = [1, 2, 3, 4, 5];
@@ -109,7 +110,7 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-The best way to pick a key is to use a string that uniquely identifies a list item among its siblings. Most often you would use IDs from your data as keys:
+ทางที่ดีที่สุดในการเลือก key คือการใช้ข้อความที่มีเอกลักษ์(unique string) ในการระบุตัวตนของ list item กับเพื่อนๆของมัน ซึ่งส่วนใหญ่คุณมักจะใช้ IDs ที่มาจากข้อมูลของคุณเองมาเป็นค่า key:
 
 ```js{2}
 const todoItems = todos.map((todo) =>
@@ -119,7 +120,7 @@ const todoItems = todos.map((todo) =>
 );
 ```
 
-When you don't have stable IDs for rendered items, you may use the item index as a key as a last resort:
+หากคุณไม่มี IDs ที่คงที่สำหรับการแสดงผล items แล้วนั้นคุณอาจจะใช้ดัชนี(index)ของ item มาเป็นค่าของ key ได้:
 
 ```js{2,3}
 const todoItems = todos.map((todo, index) =>
@@ -129,24 +130,23 @@ const todoItems = todos.map((todo, index) =>
   </li>
 );
 ```
+แต่เราไม่แนะนำให้ใช้ค่าดัชนีมาเป็นค่า key ถ้าลำดับของ items มีการเปลี่ยนแปลงได้ ซึ่งมันอาจส่งผลร้ายต่อประสิทธิภาพการทำงาน และอาจมีปัญหากับ สถานะของคอมโพเนนท์ด้วย ลองอ่านบทความของ Robin Pokorny สำหรับ [in-depth explanation on the negative impacts of using an index as a key (ผลกระทบเชิงลึกในการใช้ดัชนีเป็นค่า key)](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318) อย่างไรก็ตามหากคุณไม่กำหนดค่า key ให้กับ list items แล้ว React จะกำหนดค่าปริยายให้โดยใช้ค่าดัชนีเป็นค่า key
 
-We don't recommend using indexes for keys if the order of items may change. This can negatively impact performance and may cause issues with component state. Check out Robin Pokorny's article for an [in-depth explanation on the negative impacts of using an index as a key](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318). If you choose not to assign an explicit key to list items then React will default to using indexes as keys.
+และนี้คือ [in-depth explanation about why keys are necessary(ทำไมค่่า key ถึงสำคัญในเชิงลึก)](/docs/reconciliation.html#recursing-on-children) ถ้าคุณสนใจที่จะศึกษาเพิ่มเติม
 
-Here is an [in-depth explanation about why keys are necessary](/docs/reconciliation.html#recursing-on-children) if you're interested in learning more.
+### แยกคอมโพเนนท์ที่มี key (Extracting Components with Keys) {#extracting-components-with-keys}
 
-### Extracting Components with Keys {#extracting-components-with-keys}
+Keys จะมีความหมายเมื่ออยู่ในบริบทที่อยู่ทามกลาง array เท่านั้น
 
-Keys only make sense in the context of the surrounding array.
+ตัวอย่างเช่น ถ้าคุณ[แยก](/docs/components-and-props.html#extracting-components)คอมโพเนนท์ `ListItem` ออกมา คุณควรจะกำหนดค่า key ไว้ที่ `<ListItem />` ซึ่งอยู่ใน array ไม่ใช่กำหนดไว้ใน `<li>` ที่อยู่ภายตัวของ `ListItem`
 
-For example, if you [extract](/docs/components-and-props.html#extracting-components) a `ListItem` component, you should keep the key on the `<ListItem />` elements in the array rather than on the `<li>` element in the `ListItem` itself.
-
-**Example: Incorrect Key Usage**
+**ตัวอย่าง: ที่ไม่ถูกต้องในการใช้ Key**
 
 ```javascript{4,5,14,15}
 function ListItem(props) {
   const value = props.value;
   return (
-    // Wrong! There is no need to specify the key here:
+    // ผิด! ไม่มีความจำเป็นที่จะใส่ key ที่นี้:
     <li key={value.toString()}>
       {value}
     </li>
@@ -173,18 +173,18 @@ ReactDOM.render(
 );
 ```
 
-**Example: Correct Key Usage**
+**ตัวอย่าง: ที่ถูกต้องในการใช้ Key**
 
 ```javascript{2,3,9,10}
 function ListItem(props) {
-  // Correct! There is no need to specify the key here:
+  // ถูกต้อง! ไม่จำเป็นต้องใส่ค่า key ที่นี้:
   return <li>{props.value}</li>;
 }
 
 function NumberList(props) {
   const numbers = props.numbers;
   const listItems = numbers.map((number) =>
-    // Correct! Key should be specified inside the array.
+    // ถูกต้อง! Key ควรถูกกำหนดภายใน array
     <ListItem key={number.toString()}
               value={number} />
   );
@@ -202,13 +202,13 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
+[**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
 
-A good rule of thumb is that elements inside the `map()` call need keys.
+กฏของนิ้วโป้งที่ดีนั้น elements ใดๆที่ถูกเรียกภายใน `map()` นั้นจำเป็นต้องมี key
 
-### Keys Must Only Be Unique Among Siblings {#keys-must-only-be-unique-among-siblings}
+### ค่า key จะต้องมีเอกลักษ์ในหมู่พี่น้องของมัน(Keys Must Only Be Unique Among Siblings){#keys-must-only-be-unique-among-siblings}
 
-Keys used within arrays should be unique among their siblings. However they don't need to be globally unique. We can use the same keys when we produce two different arrays:
+ค่า key ที่ใช้ใน arrays นั้นจะต้องมีความเป็นเอกลักษ์ในหมู่พี่น้องของมันเท่านั้น  แต่ไม่จำเป็นต้องมีเอกลักษ์ในทุกๆที่(Globally) เราอาจจะใช้ key เดียวกันเมื่อเราสร้าง array ที่ต่างกัน 2 ชุดได้:
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {
@@ -246,9 +246,9 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
+[**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
 
-Keys serve as a hint to React but they don't get passed to your components. If you need the same value in your component, pass it explicitly as a prop with a different name:
+Key สามารถเป็นตัวช่วยใน React แต่มันจะไม่ถูกส่งผ่านเข้าไปในคอมโพเนนท์ของคุณ ถ้าคุณต้องการใช้ค่าที่เหมือนกับค่า key ในคอมโพเนนท์ คุณจะต้องส่งผ่าน props ในชื่ออื่นแทน:
 
 ```js{3,4}
 const content = posts.map((post) =>
@@ -259,11 +259,11 @@ const content = posts.map((post) =>
 );
 ```
 
-With the example above, the `Post` component can read `props.id`, but not `props.key`.
+จากตัวอย่างด้านบน คอมโพเนนท์ `Post` สามารถอ่านค่า `props.id` ได้ แต่จะอ่าน `props.keys` ไม่ได้
 
-### Embedding map() in JSX {#embedding-map-in-jsx}
+### การฝังตัว map() ใน JSX (Embedding map() in JSX) {#embedding-map-in-jsx}
 
-In the examples above we declared a separate `listItems` variable and included it in JSX:
+ในตัวอย่างด้านบนเราประกาศตัวแปร `listItems` ต่างหาก และรวมอยู่ใน JSX:
 
 ```js{3-6}
 function NumberList(props) {
@@ -280,7 +280,7 @@ function NumberList(props) {
 }
 ```
 
-JSX allows [embedding any expression](/docs/introducing-jsx.html#embedding-expressions-in-jsx) in curly braces so we could inline the `map()` result:
+JSX อนุญาตให้[ฝัง expression อะไรก็ได้](/docs/introducing-jsx.html#embedding-expressions-in-jsx) ในวงเล็บปีกกา ดังนั้นเราจึงสามารถทำ inline `map()` ได้:
 
 ```js{5-8}
 function NumberList(props) {
@@ -296,6 +296,6 @@ function NumberList(props) {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
+[**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
 
-Sometimes this results in clearer code, but this style can also be abused. Like in JavaScript, it is up to you to decide whether it is worth extracting a variable for readability. Keep in mind that if the `map()` body is too nested, it might be a good time to [extract a component](/docs/components-and-props.html#extracting-components).
+ในบางกรณีการทำเช่นนี้ทำให้โค๊ดดูสะอาดขึ้น แต่บางครั้งการเขียนเช่นนี้อาจจะถูกมองว่ามักง่าย เหมือนกับใน JavaScript มันขึ้นอยู่กับการตัดสินใจของคุณว่ามันคุ้มค่าที่จะแยกออกมาเป็นตัวแปรให้อ่านง่าย หรือเก็บไว้ในใจถ้าในตัวของ `map()` นั้นมันดูยุ่งเหยิงเกินไป และอาจจะเป็นเวลาที่ดีในการ[แยกคอมโพเนนท์](/docs/components-and-props.html#extracting-components)
