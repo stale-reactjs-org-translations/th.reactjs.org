@@ -2,9 +2,9 @@
 
 This repo contains the source code and documentation powering [reactjs.org](https://reactjs.org/).
 
-## Getting started
+## เริ่มต้นใช้งาน
 
-### Prerequisites
+### ข้อกำหนดเบื้องต้น
 
 1. Git
 1. Node: any 8.x version starting with 8.4.0 or greater
@@ -12,12 +12,12 @@ This repo contains the source code and documentation powering [reactjs.org](http
 1. A fork of the repo (for any contributions)
 1. A clone of the [reactjs.org repo](https://github.com/reactjs/reactjs.org) on your local machine
 
-### Installation
+### การติดตั้ง
 
-1. `cd reactjs.org` to go into the project root
-1. `yarn` to install the website's npm dependencies
+1. `cd reactjs.org` เพื่อเข้าไปในรูทโปรเจ็กต์
+1. `yarn` เพื่อติดตั้งการอ้างอิง NPM ของเว็บไซต์
 
-### Running locally
+### ทำงานในเครื่อง
 
 1. `yarn dev` to start the hot-reloading development server (powered by [Gatsby](https://www.gatsbyjs.org))
 1. `open http://localhost:8000` to open the site in your favorite browser
@@ -49,7 +49,7 @@ The documentation is divided into several sections with a different tone and pur
 
 ### Push it
 
-1. `git add -A && git commit -m "My message"` (replacing `My message` with a commit message, such as `Fixed header logo on Android`) to stage and commit your changes
+1. `git add -A && git commit -m "My message"` (replacing `My message` with a commit message, such as `Fix header logo on Android`) to stage and commit your changes
 1. `git push my-fork-name the-name-of-my-branch`
 1. Go to the [reactjs.org repo](https://github.com/reactjs/reactjs.org) and you should see recently pushed branches.
 1. Follow GitHub's instructions.

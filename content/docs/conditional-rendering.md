@@ -8,11 +8,11 @@ redirect_from:
   - "tips/false-in-jsx.html"
 ---
 
-In React, you can create distinct components that encapsulate behavior you need. Then, you can render only some of them, depending on the state of your application.
+ใน React คุณสามารถสร้างคอมโพเนนท์ที่เป็นส่วนๆ และมีพฤติกรรมภายของตัวเองอย่างที่คุณต้องการ จากนั้นคุณสามารถเลือกแสดงผลเพียงบางส่วนได้ ซึ่งขึ้นอยุ่กับ state ของแอพที่คุณสร้าง
 
-Conditional rendering in React works the same way conditions work in JavaScript. Use JavaScript operators like [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) or the [conditional operator](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) to create elements representing the current state, and let React update the UI to match them.
+Conditional rendering(เงื่อนใขการแสดงผล) ใน React นั้นทำงานคล้ายกับเงื่อนใขใน JavaScript ในบางส่วน ซึ่งใช้ตัวโอเปอเรเตอร์ของ Javascript เช่น [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) หรือ [conditional operator](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) เพื่อสร้าง element ที่เป็นตัวแทนของ state ปัจจุบัน และให้ React ปรับปรุงส่วนแสดงผลให้ตรงกับ element เหล่านั้น
 
-Consider these two components:
+เมื่อพิจารณาจาก 2 คอมโพเนนท์นี้:
 
 ```js
 function UserGreeting(props) {
@@ -24,7 +24,7 @@ function GuestGreeting(props) {
 }
 ```
 
-We'll create a `Greeting` component that displays either of these components depending on whether a user is logged in:
+เราจะสร้างคอมโพเนนท์ `Greeting` ให้เปลี่ยนการแสดงผลให้ขึ้นอยู่กับว่ามีผู้ใช้เข้ามาใช้งาน(User Login)หรือไม่:
 
 ```javascript{3-7,11,12}
 function Greeting(props) {
@@ -36,21 +36,21 @@ function Greeting(props) {
 }
 
 ReactDOM.render(
-  // Try changing to isLoggedIn={true}:
+  // ลองเปลี่ยนให้เป็น isLoggedIn={true}:
   <Greeting isLoggedIn={false} />,
   document.getElementById('root')
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
+[**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
 
-This example renders a different greeting depending on the value of `isLoggedIn` prop.
+จากตัวอย่างข้างต้น ความแตกต่างของการแสดงผลคำทักทายจะขึ้นอยู่กับค่าของ `isLoggedIn` prop
 
-### Element Variables {#element-variables}
+### Element Variables(ตัวแปรขององค์ประกอบ) {#element-variables}
 
-You can use variables to store elements. This can help you conditionally render a part of the component while the rest of the output doesn't change.
+คุณสามารถใช้ตัวแปรในการเก็บ elements ได้ ซึ่งจะช่วยคุณในการกำหนดเงื่อนใขในการแสดงผลในบางส่วนของคอมโพเนนท์โดยจะไม่ทำให้ผลลัพธ์ในส่วนอื่นๆเปลี่ยนแปลง
 
-Consider these two new components representing Logout and Login buttons:
+พิจารณาจาก 2 คอมโพเนนท์ใหม่นี้ จะแสดงปุ่ม Login และ Logout:
 
 ```js
 function LoginButton(props) {
@@ -70,9 +70,9 @@ function LogoutButton(props) {
 }
 ```
 
-In the example below, we will create a [stateful component](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) called `LoginControl`.
+ในตัวอย่างข้างล่าง เราจะสร้าง [stateful คอมโพเนนท์](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) ที่เรียกว่า `LoginControl`
 
-It will render either `<LoginButton />` or `<LogoutButton />` depending on its current state. It will also render a `<Greeting />` from the previous example:
+จะมีการแสดงผล `<LoginButton />` หรือ `<LogoutButton />` ซึ่งขึ้นอยู่กับ state ในขณะนั้น และมีการนำ `<Greeting />` จากตัวอย่างที่แล้วมาแสดงผลด้วย:
 
 ```javascript{20-25,29,30}
 class LoginControl extends React.Component {
@@ -116,13 +116,13 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
+[**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
 
-While declaring a variable and using an `if` statement is a fine way to conditionally render a component, sometimes you might want to use a shorter syntax. There are a few ways to inline conditions in JSX, explained below.
+ปกติการประกาศตัวแปรและใช้ `if` ซึ่งเป็นทางที่ดีในการสร้างเงื่อนใขในการแสดงผลคอมโพเนนท์ แต่ในบางครั้งคุณอาจจะต้องการที่จะใช้ syntax ที่สั้นกว่า เราจะอธิบายการใช้เงื่อนใขแบบ inline ใน JSX ด้านล่างนี้:
 
-### Inline If with Logical && Operator {#inline-if-with-logical--operator}
+### Inline If กับ Logical && Operator {#inline-if-with-logical--operator}
 
-You may [embed any expressions in JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) by wrapping them in curly braces. This includes the JavaScript logical `&&` operator. It can be handy for conditionally including an element:
+คุณอาจจะใช้ [embed expressions อะไรก็ได้ใน JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) โดยการครอบพวกมันไว้ในวงเล็บปีกกา(curly braces) โดยใช้ JavaScript logical `&&` operator ในการสร้างเงื่อนใขในการนำ element เข้ามาประกอบกันหรือไม่:
 
 ```js{6-10}
 function Mailbox(props) {
@@ -146,17 +146,17 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
+[**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
 
-It works because in JavaScript, `true && expression` always evaluates to `expression`, and `false && expression` always evaluates to `false`.
+มันทำงานได้เพราะว่า JavaScript จะประมวลผล `true && expression` เป็น `expression` เสมอ และประมวลผล `false && expression` เป็นค่า `false` เสมอ
 
-Therefore, if the condition is `true`, the element right after `&&` will appear in the output. If it is `false`, React will ignore and skip it.
+ด้วยเหตุนี้ถ้าเงื่อนใขเป็น `true` แล้ว element ด้านขวาที่อยู่หลัง `&&` จะปรากฏเป็นเป็นผลลัพธ์เสมอ ถ้ามันเป็น `false` แล้ว React จะเพิกเฉยและข้ามมันไป
 
-### Inline If-Else with Conditional Operator {#inline-if-else-with-conditional-operator}
+### Inline If-Else กับ Conditional Operator {#inline-if-else-with-conditional-operator}
 
-Another method for conditionally rendering elements inline is to use the JavaScript conditional operator [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator).
+อีกวิธีหนึ่งสำหรับการสร้างเงื่อนใขในการแสดงผลแบบ inline คือ การใช้ JavaScript conditional operator [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator).
 
-In the example below, we use it to conditionally render a small block of text.
+ในตัวอย่างด้านล่าง เราใชัมันในการสร้างเงื่อนใขในการแสดงผลสำหรับข้อความสั้นบางส่วน:
 
 ```javascript{5}
 render() {
@@ -169,7 +169,7 @@ render() {
 }
 ```
 
-It can also be used for larger expressions although it is less obvious what's going on:
+มันยังสามารถที่จะใช้กัน expressions ขนาดใหญ่ได้ด้วย แม้ว่ามันจะทำให้ดูซับซ้อนขึ้นมากขึ้น:
 
 ```js{5,7,9}
 render() {
@@ -186,13 +186,13 @@ render() {
 }
 ```
 
-Just like in JavaScript, it is up to you to choose an appropriate style based on what you and your team consider more readable. Also remember that whenever conditions become too complex, it might be a good time to [extract a component](/docs/components-and-props.html#extracting-components).
+ซึ่งเหมือนใน JavaScript มันขึ้นอยู่กับคุณจะเลือกรูปแบบการใช้แบบไหนนั้น ขึ้นอยู่กับคุณและทีมของคุณเห็นว่าอันไหนอ่านง่ายที่สุด แต่อย่าลืมว่าเมื่อไหร่ที่เงื่อนใขมีความซับซ้อนมาก ก็เป็นเวลาที่ดีที่จะ[แยกย่อยคอมโพเนนท์](/docs/components-and-props.html#extracting-components).
 
-### Preventing Component from Rendering {#preventing-component-from-rendering}
+### ป้องกันคอมโพเนนท์จากการแสดงผล {#preventing-component-from-rendering}
 
-In rare cases you might want a component to hide itself even though it was rendered by another component. To do this return `null` instead of its render output.
+ในบางกรณีคุณอาจจะต้องการให้คอมโพเนนท์ซ่อนตัวเอง แม้ว่าตัวมันเองนั้นจะถูกใช้งานในคอมโพเนนท์อื่น โดยให้คอมโพเนนท์คืนค่า `null` แทนที่จะเป็นผลลัพธ์อย่างอื่น
 
-In the example below, the `<WarningBanner />` is rendered depending on the value of the prop called `warn`. If the value of the prop is `false`, then the component does not render:
+ในตัวอย่างข้างล่าง `<WarningBanner />` จะแสดงผลขึ้นอยู่กับค่าของ prop ที่ชื่อว่า `warn` ถ้าค่าของ prop เป็น `false` แล้วคอมโพเนนท์จะไม่แสดงผล:
 
 ```javascript{2-4,29}
 function WarningBanner(props) {
@@ -238,6 +238,6 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)
+[**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)
 
-Returning `null` from a component's `render` method does not affect the firing of the component's lifecycle methods. For instance `componentDidUpdate` will still be called.
+การคืนค่า `null` จากเมธอด `render` ในคอมโพเนนท์นั้น จะไม่ส่งผลกระทบต่อการทำงานของ lifecycle method ของคอมโพเนนท์ เช่น เมธอด `componentDidUpdate` จะถูกเรียกใช้อยู่ดี เป็นต้น
