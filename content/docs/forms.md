@@ -1,6 +1,6 @@
 ---
 id: forms
-title: Forms
+title: ฟอร์ม
 permalink: docs/forms.html
 prev: lists-and-keys.html
 next: lifting-state-up.html
@@ -9,7 +9,7 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
-HTML form elements work a little bit differently from other DOM elements in React, because form elements naturally keep some internal state. For example, this form in plain HTML accepts a single name:
+HTML element ประเภท ฟอร์ม (form) จะทำงานแตกต่างจาก DOM element ประเภทอื่นๆ ใน React เล็กน้อย เนื่องจากโดยปกติ element ประเภทฟอร์ม จะมีการเก็บ state ไว้เป็นของตัวเองอยู่แล้ว (ไม่เกี่ยวกับ state ของ React) ดังตัวอย่างด้านล่างที่เป็นแบบฟอร์ม HTML ทั่วไปที่รับข้อมูลเพียงหนึ่งอย่างคือ ชื่อ
 
 ```html
 <form>
@@ -21,15 +21,15 @@ HTML form elements work a little bit differently from other DOM elements in Reac
 </form>
 ```
 
-This form has the default HTML form behavior of browsing to a new page when the user submits the form. If you want this behavior in React, it just works. But in most cases, it's convenient to have a JavaScript function that handles the submission of the form and has access to the data that the user entered into the form. The standard way to achieve this is with a technique called "controlled components".
+ตัวอย่างฟอร์มด้านบนนี้จะมีความสามารถเหมือนกับ HTML ฟอร์มทั่วไป ที่จะเปลี่ยนบราวเซอร์ไปหน้าเพจใหม่เมื่อผู้ใช้งานกดปุ่ม submit หากคุณต้องการให้ฟอร์มของคุณมีการทำงานแบบนี้ใน React คุณไม่จำเป็นต้องทำอะไรเพิ่มจากนี้เลย แต่โดยส่วนใหญ่แล้ว การจัดการเกี่ยวกับฟอร์มจะทำได้ง่ายและสะดวกมากกว่า หากสามารถใช้ฟังก์ชัน JavaScript ที่สามารถเข้าถึงข้อมูลที่ผู้ใช้งานได้กรอกผ่านฟอร์มนั้น ๆ ในการควบคุมการส่งฟอร์ม วิธีมาตรฐานที่จะสามารถทำสิ่งที่กล่าวมานี้ได้ คือใช้เทคนิคที่เรียกว่า "คอนโทรลคอมโพเนนท์" (controlled components)
 
-## Controlled Components {#controlled-components}
+## คอนโทรลคอมโพเนนท์ {#controlled-components}
 
-In HTML, form elements such as `<input>`, `<textarea>`, and `<select>` typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with [`setState()`](/docs/react-component.html#setstate).
+ในภาษา HTML, element ประเภทฟอร์ม ตัวอย่างเช่น `<input>`, `<textarea>`, และ `<select>` จะมีการจัดการเก็บ state ของตัวเองและอัพเดทเมื่อผู้ใช้งานกรอกข้อมูลเพิ่ม. สำหรับ React, state จะถูกเก็บไว้ในคอมโพเนนท์ และสามารถอัพเดทได้เพียงวิธีเดียว นั่นคือการเรียกฟังก์ชัน [`setState()`](/docs/react-component.html#setstate).
 
-We can combine the two by making the React state be the "single source of truth". Then the React component that renders a form also controls what happens in that form on subsequent user input. An input form element whose value is controlled by React in this way is called a "controlled component".
+เราสามารถรวม 2 สิ่งนี้เข้าด้วยกันโดยใช้ state ของ React ในการเก็บข้อมูลอินพุทของผู้ใช้ หรือที่เรียกว่า "ความจริงเพียงหนึ่งเดียว" (single source of truth) จากนั้น คอมโพเนนท์ React ที่เรนเดอร์ฟอร์มนี้ ก็จะควบคุมสิ่งที่เกิดขึ้นกับฟอร์มนั้นเมื่อผู้ใช้งานกรอกข้อมูลเพิ่มเติมด้วย. Element ประเภทฟอร์มที่ข้อมูลอินพุทจากผู้ใช้ถูกควบคุมด้วย React นี้เรียกว่า "คอนโทรลคอมโพเนนท์" (controlled component)
 
-For example, if we want to make the previous example log the name when it is submitted, we can write the form as a controlled component:
+ตัวอย่างเช่น หากเราต้องการให้ตัวอย่างฟอร์มที่ถูกกล่าวถึงก่อนหน้านี้ log ข้อมูลชื่อที่ผู้ใช้กรอกเข้ามา เมื่อกดปุ่ม submit เราสามารถเขียนฟอร์มเป็นคอนโทรลคอมโพเนนท์ได้ดังนี้
 
 ```javascript{4,10-12,24}
 class NameForm extends React.Component {
@@ -64,11 +64,11 @@ class NameForm extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/VmmPgp?editors=0010)
+[**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/VmmPgp?editors=0010)
 
-Since the `value` attribute is set on our form element, the displayed value will always be `this.state.value`, making the React state the source of truth. Since `handleChange` runs on every keystroke to update the React state, the displayed value will update as the user types.
+เนื่องจากเราได้ใส่แอตทริบิวต์ `value` ไปให้กับ element ของฟอร์ม, ค่าที่จะถูกแสดงบนหน้าจอจะเป็นค่า `this.state.value` เสมอ ทำให้ state ของ React มีสถานะเป็น "ความจริงเพียงหนึ่งเดียว" (single source of truth) และฟังก์ชัน `handleChange` จะถูกรันทุกครั้งเมื่อมีอินพุทใหม่เข้ามา ทำให้ค่าที่ถูกแสดงบนหน้าจอจะอัพเดททุกครั้งที่ผู้ใช้พิมพ์
 
-With a controlled component, every state mutation will have an associated handler function. This makes it straightforward to modify or validate user input. For example, if we wanted to enforce that names are written with all uppercase letters, we could write `handleChange` as:
+เมื่อเราใช้คอนโทรลคอมโพเนนท์, ทุก ๆ ค่าของ state ที่จะมีการเปลี่ยนแปลง จะมีฟังก์ชันสำหรับควบคุมการเปลี่ยนแปลงควบคู่ไปด้วยเสมอ จึงทำให้การแก้ไขหรือว่าตรวจสอบอินพุทของผู้ใช้เป็นไปได้อย่างง่ายดาย ตัวอย่างเช่น หากเราต้องการให้ชื่อที่ผู้ใช้กรอกเข้ามาเป็นตัวอักษรพิมพ์ใหญ่เสมอ เราสามารถทำได้ด้วยการเขียนฟังก์ชัน `handleChange` ดังนี้:
 
 ```javascript{2}
 handleChange(event) {
@@ -76,9 +76,9 @@ handleChange(event) {
 }
 ```
 
-## The textarea Tag {#the-textarea-tag}
+## Tag ประเภท textarea  {#the-textarea-tag}
 
-In HTML, a `<textarea>` element defines its text by its children:
+สำหรับภาษา HTML, element ประเภท `<textarea>` จะแสดงข้อความตัวอักษรตามค่าที่เป็นลูกของมัน ดังนี้
 
 ```html
 <textarea>
@@ -86,7 +86,7 @@ In HTML, a `<textarea>` element defines its text by its children:
 </textarea>
 ```
 
-In React, a `<textarea>` uses a `value` attribute instead. This way, a form using a `<textarea>` can be written very similarly to a form that uses a single-line input:
+ใน React, `<textarea>` จะแสดงข้อความจากแอตทริบิวต์ `value` แทน ดังนั้น ฟอร์มที่ใช้ `<textarea>` จะสามารถเขียนได้เหมือนกับการเขียนฟอร์มที่ใช้ input บรรทัดเดียวทั่วไป ดังนี้
 
 ```javascript{4-6,12-14,26}
 class EssayForm extends React.Component {
@@ -123,11 +123,11 @@ class EssayForm extends React.Component {
 }
 ```
 
-Notice that `this.state.value` is initialized in the constructor, so that the text area starts off with some text in it.
+สังเกตว่า `this.state.value` จะถูกตั้งค่าเริ่มต้นไว้เพื่อที่ textarea จะได้เริ่มต้นโดยที่มีข้อความบางอย่างแสดงอยู่ตั้งแต่แรก
 
-## The select Tag {#the-select-tag}
+## Tag ประเภท select {#the-select-tag}
 
-In HTML, `<select>` creates a drop-down list. For example, this HTML creates a drop-down list of flavors:
+ในภาษา HTML, `<select>` จะแสดง drop-down ลิสต์ ตัวอย่างเช่น HTML ด้านล่างนี้จะแสดง drop-down ลิสต์สำหรับเลือกรสชาติ
 
 ```html
 <select>
@@ -138,7 +138,7 @@ In HTML, `<select>` creates a drop-down list. For example, this HTML creates a d
 </select>
 ```
 
-Note that the Coconut option is initially selected, because of the `selected` attribute. React, instead of using this `selected` attribute, uses a `value` attribute on the root `select` tag. This is more convenient in a controlled component because you only need to update it in one place. For example:
+สังเกตว่าตัวเลือก Coconut ได้ถูกเลือกไว้เป็นค่าตั้งต้นผ่านแอตทริบิวต์ selected. สำหรับ React, แทนที่เราจะใช้แอตทริบิวต์ `selected` ใส่ไว้ให้กับ element `option` ที่เราอยากจะเลือก, เราจะใช้แอตทริบิวต์ `value` ใส่ให้กับแท็ก `select` ซึ่งเป็น element แม่แทน ซึ่งวิธีนี้จะทำให้เราใช้งานคอนโทรลคอมโพเนนท์ได้สะดวกมากกว่า เนื่องจากเราจำเป็นต้องเก็บและอัพเดทค่าที่เราเลือกเพียงที่เดียว (แทนที่จะต้องเก็บค่า selected ตามจำนวน option) ดังตัวอย่าง: 
 
 ```javascript{4,10-12,24}
 class FlavorForm extends React.Component {
@@ -178,33 +178,34 @@ class FlavorForm extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/JbbEzX?editors=0010)
+[**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/JbbEzX?editors=0010)
 
-Overall, this makes it so that `<input type="text">`, `<textarea>`, and `<select>` all work very similarly - they all accept a `value` attribute that you can use to implement a controlled component.
+โดยภาพรวม `<input type="text">`, `<textarea>` และ `<select>` จะทำงานเหมือนกันทั้งหมด นั่นคือ ทุก element จะรับค่าแอตทริบิวต์ `value` ไปเพื่อที่เราสามารถทำให้เป็นคอนโทรลคอมโพเนนท์ได้
 
-> Note
+> หมายเหตุ
 >
-> You can pass an array into the `value` attribute, allowing you to select multiple options in a `select` tag:
+> เราสามารถใส่ค่าแอตทริบิวต์ `value` เป็นอาร์เรย์ได้ โดยจะทำให้เราสามารถเลือกตัวเลือกหลาย ๆ ตัวเลือกใน `select` ได้พร้อม ๆ กัน:
 >
 >```js
 ><select multiple={true} value={['B', 'C']}>
 >```
 
-## The file input Tag {#the-file-input-tag}
+## Tag ประเภท file input {#the-file-input-tag}
 
-In HTML, an `<input type="file">` lets the user choose one or more files from their device storage to be uploaded to a server or manipulated by JavaScript via the [File API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications).
+ในภาษา HTML, element ประเภท `<input type="file">` ช่วยให้ผู้ใช้เลือกไฟล์จากเครื่องของผู้ใช้เพื่อทำการอัพโหลดหรือส่งมาจัดการด้วย JavaScript โดยใช้ [File API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications)
 
 ```html
 <input type="file" />
 ```
 
-Because its value is read-only, it is an **uncontrolled** component in React. It is discussed together with other uncontrolled components [later in the documentation](/docs/uncontrolled-components.html#the-file-input-tag).
+เนื่องจากค่า value ของอินพุท ประเภท file เป็นแบบที่ห้ามแก้ไข (read-only) ทำให้มันเป็นคอมโพเนนท์ที่**ไม่สามารถควบคุมได้** (**uncontrolled** component) ใน React ซึ่งจะถูกพูดถึง [หลังจากนี้](/docs/uncontrolled-components.html#the-file-input-tag)
 
-## Handling Multiple Inputs {#handling-multiple-inputs}
+## การจัดการอินพุทหลาย ๆ ค่า {#handling-multiple-inputs}
 
-When you need to handle multiple controlled `input` elements, you can add a `name` attribute to each element and let the handler function choose what to do based on the value of `event.target.name`.
+เมื่อเราต้องการจัดการหลาย ๆ `input`, เราสามารถใส่แอตทริบิวต์ `name` ให้กับแต่ละ element และสร้างฟังก์ชันขึ้นมาจัดการแต่ละค่าตามแบบที่เราต้องการได้ โดยดูจากค่าของ `event.target.name`
 
-For example:
+
+ตัวอย่างเช่น:
 
 ```javascript{15,18,28,37}
 class Reservation extends React.Component {
@@ -254,9 +255,9 @@ class Reservation extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/wgedvV?editors=0010)
+[**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/wgedvV?editors=0010)
 
-Note how we used the ES6 [computed property name](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) syntax to update the state key corresponding to the given input name:
+สังเกตว่าเราได้ใช้วิธีการเขียนแบบ [ชื่อคุณสมบัติจากการคำนวณ (computed property name)](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names) ของ ES6 ในการอัพเดท key ของ state ที่ตรงกับค่า name ของอินพุท
 
 ```js{2}
 this.setState({
@@ -264,7 +265,7 @@ this.setState({
 });
 ```
 
-It is equivalent to this ES5 code:
+ซึ่งจะเหมือนกับการเขียนแบบนี้ใน ES5
 
 ```js{2}
 var partialState = {};
@@ -272,12 +273,13 @@ partialState[name] = value;
 this.setState(partialState);
 ```
 
-Also, since `setState()` automatically [merges a partial state into the current state](/docs/state-and-lifecycle.html#state-updates-are-merged), we only needed to call it with the changed parts.
+นอกจากนี้ เนื่องจาก `setState()` จะทำการ [รวมค่าของ state ที่ถูกอัพเดทเพียงบางส่วนเข้ากับ state ทั้งหมด](/docs/state-and-lifecycle.html#state-updates-are-merged) โดยอัตโนมัติ เราจึงสามารถเรียกอัพเดท state เฉพาะแค่ค่าที่เปลี่ยนก็เพียงพอ
 
-## Controlled Input Null Value {#controlled-input-null-value}
+## ค่า null ของอินพุทที่ถูกควบคุม {#controlled-input-null-value}
 
-Specifying the value prop on a [controlled component](/docs/forms.html#controlled-components) prevents the user from changing the input unless you desire so. If you've specified a `value` but the input is still editable, you may have accidentally set `value` to `undefined` or `null`.
+การระบุค่า value ที่เฉพาะเจาะจงให้กับ [คอนโทรลคอมโพเนนท์](/docs/forms.html#controlled-components) จะทำให้ผู้ใช้ไม่สามารถเปลี่ยนค่าอินพุทได้นอกจากว่าเราต้องการให้เปลี่ยน หากคุณพบว่าคุณได้ใส่ค่าที่เฉพาะเจาะจงให้กับ `value` แต่อินพุทกลับยังสามารถถูกแก้ไขได้ อาจเป็นเพราะว่าคุณได้ตั้งค่าของ `value` ให้เป็น `undefined` หรือ `null` โดยไม่ได้ตั้งใจ
 
+โค้ดด้านล่างเป็นตัวอย่างของการที่ตอนแรกผู้ใช้ไม่สามารถแก้ไขอินพุทได้ในตอนแรก และเปลี่ยนเป็นสามารถแก้ไขได้เมื่อเวลาผ่านไปเล็กน้อย
 The following code demonstrates this. (The input is locked at first but becomes editable after a short delay.)
 
 ```javascript
@@ -289,10 +291,11 @@ setTimeout(function() {
 
 ```
 
-## Alternatives to Controlled Components {#alternatives-to-controlled-components}
+## ตัวเลือกอื่นนอกจากคอนโทรลคอมโพเนนท์ {#alternatives-to-controlled-components}
 
-It can sometimes be tedious to use controlled components, because you need to write an event handler for every way your data can change and pipe all of the input state through a React component. This can become particularly annoying when you are converting a preexisting codebase to React, or integrating a React application with a non-React library. In these situations, you might want to check out [uncontrolled components](/docs/uncontrolled-components.html), an alternative technique for implementing input forms.
+การใช้คอนโทรลคอมโพเนนท์บางครั้งอาจเป็นเรื่องที่ดูวุ่นวาย เนื่องจากเราต้องมาเขียนฟังก์ชันการจัดการ event สำหรับทุก ๆ วิธีที่จะทำให้ข้อมูลของเราเปลี่ยนแปลงได้ และยังต้องทำการเชื่อมทุก ๆ state ของ element input เข้ากับ state ของ React ซึ่งบางทีอาจเป็นเรื่องวุ่นวายมากเกินไปหากเราต้องมาเปลี่ยนแปลงโค้ดเก่าที่เคยมีอยู่แล้วมาเป็น React, หรือหากเราต้องการใช้ React คู่กับไลบรารีอื่น ๆ ที่ไม่ได้เขียนแบบ React. หากคุณตกอยู่ในสถานการณ์เช่นนี้ การใช้ [คอมโพเนนท์ที่ไม่ถูกควบคุม (uncontrolled components)](/docs/uncontrolled-components.html) ซึ่งเป็นอีกวิธีหนึ่งสำหรับการทำแบบฟอร์มอินพุท อาจเหมาะสมกับคุณมากกว่า
 
-## Fully-Fledged Solutions {#fully-fledged-solutions}
 
-If you're looking for a complete solution including validation, keeping track of the visited fields, and handling form submission, [Formik](https://jaredpalmer.com/formik) is one of the popular choices. However, it is built on the same principles of controlled components and managing state — so don't neglect to learn them.
+## วิธีการสำเร็จรูป {#fully-fledged-solutions}
+
+หากคุณต้องการวิธีการทำฟอร์มที่สำเร็จรูป ซึ่งรวมถึงการตรวจสอบอินพุท (validation), คอยนับและเช็คฟีลด์ที่ถูกเข้าถึง และควบคุมการส่งแบบฟอร์ม, [Formik](https://jaredpalmer.com/formik) ถือเป็นหนึ่งในไลบรารีที่ได้รับความนิยมอย่างมากในการทำสิ่งนี้ อย่างไรก็ตาม หลาย ๆ ไลบรารีก็ถูกสร้างขึ้นมาจากหลักการของคอนโทรลคอมโพเนนท์และการจัดการ state ดังนั้นคุณไม่ควรมองข้ามการเรียนรู้สิ่งเหล่านี้ไป
