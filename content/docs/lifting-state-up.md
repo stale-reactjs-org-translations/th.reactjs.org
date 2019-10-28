@@ -1,6 +1,6 @@
 ---
 id: lifting-state-up
-title: Lifting State Up
+title: เลื่อนตำแหน่งของ State ขึ้น
 permalink: docs/lifting-state-up.html
 prev: forms.html
 next: composition-vs-inheritance.html
@@ -9,11 +9,12 @@ redirect_from:
   - "docs/flux-todo-list.html"
 ---
 
-Often, several components need to reflect the same changing data. We recommend lifting the shared state up to their closest common ancestor. Let's see how this works in action.
+บ่อยครั้งที่คอมโพเนนท์หลาย ๆ คอมโพเนนท์จำเป็นที่จะต้องใช้ข้อมูลจากที่เดียวกัน เราแนะนำให้คุณเลื่อนตำแหน่งของ state ที่ถูกแชร์ขึ้นมาเก็บไว้ที่คอมโพเนนท์แม่ในใกล้ที่สุดของ 2 คอมโพเนนท์นั้น เราลองมาดูตัวอย่างโดยละเอียดข้างล่างกัน
 
-In this section, we will create a temperature calculator that calculates whether the water would boil at a given temperature.
+สำหรับหัวข้อนี้ เราจะสร้างเครื่องคำนวณอุณหภูมิที่จะคำนวณว่าน้ำจะเดือดไหมสำหรับค่าอุณหภูมิที่ป้อนให้
 
-We will start with a component called `BoilingVerdict`. It accepts the `celsius` temperature as a prop, and prints whether it is enough to boil the water:
+เราจะเริ่มจากคอมโพเนนท์ชื่อ `BoilingVerdict` คอมโพเนนท์นี้จะรับค่า prop คือ อุณหภูมิในหน่วย `เซลเซียส (celsius)` และแสดงคำตอบว่าอุณหภูมินี้เพียงพอกับการทำให้น้ำเดือดหรือไม่
+
 
 ```js{3,5}
 function BoilingVerdict(props) {
@@ -24,9 +25,9 @@ function BoilingVerdict(props) {
 }
 ```
 
-Next, we will create a component called `Calculator`. It renders an `<input>` that lets you enter the temperature, and keeps its value in `this.state.temperature`.
+ต่อไป, เราจะสร้างคอมโพเนนท์ชื่อว่า `Calculator` ที่จะเรนเดอร์ช่อง `<input>` สำหรับให้ผู้ใช้กรอกข้อมูลอุณหภูมิ และเก็บค่าอุณหภูมินั้นไว้ใน `this.state.temperature`
 
-Additionally, it renders the `BoilingVerdict` for the current input value.
+นอกจากนั้น คอมโพเนนท์นี้ยังเรนเดอร์ `BoilingVerdict` ด้วยค่าอินพุทปัจจุบันด้วย
 
 ```js{5,9,13,17-21}
 class Calculator extends React.Component {
@@ -56,13 +57,13 @@ class Calculator extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/ZXeOBm?editors=0010)
+[**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/ZXeOBm?editors=0010)
 
-## Adding a Second Input {#adding-a-second-input}
+## ใส่อินพุทค่าที่สอง {#adding-a-second-input}
 
-Our new requirement is that, in addition to a Celsius input, we provide a Fahrenheit input, and they are kept in sync.
+ต่อมาเราต้องการเพิ่มความสามารถให้กับเครื่องคำนวณของเรา โดยเราต้องการให้ผู้ใช้สามารถกรอกอุณหภูมิในหน่วย ฟาเรนไฮต์ (Fahrenheit) ได้ และเราต้องการให้ค่าอุณหภูมิทั้งสองหน่วยนี้เป็นค่าอุณหภูมิเดียวกันตลอดเวลา
 
-We can start by extracting a `TemperatureInput` component from `Calculator`. We will add a new `scale` prop to it that can either be `"c"` or `"f"`:
+เราสามารถทำได้โดยการแยกบางส่วนของคอมโพเนนท์ `Calculator` ออกมาเป็นคอมโพเนนท์ `TemperatureInput` และเราจะเพิ่ม prop `scale` ให้กับมันโดยค่า prop จะเป็นได้ 2 ค่าคือ `"c"` หรือ `"f"`
 
 ```js{1-4,19,22}
 const scaleNames = {
@@ -95,7 +96,7 @@ class TemperatureInput extends React.Component {
 }
 ```
 
-We can now change the `Calculator` to render two separate temperature inputs:
+เราสามารถเปลี่ยน `Calculator` ให้เรนเดอร์ช่องอินพุทอุณหภูมิ 2 ค่าแยกกันได้ ดังนี้:
 
 ```js{5,6}
 class Calculator extends React.Component {
@@ -110,11 +111,11 @@ class Calculator extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/jGBryx?editors=0010)
+[**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/jGBryx?editors=0010)
 
-We have two inputs now, but when you enter the temperature in one of them, the other doesn't update. This contradicts our requirement: we want to keep them in sync.
+ตอนนี้เรามีค่าอินพุท 2 ค่าแล้ว แต่หากเราป้อนค่าอุณหภูมิเข้าไปให้กับค่าใดค่าหนึ่ง อีกค่าหนึ่งจะยังไม่ได้ถูกอัพเดท ซึ่งยังไม่ตรงกับความต้องการของเราที่ต้องการให้ค่าทั้ง 2 ค่านี้แสดงถึงอุณหภูมิเดียวกันเสมอ
 
-We also can't display the `BoilingVerdict` from `Calculator`. The `Calculator` doesn't know the current temperature because it is hidden inside the `TemperatureInput`.
+นอกจากนี้ เรายังไม่สามารถแสดง `BoilingVerdict` ใน `Calculator` ได้ เนื่องจาก `Calculator` ไม่รู้ค่าอินพุทปัจจุบัน เพราะว่าค่านั้นถูกเก็บไว้ในคอมโพเนนท์ `TemperatureInput`
 
 ## Writing Conversion Functions {#writing-conversion-functions}
 
@@ -299,7 +300,7 @@ class Calculator extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/WZpxpz?editors=0010)
+[**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/WZpxpz?editors=0010)
 
 Now, no matter which input you edit, `this.state.temperature` and `this.state.scale` in the `Calculator` get updated. One of the inputs gets the value as is, so any user input is preserved, and the other input value is always recalculated based on it.
 
