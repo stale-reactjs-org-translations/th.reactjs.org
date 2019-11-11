@@ -197,6 +197,7 @@ class Board extends React.Component {
   renderSquare(i) {
     return <Square value={i} />;
   }
+}
 ```
 
 เปลี่ยนฟังก์ชั่น `render` ของคอมโพเนนท์ Square เพื่อแสดงค่านั้น โดยการแทนที่ส่วน `{/* TODO */}` ด้วยโค้ด `{this.props.value}` นี้:
