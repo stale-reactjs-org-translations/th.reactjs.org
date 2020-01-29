@@ -6,22 +6,22 @@ layout: docs
 category: Reference
 ---
 
-**Importing**
+**ใช้งาน ReactTestUtils**
 
 ```javascript
 import ReactTestUtils from 'react-dom/test-utils'; // ES6
 var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
 ```
 
-## Overview {#overview}
+## การอธิบายโดยสรุป {#overview}
 
-`ReactTestUtils` makes it easy to test React components in the testing framework of your choice. At Facebook we use [Jest](https://facebook.github.io/jest/) for painless JavaScript testing. Learn how to get started with Jest through the Jest website's [React Tutorial](https://jestjs.io/docs/tutorial-react).
+ในการเทส React components โดยใช้การใช้ testing framework `ReactTestUtils`จะมาทำให้การเทสนั้นๆสะดวกขึ้น. ที่ Facebook เราใช้ [Jest](https://facebook.github.io/jest/) สำหรับการเทส JavaScript. เรียนรู้การเขียนเทสโดยใช้Jest ผ่านทาง เว็บไซต์Jest[React Tutorial](https://jestjs.io/docs/tutorial-react).
 
-> Note:
+> หมายเหตุ:
 >
-> We recommend using [React Testing Library](https://testing-library.com/react) which is designed to enable and encourage writing tests that use your components as the end users do.
+> เราแนะนำให้ใช้ [React Testing Library](https://testing-library.com/react) ซึ่งเป็นไลบรารี่ที่ออกแบบมาเพื่อให้ใช้งานและสนับสนุนการเขียนเทสเพื่อทดสอบ components
 >
-> Alternatively, Airbnb has released a testing utility called [Enzyme](https://airbnb.io/enzyme/), which makes it easy to assert, manipulate, and traverse your React Components' output.
+> อีกทางเลือกหนึ่งคือ ใช้ไลบรารี่สำหรับการทดสอบนั้นคือ [Enzyme](https://airbnb.io/enzyme/) ที่ทาง Airbnbได้ปล่อยออกมา, ซึ่งจะทำให้ง่ายต่อการตรวจสอบ จัดการ หรือ สำรวจ React Components' output ของคุณ.
 
  - [`act()`](#act)
  - [`mockComponent()`](#mockcomponent)
@@ -40,17 +40,17 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
  - [`renderIntoDocument()`](#renderintodocument)
  - [`Simulate`](#simulate)
 
-## Reference {#reference}
+## อ้างอิง {#reference}
 
 ### `act()` {#act}
 
-To prepare a component for assertions, wrap the code rendering it and performing updates inside an `act()` call. This makes your test run closer to how React works in the browser.
+ใช้เพื่อการเตรียม component ก่อนที่จะทำการ assertion(การตรวจสอบ), นำโค้ดไปครอบไว้ด้วย `act()` จากนั้นเมื่อมีการ render หรือการอัปเดทเกิดขึ้นจะเกิดขึ้นภายใน `act()` call. ซึ่งการเทสแบบนี้จะเป็นการจำลองการทำงานของ React บนเว็บบราวเซอร์
 
->Note
+>หมายเหตุ
 >
->If you use `react-test-renderer`, it also provides an `act` export that behaves the same way.
+>หากคุณใช้ `react-test-renderer`, ก็จะสามารถให้ `act` export ซึ่งลักษณะการทำงานเหมือนกัน
 
-For example, let's say we have this `Counter` component:
+ตัวอย่างเช่น, กำหนดให้มี  `Counter` component:
 
 ```js
 class Counter extends React.Component {
@@ -83,7 +83,7 @@ class Counter extends React.Component {
 }
 ```
 
-Here is how we can test it:
+วิธีที่เราจะเทส component นี้ด้วย `act`:
 
 ```js{3,20-22,29-31}
 import React from 'react';
@@ -122,10 +122,9 @@ it('can render and update a counter', () => {
 });
 ```
 
-- Don't forget that dispatching DOM events only works when the DOM container is added to the `document`. You can use a library like [React Testing Library](https://testing-library.com/react) to reduce the boilerplate code.
+- อย่างลืมว่า dispatching DOM events จะทำงานก็ต่อเมื่อ DOM container นั้นถูกใส่ไว้ใน `document`. ซึ่งคุณจะสามารถใช้ไลบรารี่ เช่น [React Testing Library](https://testing-library.com/react) เพื่อลด boilerplate code ลงได้.
 
-- The [`recipes`](/docs/testing-recipes.html) document contains more details on how `act()` behaves, with examples and usage.
-
+- ข้อมูลอื่นๆเพิ่มเติมเกี่ยวกับ `act` จำพวก behave พร้อมตัวอย่างและการใช้งานสามารถอ่านเพิ่มเติมได้จาก [`recipes`](/docs/testing-recipes.html) 
 * * *
 
 ### `mockComponent()` {#mockcomponent}
@@ -137,11 +136,11 @@ mockComponent(
 )
 ```
 
-Pass a mocked component module to this method to augment it with useful methods that allow it to be used as a dummy React component. Instead of rendering as usual, the component will become a simple `<div>` (or other tag if `mockTagName` is provided) containing any provided children.
+ใส่โมดูลของ component เข้าไปใน method นี้เพื่อทำให้เกิดเป็น component ซึ่งจะมาแทนที่การ render componet แบบปกติ การเรียก component จะเหลือเพียง `<div>` (หรือ tag อื่นๆหากมีการกำหนด `mockTagName`) รวมไปถึง children component เช่นกัน
 
-> Note:
+> หมายเหตุ:
 >
-> `mockComponent()` is a legacy API. We recommend using [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) instead.
+> `mockComponent()` เป็น legacy API. ดังนั้นเราจึงแนะนำ[`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) ดีกว่า
 
 * * *
 
@@ -151,7 +150,7 @@ Pass a mocked component module to this method to augment it with useful methods 
 isElement(element)
 ```
 
-Returns `true` if `element` is any React element.
+คืนค่า `true` หาก `element` นั้นเป็น React element.
 
 * * *
 
@@ -164,7 +163,7 @@ isElementOfType(
 )
 ```
 
-Returns `true` if `element` is a React element whose type is of a React `componentClass`.
+คืนค่า `true` หาก `element` นั้นเป็น React element และเป็นชนิด `componentClass`.
 
 * * *
 
@@ -174,7 +173,7 @@ Returns `true` if `element` is a React element whose type is of a React `compone
 isDOMComponent(instance)
 ```
 
-Returns `true` if `instance` is a DOM component (such as a `<div>` or `<span>`).
+คืนค่า `true` หาก `instance` เป็น DOM component (เช่น `<div>` หรือ `<span>`).
 
 * * *
 
@@ -184,7 +183,7 @@ Returns `true` if `instance` is a DOM component (such as a `<div>` or `<span>`).
 isCompositeComponent(instance)
 ```
 
-Returns `true` if `instance` is a user-defined component, such as a class or a function.
+คืนค่า `true` หาก `instance` เป็น user-defined component เช่น class หรือ function.
 
 * * *
 
@@ -197,7 +196,7 @@ isCompositeComponentWithType(
 )
 ```
 
-Returns `true` if `instance` is a component whose type is of a React `componentClass`.
+คืนค่า `true` หาก `instance` หากเป็น component ซึ่งชนิดของ componet นั้นคือ React `componentClass`.
 
 * * *
 
@@ -210,7 +209,7 @@ findAllInRenderedTree(
 )
 ```
 
-Traverse all components in `tree` and accumulate all components where `test(component)` is `true`. This is not that useful on its own, but it's used as a primitive for other test utils.
+ตรวจสอบ component ทั้งหมดใน `tree` และ รวบรวม component ที่ `test(component)` เป็น `true`. ฟังก์ชั่นนี้อาจหากใช้เดี่ยวๆอาจไม่ได้มีประโยชน์เท่าไหร่ ดังนั้นจึงใช้เป็นองค์ประกอบของ test utils อื่นๆ
 
 * * *
 
@@ -223,7 +222,7 @@ scryRenderedDOMComponentsWithClass(
 )
 ```
 
-Finds all DOM elements of components in the rendered tree that are DOM components with the class name matching `className`.
+ค้นหา DOM elements ของ components ใน rendered tree ซึ่ง DOM components class name ตรงกัน `className`.
 
 * * *
 
@@ -236,7 +235,7 @@ findRenderedDOMComponentWithClass(
 )
 ```
 
-Like [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass) but expects there to be one result, and returns that one result, or throws exception if there is any other number of matches besides one.
+เหมือนกับ [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass) แต่คาดหวังว่าจะค่าผลลัพธ์ที่ได้เพียงค่าเดียว และ คืนค่าเพียงค่านั้น หรือ throws exception ถ้าหากมีผลลัพธ์อื่นนอกเหนือจากผลลัพธ์นั้น
 
 * * *
 
@@ -249,7 +248,7 @@ scryRenderedDOMComponentsWithTag(
 )
 ```
 
-Finds all DOM elements of components in the rendered tree that are DOM components with the tag name matching `tagName`.
+ค้นหา DOM elements ของ components ใน rendered tree ซึ่ง DOM components tag name matching ตรงกัน `tagName`.
 
 * * *
 
@@ -262,8 +261,7 @@ findRenderedDOMComponentWithTag(
 )
 ```
 
-Like [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag) but expects there to be one result, and returns that one result, or throws exception if there is any other number of matches besides one.
-
+เหมือน [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag) แต่คาดหวังว่าจะค่าผลลัพธ์ที่ได้เพียงค่าเดียว และ คืนค่าเพียงค่านั้น หรือ throws exception ถ้าหากมีผลลัพธ์อื่นนอกเหนือจากผลลัพธ์นั้น
 * * *
 
 ### `scryRenderedComponentsWithType()` {#scryrenderedcomponentswithtype}
@@ -275,7 +273,7 @@ scryRenderedComponentsWithType(
 )
 ```
 
-Finds all instances of components with type equal to `componentClass`.
+ค้นหา instance ของ component ที่ เป็น `componentClass`.
 
 * * *
 
@@ -288,8 +286,7 @@ findRenderedComponentWithType(
 )
 ```
 
-Same as [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) but expects there to be one result and returns that one result, or throws exception if there is any other number of matches besides one.
-
+เหมือนกับ [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) แต่คาดหวังว่าจะค่าผลลัพธ์ที่ได้เพียงค่าเดียว และ คืนค่าเพียงค่านั้น หรือ throws exception ถ้าหากมีผลลัพธ์อื่นนอกเหนือจากผลลัพธ์นั้น
 ***
 
 ### `renderIntoDocument()` {#renderintodocument}
@@ -298,20 +295,20 @@ Same as [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) bu
 renderIntoDocument(element)
 ```
 
-Render a React element into a detached DOM node in the document. **This function requires a DOM.** It is effectively equivalent to:
+แสดง React element แบบ DOM node เดี่ยว ในรูปแบบ document. **ฟังก์ชั่นนี้ต้องมี DOM.** ฟังก์ชั่นนี้มีประสิทธิภาพเทียบได้เท่ากับ:
 
 ```js
 const domContainer = document.createElement('div');
 ReactDOM.render(element, domContainer);
 ```
 
-> Note:
+> หมายเหตุ:
 >
-> You will need to have `window`, `window.document` and `window.document.createElement` globally available **before** you import `React`. Otherwise React will think it can't access the DOM and methods like `setState` won't work.
+> คุณจะต้องมี `window`, `window.document` และ `window.document.createElement` ซึ่งใช้ได้แบบ globally  **ก่อนที่** คุณจะ import `React`. มิเช่นนั้น React จะคิดว่ามันไม่สามารถ access DOM แล้วจะทำให้ methods เช่น `setState` ใช้งานไม่ได้.
 
 * * *
 
-## Other Utilities {#other-utilities}
+## Utilities อื่นๆ {#other-utilities}
 
 ### `Simulate` {#simulate}
 
@@ -322,11 +319,11 @@ Simulate.{eventName}(
 )
 ```
 
-Simulate an event dispatch on a DOM node with optional `eventData` event data.
+Simulate เป็น dispatch event บน DOM node ซึ่มีค่า `eventData` event dataให้ใช้ได้.
 
-`Simulate` has a method for [every event that React understands](/docs/events.html#supported-events).
+`Simulate` มี method [สำหรับทุกeventในReact](/docs/events.html#supported-events).
 
-**Clicking an element**
+**การกด element**
 
 ```javascript
 // <button ref={(node) => this.button = node}>...</button>
@@ -334,7 +331,7 @@ const node = this.button;
 ReactTestUtils.Simulate.click(node);
 ```
 
-**Changing the value of an input field and then pressing ENTER.**
+**การใส่ค่าเข้าไปใน input field แล้วกด ENTER.**
 
 ```javascript
 // <input ref={(node) => this.textInput = node} />
@@ -344,8 +341,8 @@ ReactTestUtils.Simulate.change(node);
 ReactTestUtils.Simulate.keyDown(node, {key: "Enter", keyCode: 13, which: 13});
 ```
 
-> Note
+> หมายเหตุ
 >
-> You will have to provide any event property that you're using in your component (e.g. keyCode, which, etc...) as React is not creating any of these for you.
+> คุณจะต้องกำหนด event property ที่คุณจะใช้ในแต่ละ component เอง (e.g. keyCode, which, etc...) ซึ่ง React ไม่ได้กำหนดให้.
 
 * * *
