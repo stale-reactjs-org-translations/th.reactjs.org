@@ -56,11 +56,7 @@ function ActionLink() {
 
 โดย `e` ในที่นี้เป็นข้อมูลที่สังเคราะห์ขึ้นจากเหตุการณ์นั้น ซึ่ง React สร้างขึ้นมาตาม[ข้อกำหนดของ W3C](https://www.w3.org/TR/DOM-Level-3-Events/) ดังนั้นจึงไม่ต้องกังวลกับการรองรับการใช้งานในหลายบราว์เซอร์ ดูรายละเอียดเพิ่มเติมได้ที่[`เหตุการณ์สังเคราะห์`](/docs/events.html) 
 
-<<<<<<< HEAD
-ในการเขียน React นั้น มักจะไม่จำเป็นที่ต้องเรียก `addEventListener` บน DOM element หลังจากที่มันถูกสร้าง เราเพียงแค่ให้ข้อมูลการรับฟัง(listener) เมื่อ element นั้นถูกนำไปแสดงผลในครั้งแรก
-=======
-When using React, you generally don't need to call `addEventListener` to add listeners to a DOM element after it is created. Instead, just provide a listener when the element is initially rendered.
->>>>>>> 5b6ad388804aaa5cf5504ccd04329f52960e17ae
+ในการเขียน React นั้น มักจะไม่จำเป็นที่ต้องเรียก `addEventListener` เพื่อเพิ่มข้อมูลการรับฟัง (listener) บน DOM element หลังจากที่มันถูกสร้าง เราเพียงแค่ให้ข้อมูลการรับฟัง(listener) เมื่อ element นั้นถูกนำไปแสดงผลในครั้งแรก
 
 เมื่อเขียนคอมโพเนนท์ขึ้นมาด้วย [คลาส ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) ตัวจัดการเหตุการณ์โดยทั่วไปนั้นคือ method ของคลาส ยกตัวอย่างเช่นคอมโพเนนท์ `Toggle` ที่มีการแสดงสถานะ "เปิด" (ON) และ "ปิด" (OFF) โดยผู้ใช้สามารถสลับค่าไปมาได้
 
@@ -146,11 +142,7 @@ class LoggingButton extends React.Component {
 
 ## การส่งค่าเข้าไปยังการจัดการเหตุการณ์ {#passing-arguments-to-event-handlers}
 
-<<<<<<< HEAD
-ภายใน Loop เรามักจะต้องการพารามิเตอร์ที่เพิ่มขึ้นในการจัดการเหตุการณ์ ยกตัวอย่างเช่นถ้า `id` เป็นค่าเฉพาะของแต่ละแถว(ID)
-=======
-Inside a loop, it is common to want to pass an extra parameter to an event handler. For example, if `id` is the row ID, either of the following would work:
->>>>>>> 5b6ad388804aaa5cf5504ccd04329f52960e17ae
+ภายใน Loop เรามักจะต้องการพารามิเตอร์ที่เพิ่มขึ้นในการจัดการเหตุการณ์ ยกตัวอย่างเช่นถ้า `id` เป็นค่าเฉพาะของแต่ละแถว(ID) หรือไม่ตัวอย่างข้างล่างนี้ควรจะทำงานได้
 
 ```js
 <button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>

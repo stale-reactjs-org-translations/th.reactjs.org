@@ -14,13 +14,13 @@
 
 ### การติดตั้ง
 
-1. `cd reactjs.org` เพื่อเข้าไปในรูทโปรเจค
+1. `cd reactjs.org` พื่อเข้าไปในรูทโปรเจ็กต์
 1. `yarn` เพื่อติดตั้ง npm ดีเพนเดนซี (npm dependencie) ของเว็บไซต์
 
 ### ทำงานในเครื่อง
 
 1. `yarn dev` เพื่อที่จะเริ่มต้นฮอทรีโหลดดิ้ง (hot-reloading) เซิฟเวอร์ที่กำลังพัฒนาอยู่ (สนับสนุนโดย [Gatsby](https://www.gatsbyjs.org))
-1. `open http://localhost:8000` เพื่อเปิดเว็บไซต์ในเบราว์เซอร์ใดก็ได้ที่คุณชอบ
+1. `open http://localhost:8000` เพื่อเปิดเว็บไซต์ในบราวเซอร์ใดก็ได้ที่คุณชอบ
 
 ## การสนับสนุน
 
@@ -33,6 +33,7 @@
 1. `git checkout master` ในโฟลเดอร์ของเรโป (repository) `reactjs.org` บนเครื่องของคุณ
 1. `git pull origin master` เพื่อให้มั่นใจว่าคุณมีโค้ดหลัก (main code) อันล่าสุด
 1. `git checkout -b the-name-of-my-branch` (แทนที่ `the-name-of-my-branch` ด้วยชื่อที่เหมาะสม) เพื่อที่จะสร้าง branch
+
 
 ### สร้างการเปลี่ยนแปลง
 
