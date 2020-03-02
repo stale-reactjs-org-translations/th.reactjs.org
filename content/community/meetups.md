@@ -144,10 +144,14 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 ## Switzerland {#switzerland}
 * [Zurich](https://www.meetup.com/Zurich-ReactJS-Meetup/)
 
+## Turkey {#turkey}
+* [Istanbul](https://www.meetup.com/ReactJS-Istanbul/)
+
 ## Ukraine {#ukraine}
 * [Kyiv](https://www.meetup.com/Kyiv-ReactJS-Meetup)
 
 ## US {#us}
+* [Ann Arbor, MI - ReactJS](https://www.meetup.com/AnnArbor-jsx/)
 * [Atlanta, GA - ReactJS](https://www.meetup.com/React-ATL/)
 * [Austin, TX - ReactJS](https://www.meetup.com/ReactJS-Austin-Meetup/)
 * [Boston, MA - ReactJS](https://www.meetup.com/ReactJS-Boston/)
