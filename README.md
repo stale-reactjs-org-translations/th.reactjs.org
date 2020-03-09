@@ -36,11 +36,19 @@
 
 ### การสร้างความเปลี่ยนแปลง
 
+<<<<<<< HEAD
 1. ทำตามขั้นตอน "การทำงานในเครื่อง"
 1. เซฟไฟล์และตรวจสอบบนบราวเซอร์
 1. แก้ไขหรือเปลี่ยนแปลง React components ใน `src` จะทำให้ฮอทรีโหลด (hot-reload)
 1. แก้ไขหรือเปลี่ยนแปลงไฟล์มาร์กดาวน์ (markdown) ใน `content` จะทำให้ฮอทรีโหลด (hot-reload)
 1. ถ้าหากทำงานกับปลั๊กอิน (plugin), คุณอาจจำเป็นต้องลบ `.cache` ไดเรกทอรี (directory) และรีสตาร์ทเซิร์ฟเวอร์
+=======
+1. Follow the ["Running locally"](#running-locally) instructions
+1. Save the files and check in the browser
+  1. Changes to React components in `src` will hot-reload
+  1. Changes to markdown files in `content` will hot-reload
+  1. If working with plugins, you may need to remove the `.cache` directory and restart the server
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 ### ทดสอบสิ่งที่เปลี่ยน
 
