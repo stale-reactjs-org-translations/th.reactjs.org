@@ -37,11 +37,7 @@ redirect_from:
 
 คุณสามารถดูสิ่งที่เรากำลังจะสร้างนี้จาก : **[ตัวเกมที่เสร็จแล้ว](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)** ถ้าคุณเห็นโค้ด แล้วดูไม่สมเหตุสมผลเอาซะเลย หรือดูแล้วยังไม่คุ้นเคยกับโครงสร้างของไวยากรณ์ (Syntax), อย่าเพิ่งกังกลไป! เพราะจุดประสงค์ของแบบฝึกหัดนี้เพื่อช่วยให้คุณเข้าใจ React และไวยากรณ์เหล่านี้ให้มากขึ้นนั่นเอง
 
-<<<<<<< HEAD
 เราแนะนำให้คุณดูตัวเกมโอ-เอ็กซ์ ก่อนที่จะลุยกันต่อกับแบบฝึกหัดนี้, ฟีเจอร์ (Feature) นึงที่คุณจะสังเกตเห็นทันทีเลยนั่นก็คือ รายการลำดับเลขที่อยู่ฝั่งขวามือของกระดาน รายการนี้จะแสดงประวัติการเดินหมากแต่ละครั้งที่เกิดขึ้น และมันจะอัพเดทตลอดเวลา ในขณะที่ี่เกมดำเนินไป
-=======
-We recommend that you check out the tic-tac-toe game before continuing with the tutorial. One of the features that you'll notice is that there is a numbered list to the right of the game's board. This list gives you a history of all of the moves that have occurred in the game, and it is updated as the game progresses.
->>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 พอคุณคุ้นเคยกับตัวเกมแล้ว ก็ปิดมันไปได้เลย ในแบบฝึกหัดนี้เราจะเริ่มจากรูปแบบง่าย ๆ กันก่อน โดยขั้นตอนต่อไปเราจะมาติดตั้งเครื่องมือที่จำเป็นกันก่อน เพื่อให้คุณได้เริ่มสร้างเกมกัน
 
