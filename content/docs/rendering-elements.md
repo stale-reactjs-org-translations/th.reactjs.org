@@ -34,7 +34,7 @@ const element = <h1>Hello, world</h1>;
 
 แอปพลิเคชันที่ถูกสร้างจากแค่ React มักจะมีรูทโหนด DOM เพียงอันเดียว ถ้าคุณกำลังต้องการจะผสานรวม React เข้ากับแอปที่มีอยู่แล้ว, คุณอาจมีรูทโหนด DOM ที่แยกได้มากเท่าที่คุณต้องการ
 
-ในการแสดงผลองค์ประกอบของ React เข้าไปในรูทโหนด DOM ต้องส่งทั้งสองอย่างไปยังฟังก์ชั่น `ReactDOM.render()`:
+ในการแสดงผลองค์ประกอบของ React เข้าไปในรูทโหนด DOM ต้องส่งทั้งสองอย่างไปยังฟังก์ชั่น [`ReactDOM.render()`](/docs/react-dom.html#render):
 
 `embed:rendering-elements/render-an-element.js`
 
@@ -46,7 +46,7 @@ const element = <h1>Hello, world</h1>;
 
 องค์ประกอบของ React นั้นคือ [สิ่งที่ไม่เปลี่ยนรูป](https://en.wikipedia.org/wiki/Immutable_object) ทันทีที่คุณสร้างองค์ประกอบขึ้นมาหนึ่งตัว, คุณจะไม่สามารถเปลี่ยนลูก ๆ หรือแอตทริบิวต์ของมันได้ องค์ประกอบก็เหมือนเฟรมหนึ่งเฟรมในหนัง: มันเป็นตัวแทนของ UI ณ เวลาใดเวลาหนึ่งเท่านั้น
 
-ด้วยความรู้ของเราจนถึงตอนนี้, ทางเดียวที่จะปรับปรุง UI ได้คือสร้างองค์ประกอบใหม่, และส่งต่อไปยังฟังก์ชั่น `ReactDOM.render()`
+ด้วยความรู้ของเราจนถึงตอนนี้, ทางเดียวที่จะปรับปรุง UI ได้คือสร้างองค์ประกอบใหม่, และส่งต่อไปยังฟังก์ชั่น [`ReactDOM.render()`](/docs/react-dom.html#render)
 
 ลองพิจารณาตัวอย่างนาฬิกาที่กำลังเดินอยู่นี้:
 
@@ -54,6 +54,11 @@ const element = <h1>Hello, world</h1>;
 
 [ทดลองบน Codepen](codepen://rendering-elements/update-rendered-element)
 
+มันจะเรียกใช้ฟังก์ชั่น [`ReactDOM.render()`](/docs/react-dom.html#render) ทุกวินาทีจากการตอบกลับของฟังก์ชั่น [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)
+
+>**หมายเหตุ:**
+>
+>ในทางปฏิบัติ, แอป React ส่วนใหญ่จะเรียกใช้ฟังก์ชั่น [`ReactDOM.render()`](/docs/react-dom.html#render) เพียงครั้งเดียวเท่านั้น ในหัวข้อต่อไปเราจะมาเรียนรู้ว่าการห่อหุ้มโค้ดไว้ใน [สเตทฟูลคอมโพเนนท์](/docs/state-and-lifecycle.html) ทำอย่างไร
 มันจะเรียกใช้ฟังก์ชั่น `ReactDOM.render()` ทุกวินาทีจากการตอบกลับของฟังก์ชั่น [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)
 
 >**หมายเหตุ:**
