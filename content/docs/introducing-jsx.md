@@ -177,11 +177,7 @@ const element = {
 
 อ็อปเจคเหล่านี้เรียกว่า "องค์ประกอบ" ของ React  คุณสามารถคิดว่าพวกมันเป็นคำอธิบายของสิ่งที่คุณต้องการจะเห็นบนหน้าจอ React อ่านอ็อปเจคเหล่านี้และใช้พวกมันเพื่อสร้าง DOM และปรับปรุงให้ทันสมัยอยู่เสมอ
 
-<<<<<<< HEAD
-เราจะสำรวจการแสดงผลองค์ประกอบของ React ต่อ DOM ในหัวข้อถัดไป
-=======
-We will explore rendering React elements to the DOM in the [next section](/docs/rendering-elements.html).
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+เราจะทำความเข้าใจการแสดงผลขององค์ประกอบ React บน DOM ใน[หัวข้อถัดไป](/docs/rendering-elements.html)
 
 >**เกร็ดความรู้:**
 >

@@ -37,11 +37,7 @@ redirect_from:
 
 คุณสามารถดูสิ่งที่เรากำลังจะสร้างนี้จาก : **[ตัวเกมที่เสร็จแล้ว](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)** ถ้าคุณเห็นโค้ด แล้วดูไม่สมเหตุสมผลเอาซะเลย หรือดูแล้วยังไม่คุ้นเคยกับโครงสร้างของไวยากรณ์ (Syntax), อย่าเพิ่งกังกลไป! เพราะจุดประสงค์ของแบบฝึกหัดนี้เพื่อช่วยให้คุณเข้าใจ React และไวยากรณ์เหล่านี้ให้มากขึ้นนั่นเอง
 
-<<<<<<< HEAD
 เราแนะนำให้คุณดูตัวเกมโอ-เอ็กซ์ ก่อนที่จะลุยกันต่อกับแบบฝึกหัดนี้, ฟีเจอร์ (Feature) นึงที่คุณจะสังเกตเห็นทันทีเลยนั่นก็คือ รายการลำดับเลขที่อยู่ฝั่งขวามือของกระดาน รายการนี้จะแสดงประวัติการเดินหมากแต่ละครั้งที่เกิดขึ้น และมันจะอัพเดทตลอดเวลา ในขณะที่ี่เกมดำเนินไป
-=======
-We recommend that you check out the tic-tac-toe game before continuing with the tutorial. One of the features that you'll notice is that there is a numbered list to the right of the game's board. This list gives you a history of all of the moves that have occurred in the game, and it is updated as the game progresses.
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 พอคุณคุ้นเคยกับตัวเกมแล้ว ก็ปิดมันไปได้เลย ในแบบฝึกหัดนี้เราจะเริ่มจากรูปแบบง่าย ๆ กันก่อน โดยขั้นตอนต่อไปเราจะมาติดตั้งเครื่องมือที่จำเป็นกันก่อน เพื่อให้คุณได้เริ่มสร้างเกมกัน
 
@@ -294,11 +290,7 @@ class Square extends React.Component {
 
 >หมายเหตุ
 >
-<<<<<<< HEAD
 >ใน [คลาสของ JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), เมื่อนิยาม constructor ของคลาสย่อย คุณจำเป็นต้องเรียก `super` ก่อนเสมอ, คอมโพเนนท์ของ React ทุก ๆ ตัวที่เป็นคลาสและมี `constructor` ก็ควรจะเริ่มต้นด้วยการเรียก`super(props)` เช่นกัน
-=======
->In [JavaScript classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), you need to always call `super` when defining the constructor of a subclass. All React component classes that have a `constructor` should start with a `super(props)` call.
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 ถึงตรงนี้เราจะมาเปลี่ยนฟังก์ชั่น `render` ของคอมโพเนนท์ Square เพื่อที่จะแสดงค่าของสเตทปัจจุบันเมื่อมีการคลิกไปแล้ว:
 

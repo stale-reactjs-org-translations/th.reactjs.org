@@ -45,11 +45,7 @@ class Welcome extends React.Component {
 
 ในมุมมองของ React แล้วทั้งสองคอมโพเนนท์ด้านบนนั้นเหมือนกัน
 
-<<<<<<< HEAD
-คลาสนั้นมีคุณสมบัติอื่นๆเพิ่มเติม ซึ่งเราจะพูดถึงมันใน[หัวข้อถัดไป](/docs/state-and-lifecycle.html) จนกว่าจะถึงตรงนั้นเราจะใช้ฟังก์ชันคอมโพเนน์เพื่อความสั้นและกระชับ
-=======
-Function and Class components both have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html).
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+ฟังก์ชันและคลาสมีคุณสมบัติอื่นๆ เพิ่มเติม ซึ่งจะพูดถึงใน[หัวข้อถัดไป](/docs/state-and-lifecycle.html)
 
 ## การแสดงผลของคอมโพเนนท์ {#rendering-a-component}
 
@@ -65,11 +61,7 @@ const element = <div />;
 const element = <Welcome name="Sara" />;
 ```
 
-<<<<<<< HEAD
-เมื่อ React พบว่ามี element ที่เป็นคอมโพเนนท์แบบที่สร้างขึ้นมาเอง มันจะทำการแปลงแอตทริบิวต์ของ JSX นั้นให้เป็นอ็อปเจคที่เรียกว่า "พรอพส์" แล้วส่งค่าเข้าไปให้กับคอมโพเนนท์
-=======
-When React sees an element representing a user-defined component, it passes JSX attributes and children to this component as a single object. We call this object "props".
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+เมื่อ React พบว่ามี element ที่เป็นคอมโพเนนท์แบบที่สร้างขึ้นมาเอง มันจะทำการแปลงแอตทริบิวต์ของ JSX และลูกๆ ของมันให้เป็นอ็อปเจคที่เรียกว่า "พรอพส์" แล้วส่งค่าเข้าไปให้กับคอมโพเนนท์
 
 จาก Code ตัวอย่างนี้ หน้าจอจะทำการแสดงผลคำว่า "Hello, Sara" ออกมา
 
