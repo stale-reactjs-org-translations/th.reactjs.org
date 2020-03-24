@@ -7,10 +7,17 @@
 ### ข้อกำหนดเบื้องต้น
 
 1. Git
+<<<<<<< HEAD
 1. Node: เวอร์ชั่น 8.x โดยเริ่มต้นที่ 8.4.0 หรือเวอร์ชั่นที่ใหม่กว่า
 1. Yarn: ดู [เว็บไซต์ Yarn: คำแนะนำสำหรับการติดตั้ง](https://yarnpkg.com/lang/en/docs/install/)
 1. เรโป (repo) ที่ fork แล้ว (สำหรับผู้ที่เข้าร่วมโครงการ)
 1. clone ของ [reactjs.org repo](https://github.com/reactjs/reactjs.org) บนเครื่องของคุณ
+=======
+1. Node: any 12.x version starting with v12.0.0 or greater
+1. Yarn: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
+1. A fork of the repo (for any contributions)
+1. A clone of the [reactjs.org repo](https://github.com/reactjs/reactjs.org) on your local machine
+>>>>>>> 7e4f503d86bee08b88eed77a6c9d06077863a27c
 
 ### การติดตั้ง
 
