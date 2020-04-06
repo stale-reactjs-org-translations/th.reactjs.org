@@ -68,6 +68,7 @@ class NameForm extends React.Component {
 
 เนื่องจากเราได้ใส่แอตทริบิวต์ `value` ไปให้กับ element ของฟอร์ม, ค่าที่จะถูกแสดงบนหน้าจอจะเป็นค่า `this.state.value` เสมอ ทำให้ state ของ React มีสถานะเป็น "ความจริงเพียงหนึ่งเดียว" (single source of truth) และฟังก์ชัน `handleChange` จะถูกรันทุกครั้งเมื่อมีอินพุทใหม่เข้ามา ทำให้ค่าที่ถูกแสดงบนหน้าจอจะอัพเดททุกครั้งที่ผู้ใช้พิมพ์
 
+<<<<<<< HEAD
 เมื่อเราใช้คอนโทรลคอมโพเนนท์, ทุก ๆ ค่าของ state ที่จะมีการเปลี่ยนแปลง จะมีฟังก์ชันสำหรับควบคุมการเปลี่ยนแปลงควบคู่ไปด้วยเสมอ จึงทำให้การแก้ไขหรือว่าตรวจสอบอินพุทของผู้ใช้เป็นไปได้อย่างง่ายดาย ตัวอย่างเช่น หากเราต้องการให้ชื่อที่ผู้ใช้กรอกเข้ามาเป็นตัวอักษรพิมพ์ใหญ่เสมอ เราสามารถทำได้ด้วยการเขียนฟังก์ชัน `handleChange` ดังนี้:
 
 ```javascript{2}
@@ -75,6 +76,9 @@ handleChange(event) {
   this.setState({value: event.target.value.toUpperCase()});
 }
 ```
+=======
+With a controlled component, the input's value is always driven by the React state. While this means you have to type a bit more code, you can now pass the value to other UI elements too, or reset it from other event handlers.
+>>>>>>> fa5e6e7a988b4cb465601e4c3beece321edeb812
 
 ## Tag ประเภท textarea  {#the-textarea-tag}
 
