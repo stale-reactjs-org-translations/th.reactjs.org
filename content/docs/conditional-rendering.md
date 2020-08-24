@@ -122,7 +122,11 @@ ReactDOM.render(
 
 ### Inline If กับ Logical && Operator {#inline-if-with-logical--operator}
 
+<<<<<<< HEAD
 คุณอาจจะใช้ [embed expressions อะไรก็ได้ใน JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) โดยการครอบพวกมันไว้ในวงเล็บปีกกา(curly braces) โดยใช้ JavaScript logical `&&` operator ในการสร้างเงื่อนใขในการนำ element เข้ามาประกอบกันหรือไม่:
+=======
+You may [embed expressions in JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) by wrapping them in curly braces. This includes the JavaScript logical `&&` operator. It can be handy for conditionally including an element:
+>>>>>>> d16f1ee7958b5f80ef790265ba1b8711d4f228d6
 
 ```js{6-10}
 function Mailbox(props) {

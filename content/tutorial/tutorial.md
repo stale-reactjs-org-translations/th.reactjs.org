@@ -560,7 +560,11 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 #### พิจารณาว่าเมื่อใดที่จะ Re-Render ใน React {#determining-when-to-re-render-in-react}
 
+<<<<<<< HEAD
 ประโยชน์หลัก ๆ ของ การไม่เปลี่ยนรูป คือช่วยให้คุณสร้าง _คอมโพเนนท์บริสุทธิ์ (Pure components)_ ใน React ข้อมูลที่ไม่เปลี่ยนรูปสามารถระบุได้อย่างง่ายดายว่ามีการเปลี่ยนแปลงใดเกิดขึ้นบ้างซึ่งช่วยในการพิจารณาว่าเมื่อใดที่ต้อง re-rendering
+=======
+The main benefit of immutability is that it helps you build _pure components_ in React. Immutable data can easily determine if changes have been made, which helps to determine when a component requires re-rendering.
+>>>>>>> d16f1ee7958b5f80ef790265ba1b8711d4f228d6
 
 คุณสามารถเรียนรู้เพิ่มเติมเกี่ยวกับ `shouldComponentUpdate()` และวิธีการสร้าง *คอมโพเนนท์บริสุทธิ์ (Pure components)* โดยการอ่าน [การปรับปรุงประสิทธิภาพ](/docs/optimizing-performance.html#examples)
 
@@ -1045,7 +1049,11 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 **[ดูโค้ดเต็มของจุดนี้](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
+<<<<<<< HEAD
 สำหรับการเดินแต่ละครั้งในประวัติของเกมโอ-เอ็กซ์, เราสร้างรายการของ `<li>` ซึ่งมีปุ่ม `<button>` ตัวปุ่มนั้นจะมีฟังก์ชั่น `onClick` เพื่อที่จะรองรับการคลิกแล้วจะเรียกใช้ฟังก์ชั่น `this.jumpTo()` ณ ตรงนี้เราจะยังไม่ทำฟังก์ชั่น `jumpTo()` แต่ตอนนี้, เราควรจะเห็นรายการการเดินที่เกิดขึ้นภายในเกมและคำเตือนในหน้าจอคอนโซลของนักพัฒนาที่กล่าวว่า:
+=======
+For each move in the tic-tac-toe game's history, we create a list item `<li>` which contains a button `<button>`. The button has a `onClick` handler which calls a method called `this.jumpTo()`. We haven't implemented the `jumpTo()` method yet. For now, we should see a list of the moves that have occurred in the game and a warning in the developer tools console that says:
+>>>>>>> d16f1ee7958b5f80ef790265ba1b8711d4f228d6
 
 >  คำเตือน:
 >  ลูกในอาเรย์แต่ละตัวควรจะมีค่าของพร็อบ "key" ที่ไม่ซ้ำกัน ตรวจสอบฟังก์ชั่น `render` ของ "คอมโพเนนท์ Game"
@@ -1195,7 +1203,11 @@ class Game extends React.Component {
 * เก็บประวัติของเกมไว้ในขณะที่เกมยังคงดำเนินไป,
 * อนุญาตให้ผู้เล่นสามารถดูประวัติเกมย้อนหลังในกระดาน
 
+<<<<<<< HEAD
 ทำได้ดีมาก! เราหวังว่าคุณจะรู้สึกว่าคุณเข้าใจวิธีการทำงานของ React ได้ดีมากขึ้น
+=======
+Nice work! We hope you now feel like you have a decent grasp of how React works.
+>>>>>>> d16f1ee7958b5f80ef790265ba1b8711d4f228d6
 
 ตรวจสอบผลลัพธ์สุดท้ายที่นี่: **[ผลลัพธ์สุดท้าย](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**.
 
