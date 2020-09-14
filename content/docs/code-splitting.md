@@ -2,6 +2,7 @@
 id: code-splitting
 title: Code-Splitting
 permalink: docs/code-splitting.html
+prev: accessibility.html
 ---
 
 ## Bundling {#bundling}
@@ -45,7 +46,7 @@ console.log(add(16, 26)); // 42
 >
 > Your bundles will end up looking a lot different than this.
 
-If you're using [Create React App](https://github.com/facebookincubator/create-react-app), [Next.js](https://github.com/zeit/next.js/), [Gatsby](https://www.gatsbyjs.org/), or a similar tool, you will have a Webpack setup out of the box to bundle your
+If you're using [Create React App](https://create-react-app.dev/), [Next.js](https://nextjs.org/), [Gatsby](https://www.gatsbyjs.org/), or a similar tool, you will have a Webpack setup out of the box to bundle your
 app.
 
 If you aren't, you'll need to setup bundling yourself. For example, see the
