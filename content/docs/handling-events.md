@@ -58,7 +58,11 @@ function ActionLink() {
 }
 ```
 
+<<<<<<< HEAD
 โดย `e` ในที่นี้เป็นข้อมูลที่สังเคราะห์ขึ้นจากเหตุการณ์นั้น ซึ่ง React สร้างขึ้นมาตาม[ข้อกำหนดของ W3C](https://www.w3.org/TR/DOM-Level-3-Events/) ดังนั้นจึงไม่ต้องกังวลกับการรองรับการใช้งานในหลายบราว์เซอร์ ดูรายละเอียดเพิ่มเ
+=======
+Here, `e` is a synthetic event. React defines these synthetic events according to the [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/), so you don't need to worry about cross-browser compatibility. React events do not work exactly the same as native events. See the [`SyntheticEvent`](/docs/events.html) reference guide to learn more.
+>>>>>>> 1becaff62ae228d909b83ef6d08f48c01660300f
 
 ในการเขียน React นั้น มักจะไม่จำเป็นที่ต้องเรียก `addEventListener` เพื่อเพิ่มข้อมูลการรับฟัง (listener) บน DOM element หลังจากที่มันถูกสร้าง เราเพียงแค่ให้ข้อมูลการรับฟัง(listener) เมื่อ element นั้นถูกนำไปแสดงผลในครั้งแรก
 
