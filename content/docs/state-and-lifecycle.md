@@ -418,12 +418,15 @@ this.setState(function(state, props) {
 คอมโพเนนท์นั้นอาจจะเลือกที่จะส่งผ่าน state ลงไปสู่คอมโพเนนท์ลูก ด้วยการส่งผ่าน props ของคอมโพเนนท์ลูก:
 
 ```js
+<<<<<<< HEAD
 <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
 ```
 
 นี้ยังใช้งานกันคอมโพเนนท์ที่สร้างขึ้นมาเองได้ด้วย:
 
 ```js
+=======
+>>>>>>> 8f7ffa473905148fd5c7ecfd7fed5dabbd261bf0
 <FormattedDate date={this.state.date} />
 ```
 
