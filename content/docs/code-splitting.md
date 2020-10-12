@@ -45,7 +45,7 @@ console.log(add(16, 26)); // 42
 >
 > Your bundles will end up looking a lot different than this.
 
-If you're using [Create React App](https://github.com/facebookincubator/create-react-app), [Next.js](https://github.com/zeit/next.js/), [Gatsby](https://www.gatsbyjs.org/), or a similar tool, you will have a Webpack setup out of the box to bundle your
+If you're using [Create React App](https://create-react-app.dev/), [Next.js](https://nextjs.org/), [Gatsby](https://www.gatsbyjs.org/), or a similar tool, you will have a Webpack setup out of the box to bundle your
 app.
 
 If you aren't, you'll need to setup bundling yourself. For example, see the
@@ -96,14 +96,14 @@ import("./math").then(math => {
 
 When Webpack comes across this syntax, it automatically starts code-splitting
 your app. If you're using Create React App, this is already configured for you
-and you can [start using it](https://facebook.github.io/create-react-app/docs/code-splitting) immediately. It's also supported
+and you can [start using it](https://create-react-app.dev/docs/code-splitting/) immediately. It's also supported
 out of the box in [Next.js](https://nextjs.org/docs/advanced-features/dynamic-import).
 
 If you're setting up Webpack yourself, you'll probably want to read Webpack's
 [guide on code splitting](https://webpack.js.org/guides/code-splitting/). Your Webpack config should look vaguely [like this](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269).
 
 When using [Babel](https://babeljs.io/), you'll need to make sure that Babel can
-parse the dynamic import syntax but is not transforming it. For that you will need [babel-plugin-syntax-dynamic-import](https://yarnpkg.com/en/package/babel-plugin-syntax-dynamic-import).
+parse the dynamic import syntax but is not transforming it. For that you will need [@babel/plugin-syntax-dynamic-import](https://classic.yarnpkg.com/en/package/@babel/plugin-syntax-dynamic-import).
 
 ## `React.lazy` {#reactlazy}
 
