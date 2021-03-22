@@ -232,7 +232,11 @@ function Comment(props) {
 
 [ทดลองเขียนบน CodePen](codepen://components-and-props/extracting-components-continued)
 
+<<<<<<< HEAD
 การแบ่งส่วนคอมโพเนนท์อาจจะดูเป็นงานที่ดูจุกจิกในตอนแรก แต่การมีชุดของคอมโพเนนท์ที่สามารถนำไปใช้ซ้ำได้เยอะๆส่งผลดีต่อการพัฒนาในแอพที่ใหญ่ขึ้น หลักการง่ายๆคือถ้ามีส่วนของการแสดงผลที่นำไปใช้หลายๆครั้ง (เช่น `Button`, `Panel`, `Avatar`) หรือคอมโพเนนท์ที่ซับซ้อน (อย่างเช่น `App`, `FeedStory`, `Comment`) การสร้างมันให้เป็นคอมโพเนนท์ก็เป็นตัวเลือกดี
+=======
+Extracting components might seem like grunt work at first, but having a palette of reusable components pays off in larger apps. A good rule of thumb is that if a part of your UI is used several times (`Button`, `Panel`, `Avatar`), or is complex enough on its own (`App`, `FeedStory`, `Comment`), it is a good candidate to be extracted to a separate component.
+>>>>>>> df2fbde3b52336229eee550debd692184c427691
 
 ## พรอพส์นั้นต้องไม่เปลี่ยนแปลง {#props-are-read-only}
 
