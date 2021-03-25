@@ -1045,11 +1045,7 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 **[ดูโค้ดเต็มของจุดนี้](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
-<<<<<<< HEAD
 สำหรับการเดินแต่ละครั้งในประวัติของเกมโอ-เอ็กซ์, เราสร้างรายการของ `<li>` ซึ่งมีปุ่ม `<button>` ตัวปุ่มนั้นจะมีฟังก์ชั่น `onClick` เพื่อที่จะรองรับการคลิกแล้วจะเรียกใช้ฟังก์ชั่น `this.jumpTo()` ณ ตรงนี้เราจะยังไม่ทำฟังก์ชั่น `jumpTo()` แต่ตอนนี้, เราควรจะเห็นรายการการเดินที่เกิดขึ้นภายในเกมและคำเตือนในหน้าจอคอนโซลของนักพัฒนาที่กล่าวว่า:
-=======
-For each move in the tic-tac-toe game's history, we create a list item `<li>` which contains a button `<button>`. The button has a `onClick` handler which calls a method called `this.jumpTo()`. We haven't implemented the `jumpTo()` method yet. For now, we should see a list of the moves that have occurred in the game and a warning in the developer tools console that says:
->>>>>>> bc91fe4101420f98454a59ac34c1cf1d4d4f4476
 
 >  คำเตือน:
 >  ลูกในอาเรย์แต่ละตัวควรจะมีค่าของพร็อบ "key" ที่ไม่ซ้ำกัน ตรวจสอบฟังก์ชั่น `render` ของ "คอมโพเนนท์ Game"
