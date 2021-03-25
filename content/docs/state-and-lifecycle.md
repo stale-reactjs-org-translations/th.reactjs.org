@@ -424,12 +424,6 @@ this.setState(function(state, props) {
 นี้ยังใช้งานกันคอมโพเนนท์ที่สร้างขึ้นมาเองได้ด้วย:
 
 ```js
-<h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-```
-
-นี้ยังใช้งานกันคอมโพเนนท์ที่สร้างขึ้นมาเองได้ด้วย:
-
-```js
 <FormattedDate date={this.state.date} />
 ```
 
