@@ -33,32 +33,40 @@ Handling events with React elements is very similar to handling events on DOM el
 </button>
 ```
 
+<<<<<<< HEAD
 สิ่งที่แตกต่างอีกอย่างใน React คือเราไม่สามารถใช้การคืนค่า `false` ในการป้องกันสิ่งที่จะเกิดขึ้นหลังจากเหตุการณ์นั้น เราต้องเรียก `preventDefault` เอง ยกตัวอย่างเช่นถ้าต้องการจะป้องกันการเปิดหน้าใหม่หลังจากที่กดลิงค์ ในกรณีที่เป็น HTML นั้นสามารถเขียนได้ในลักษณะนี้
+=======
+Another difference is that you cannot return `false` to prevent default behavior in React. You must call `preventDefault` explicitly. For example, with plain HTML, to prevent the default form behavior of submitting, you can write:
+>>>>>>> ec2d0adcb44d6394f4e6282d8bf52f0e25dbfec3
 
 ```html
-<a href="#" onclick="console.log('The link was clicked.'); return false">
-  Click me
-</a>
+<form onsubmit="console.log('You clicked submit.'); return false">
+  <button type="submit">Submit</button>
+</form>
 ```
 
 ส่วนใน React นั้นจะเขียนแบบนี้
 
-```js{2-5,8}
-function ActionLink() {
-  function handleClick(e) {
+```js{3}
+function Form() {
+  function handleSubmit(e) {
     e.preventDefault();
-    console.log('The link was clicked.');
+    console.log('You clicked submit.');
   }
 
   return (
-    <a href="#" onClick={handleClick}>
-      Click me
-    </a>
+    <form onSubmit={handleSubmit}>
+      <button type="submit">Submit</button>
+    </form>
   );
 }
 ```
 
+<<<<<<< HEAD
 โดย `e` ในที่นี้เป็นข้อมูลที่สังเคราะห์ขึ้นจากเหตุการณ์นั้น ซึ่ง React สร้างขึ้นมาตาม[ข้อกำหนดของ W3C](https://www.w3.org/TR/DOM-Level-3-Events/) ดังนั้นจึงไม่ต้องกังวลกับการรองรับการใช้งานในหลายบราว์เซอร์ ดูรายละเอียดเพิ่มเ
+=======
+Here, `e` is a synthetic event. React defines these synthetic events according to the [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/), so you don't need to worry about cross-browser compatibility. React events do not work exactly the same as native events. See the [`SyntheticEvent`](/docs/events.html) reference guide to learn more.
+>>>>>>> ec2d0adcb44d6394f4e6282d8bf52f0e25dbfec3
 
 ในการเขียน React นั้น มักจะไม่จำเป็นที่ต้องเรียก `addEventListener` เพื่อเพิ่มข้อมูลการรับฟัง (listener) บน DOM element หลังจากที่มันถูกสร้าง เราเพียงแค่ให้ข้อมูลการรับฟัง(listener) เมื่อ element นั้นถูกนำไปแสดงผลในครั้งแรก
 
@@ -75,8 +83,8 @@ class Toggle extends React.Component {
   }
 
   handleClick() {
-    this.setState(state => ({
-      isToggleOn: !state.isToggleOn
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
     }));
   }
 
