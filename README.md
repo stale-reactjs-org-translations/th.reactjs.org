@@ -58,9 +58,15 @@
 
 1. `git add -A && git commit -m "My message"` (แทนที่ `My message` ด้วยข้อความที่จะคอมมิท เช่น `Fix header logo on Android`) เพื่อสเตทและคอมมิทสิ่งที่คุณเปลี่ยนแปลง
 1. `git push my-fork-name the-name-of-my-branch`
+<<<<<<< HEAD
 1. ไปที่ [reactjs.org repo](https://github.com/reactjs/reactjs.org) และคุณควรจะเห็น branch ล่าสุดที่คุณ push
 1. ทำตามคำแนะนำของ GitHub
 1. หากเป็นไปได้, เพิ่มภาพสกรีนชอต (screenshot) ของการเปลี่ยนแปลงที่มองเห็นได้ Netlify build จะถูกสร้างโดยอัตโนมัติเมื่อคุณสร้าง PR เพื่อให้คนอื่นเห็นการเปลี่ยนแปลงที่คุณทำ
+=======
+1. Go to the [reactjs.org repo](https://github.com/reactjs/reactjs.org) and you should see recently pushed branches.
+1. Follow GitHub's instructions.
+1. If possible, include screenshots of visual changes. A [Netlify](https://www.netlify.com/) build will also be automatically created once you make your PR so other people can see your change.
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 ## การแปลภาษา
 
