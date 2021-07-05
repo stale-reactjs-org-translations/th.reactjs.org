@@ -9,7 +9,11 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
+<<<<<<< HEAD
 HTML element ประเภท ฟอร์ม (form) จะทำงานแตกต่างจาก DOM element ประเภทอื่นๆ ใน React เล็กน้อย เนื่องจากโดยปกติ element ประเภทฟอร์ม จะมีการเก็บ state ไว้เป็นของตัวเองอยู่แล้ว (ไม่เกี่ยวกับ state ของ React) ดังตัวอย่างด้านล่างที่เป็นแบบฟอร์ม HTML ทั่วไปที่รับข้อมูลเพียงหนึ่งอย่างคือ ชื่อ
+=======
+HTML form elements work a bit differently from other DOM elements in React, because form elements naturally keep some internal state. For example, this form in plain HTML accepts a single name:
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ```html
 <form>
@@ -31,7 +35,7 @@ HTML element ประเภท ฟอร์ม (form) จะทำงานแ�
 
 ตัวอย่างเช่น หากเราต้องการให้ตัวอย่างฟอร์มที่ถูกกล่าวถึงก่อนหน้านี้ log ข้อมูลชื่อที่ผู้ใช้กรอกเข้ามา เมื่อกดปุ่ม submit เราสามารถเขียนฟอร์มเป็นคอนโทรลคอมโพเนนท์ได้ดังนี้
 
-```javascript{4,10-12,24}
+```javascript{4,10-12,21,24}
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
@@ -225,7 +229,7 @@ class Reservation extends React.Component {
 
   handleInputChange(event) {
     const target = event.target;
-    const value = target.name === 'isGoing' ? target.checked : target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
     this.setState({

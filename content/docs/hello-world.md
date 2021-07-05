@@ -40,7 +40,11 @@ React เป็น JavaScript ไลบราลี่, ดังนั้นเ
 
 >หมายเหตุ
 >
+<<<<<<< HEAD
 >ในคู่มือนี้จะใช้ไวยากรณ์ JavaScript ที่ใหม่กว่าบางครั้ง หากคุณไม่ได้ทำงานกับ JavaScript เลยในช่วงไม่กี่ปีที่ผ่านมานี้ [เกร็ดความรู้ 3 หัวข้อนี้](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) ก็พอจะช่วยคุณได้มากอยู่
+=======
+>This guide occasionally uses some newer JavaScript syntax in the examples. If you haven't worked with JavaScript in the last few years, [these three points](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) should get you most of the way.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 
 ## มาเริ่มกันเลย! {#lets-get-started}
