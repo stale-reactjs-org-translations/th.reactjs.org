@@ -207,7 +207,11 @@ ReactDOM.render(
 
 ### ค่า key จะต้องมีเอกลักษ์ในหมู่พี่น้องของมัน(Keys Must Only Be Unique Among Siblings){#keys-must-only-be-unique-among-siblings}
 
+<<<<<<< HEAD
 ค่า key ที่ใช้ใน arrays นั้นจะต้องมีความเป็นเอกลักษ์ในหมู่พี่น้องของมันเท่านั้น  แต่ไม่จำเป็นต้องมีเอกลักษ์ในทุกๆที่(Globally) เราอาจจะใช้ key เดียวกันเมื่อเราสร้าง array ที่ต่างกัน 2 ชุดได้:
+=======
+Keys used within arrays should be unique among their siblings. However, they don't need to be globally unique. We can use the same keys when we produce two different arrays:
+>>>>>>> 78f78a664fcfaa2e5d9650d9662a67a8ab028661
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {
