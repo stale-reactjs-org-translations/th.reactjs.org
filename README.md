@@ -33,13 +33,23 @@
 
 ### แนวทาง
 
+<<<<<<< HEAD
 เอกสารแบ่งออกเป็นหลายส่วนด้วยลักษณะและวัตถุประสงค์ที่แตกต่างกัน หากคุณวางแผนที่จะเขียนมากกว่าสองสามประโยค คุณอาจพบว่าการทำความคุ้นเคยกับ [แนวทางการสนับสนุน](https://github.com/reactjs/reactjs.org/blob/master/CONTRIBUTING.md#guidelines-for-text) นั้นเป็นประโยชน์สำหรับแต่ละส่วน
+=======
+The documentation is divided into several sections with a different tone and purpose. If you plan to write more than a few sentences, you might find it helpful to get familiar with the [contributing guidelines](https://github.com/reactjs/reactjs.org/blob/main/CONTRIBUTING.md#guidelines-for-text) for the appropriate sections.
+>>>>>>> 4fab3d31469ab7a53dbf8b50cab5d57880a0c035
 
 ### สร้าง branch
 
+<<<<<<< HEAD
 1. `git checkout master` ในโฟลเดอร์ของเรโป (repository) `reactjs.org` บนเครื่องของคุณ
 1. `git pull origin master` เพื่อให้มั่นใจว่าคุณมีโค้ดหลัก (main code) อันล่าสุด
 1. `git checkout -b the-name-of-my-branch` (แทนที่ `the-name-of-my-branch` ด้วยชื่อที่เหมาะสม) เพื่อที่จะสร้าง branch
+=======
+1. `git checkout main` from any folder in your local `reactjs.org` repository
+1. `git pull origin main` to ensure you have the latest main code
+1. `git checkout -b the-name-of-my-branch` (replacing `the-name-of-my-branch` with a suitable name) to create a branch
+>>>>>>> 4fab3d31469ab7a53dbf8b50cab5d57880a0c035
 
 ### การสร้างความเปลี่ยนแปลง
 
@@ -58,13 +68,23 @@
 
 1. `git add -A && git commit -m "My message"` (แทนที่ `My message` ด้วยข้อความที่จะคอมมิท เช่น `Fix header logo on Android`) เพื่อสเตทและคอมมิทสิ่งที่คุณเปลี่ยนแปลง
 1. `git push my-fork-name the-name-of-my-branch`
+<<<<<<< HEAD
 1. ไปที่ [reactjs.org repo](https://github.com/reactjs/reactjs.org) และคุณควรจะเห็น branch ล่าสุดที่คุณ push
 1. ทำตามคำแนะนำของ GitHub
 1. หากเป็นไปได้, เพิ่มภาพสกรีนชอต (screenshot) ของการเปลี่ยนแปลงที่มองเห็นได้ Netlify build จะถูกสร้างโดยอัตโนมัติเมื่อคุณสร้าง PR เพื่อให้คนอื่นเห็นการเปลี่ยนแปลงที่คุณทำ
+=======
+1. Go to the [reactjs.org repo](https://github.com/reactjs/reactjs.org) and you should see recently pushed branches.
+1. Follow GitHub's instructions.
+1. If possible, include screenshots of visual changes. A [Netlify](https://www.netlify.com/) build will also be automatically created once you make your PR so other people can see your change.
+>>>>>>> 4fab3d31469ab7a53dbf8b50cab5d57880a0c035
 
 ## การแปลภาษา
 
+<<<<<<< HEAD
 ถ้าคุณสนใจในการแปล `reactjs.org`, ดูการแปลปัจจุบันได้ที่ [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/)
+=======
+If you are interested in translating `reactjs.org`, please see the current translation efforts at [translations.reactjs.org](https://translations.reactjs.org/).
+>>>>>>> 4fab3d31469ab7a53dbf8b50cab5d57880a0c035
 
 
 หากภาษาของคุณไม่มีการแปลและคุณต้องการที่จะสร้าง โปรดทำตามคำแนะนำที่ [reactjs.org Translations](https://github.com/reactjs/reactjs.org-translation#translating-reactjsorg)
