@@ -327,6 +327,10 @@ class Calculator extends React.Component {
 
 หากคุณพบเห็นสิ่งผิดปกติใน UI คุณสามารถใช้ [React Developer Tools](https://github.com/facebook/react/tree/master/packages/react-devtools) เพื่อตรวจสอบ prop นั้นและไล่ดูคอมโพเนนท์บรรพบุรุษของมันขึ้นไปเรื่อย ๆ จนคุณเจอกับคอมโพเนนท์ที่มีหน้าที่อัพเดท state นั้น สิ่งนี้ช่วยให้คุณสามารถค้นหาที่มาของบั๊กได้อย่างมีประสิทธิภาพ
 
+<<<<<<< HEAD
+=======
+When you see something wrong in the UI, you can use [React Developer Tools](https://github.com/facebook/react/tree/main/packages/react-devtools) to inspect the props and move up the tree until you find the component responsible for updating the state. This lets you trace the bugs to their source:
+>>>>>>> 23d03a854ba21aeea0a03a0bd5185e0def9237d6
 
 <img src="../images/docs/react-devtools-state.gif" alt="Monitoring State in React DevTools" max-width="100%" height="100%">
 
