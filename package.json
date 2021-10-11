@@ -46,7 +46,11 @@
     "mdast-util-to-string": "^1.0.5",
     "normalize.css": "^8.0.0",
     "prettier": "^1.7.4",
+<<<<<<< HEAD
     "prismjs": "^1.15.0",
+=======
+    "prismjs": "^1.25.0",
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^5.2.0",
