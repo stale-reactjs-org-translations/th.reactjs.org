@@ -92,7 +92,7 @@ function getGreeting(user) {
 คุณสามารถใช้เครื่องหมายคำพูด เมื่อเป็นตัวอักษรสตริง ในแอตทริบิวต์:
 
 ```js
-const element = <div tabIndex="0"></div>;
+const element = <div tabIndex={0}></div>;
 ```
 
 คุณอาจใช้วงเล็บปีกกา เมื่อฝังนิพจน์ JavaScript ในแอตทริบิวต์:
@@ -181,8 +181,4 @@ const element = {
 
 >**เกร็ดความรู้:**
 >
-<<<<<<< HEAD
 >เราแนะนำให้ใช้ [นิยามภาษาของ "Babel"](https://babeljs.io/docs/editors) สำหรับเครื่องมือแก้ไขข้อความที่คุณเลือกเพื่อให้ทั้ง ES6 และรหัส JSX ถูกเน้นอย่างถูกต้อง
-=======
->We recommend using the ["Babel" language definition](https://babeljs.io/docs/en/next/editors) for your editor of choice so that both ES6 and JSX code is properly highlighted.
->>>>>>> 7a11d71b384d41c21dd5d475b96d45b5497ade76
