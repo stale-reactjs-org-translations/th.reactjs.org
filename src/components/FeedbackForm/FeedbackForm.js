@@ -54,7 +54,6 @@ const FeedbackForm = () => {
               value: 0,
             });
             setFeedbackGiven(true);
-
           }}>
           <svg
             css={{
