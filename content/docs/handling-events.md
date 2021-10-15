@@ -8,11 +8,7 @@ redirect_from:
   - "docs/events-ko-KR.html"
 ---
 
-<<<<<<< HEAD
 การจัดการเหตุการณ์ที่เกิดบน React elements นั้นมีความคล้ายคลึงกับการจัดการเหตุการณ์บน DOM elements มาก มีเพียงไวยากรณ์ที่ต่างกันเล็กน้อย
-=======
-Handling events with React elements is very similar to handling events on DOM elements. There are some syntax differences:
->>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 * เหตุการณ์ที่เกิดบน React ใช้วิธีเขียนชื่อแบบ camelCase แทนที่จะเป็นภาษาอังกฤษตัวพิมพ์เล็ก
 * เราส่งฟังก์ชั่นเข้ามาเป็นตัวจัดการเหตุการณ์ใน JSX เลย แทนที่จะเป็น string
