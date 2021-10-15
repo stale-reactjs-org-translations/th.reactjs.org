@@ -122,6 +122,7 @@ ReactDOM.render(
 
 ### Inline If กับ Logical && Operator {#inline-if-with-logical--operator}
 
+
 คุณอาจจะใช้ [embed expressions อะไรก็ได้ใน JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) โดยการครอบพวกมันไว้ในวงเล็บปีกกา(curly braces) โดยใช้ JavaScript logical `&&` operator ในการสร้างเงื่อนใขในการนำ element เข้ามาประกอบกันหรือไม่:
 
 ```js{6-10}
