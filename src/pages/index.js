@@ -60,7 +60,11 @@ class Home extends Component {
         <div
           css={{
             width: '100%',
-            marginTop: banner ? banner.normalHeight : 0,
+            marginTop: 'var(--banner-height-normal)',
+
+            [media.lessThan('small')]: {
+              marginTop: 'var(--banner-height-small)',
+            },
           }}>
           <header
             css={{

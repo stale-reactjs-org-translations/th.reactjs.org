@@ -47,7 +47,7 @@ class StickyResponsiveSidebar extends Component<Props, State> {
     const {open} = this.state;
     const {banner} = this.context;
     const smallScreenSidebarStyles = {
-      top: banner ? banner.smallHeight : 0,
+      top: 'var(--banner-height-small)',
       left: 0,
       bottom: 0,
       right: 0,
@@ -121,18 +121,18 @@ class StickyResponsiveSidebar extends Component<Props, State> {
               transition: 'transform 0.5s ease',
             }}
             css={{
-              marginTop: 60 + (banner ? banner.normalHeight : 0),
+              marginTop: 'calc(60px + var(--banner-height-normal))',
 
               [media.size('xsmall')]: {
                 marginTop: 60,
               },
 
               [media.between('small', 'medium')]: {
-                marginTop: 20 + (banner ? banner.normalHeight : 0),
+                marginTop: 'calc(20px + var(--banner-height-normal))',
               },
 
               [media.between('medium', 'large')]: {
-                marginTop: 50 + (banner ? banner.normalHeight : 0),
+                marginTop: 'calc(50px + var(--banner-height-normal))',
               },
 
               [media.greaterThan('small')]: {
