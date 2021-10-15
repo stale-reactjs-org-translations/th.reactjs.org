@@ -152,7 +152,7 @@ ReactDOM.render(
 
 ด้วยเหตุนี้ถ้าเงื่อนใขเป็น `true` แล้ว element ด้านขวาที่อยู่หลัง `&&` จะปรากฏเป็นเป็นผลลัพธ์เสมอ ถ้ามันเป็น `false` แล้ว React จะเพิกเฉยและข้ามมันไป
 
-### Inline If-Else with Conditional Operator {#inline-if-else-with-conditional-operator}
+### Inline If-Else กับ Conditional Operator {#inline-if-else-with-conditional-operator}
 
 อีกวิธีหนึ่งสำหรับการสร้างเงื่อนใขในการแสดงผลแบบ inline คือ การใช้ JavaScript conditional operator [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator).
 
