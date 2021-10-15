@@ -53,6 +53,8 @@ const FeedbackForm = () => {
               label: window.location.pathname,
               value: 0,
             });
+            setFeedbackGiven(true);
+
           }}>
           <svg
             css={{
