@@ -181,8 +181,4 @@ const element = {
 
 >**เกร็ดความรู้:**
 >
-<<<<<<< HEAD
 >เราแนะนำให้ใช้ [นิยามภาษาของ "Babel"](https://babeljs.io/docs/editors) สำหรับเครื่องมือแก้ไขข้อความที่คุณเลือกเพื่อให้ทั้ง ES6 และรหัส JSX ถูกเน้นอย่างถูกต้อง
-=======
->We recommend using the ["Babel" language definition](https://babeljs.io/docs/en/next/editors) for your editor of choice so that both ES6 and JSX code is properly highlighted.
->>>>>>> 5e437a10ed4e89cd5eaf990ce4f43e0857592b53
