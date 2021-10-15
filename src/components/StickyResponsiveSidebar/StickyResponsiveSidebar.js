@@ -124,7 +124,7 @@ class StickyResponsiveSidebar extends Component<Props, State> {
               marginTop: 60 + (banner ? banner.normalHeight : 0),
 
               [media.size('xsmall')]: {
-                marginTop: 40,
+                marginTop: 60,
               },
 
               [media.between('small', 'medium')]: {
