@@ -186,7 +186,6 @@ function NumberList(props) {
   const listItems = numbers.map((number) =>
     // ถูกต้อง! Key ควรถูกกำหนดภายใน array
     <ListItem key={number.toString()} value={number} />
-
   );
   return (
     <ul>
