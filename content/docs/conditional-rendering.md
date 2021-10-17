@@ -122,7 +122,6 @@ ReactDOM.render(
 
 ### Inline If กับ Logical && Operator {#inline-if-with-logical--operator}
 
-
 คุณอาจจะใช้ [embed expressions อะไรก็ได้ใน JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) โดยการครอบพวกมันไว้ในวงเล็บปีกกา(curly braces) โดยใช้ JavaScript logical `&&` operator ในการสร้างเงื่อนใขในการนำ element เข้ามาประกอบกันหรือไม่:
 
 ```js{6-10}
@@ -154,6 +153,18 @@ ReactDOM.render(
 ด้วยเหตุนี้ถ้าเงื่อนใขเป็น `true` แล้ว element ด้านขวาที่อยู่หลัง `&&` จะปรากฏเป็นเป็นผลลัพธ์เสมอ ถ้ามันเป็น `false` แล้ว React จะเพิกเฉยและข้ามมันไป
 
 ### Inline If-Else กับ Conditional Operator {#inline-if-else-with-conditional-operator}
+Note that returning a falsy expression will still cause the element after `&&` to be skipped but will return the falsy expression. In the example below, `<div>0</div>` will be returned by the render method.
+
+```javascript{2,5}
+render() {
+  const count = 0;
+  return (
+    <div>
+      { count && <h1>Messages: {count}</h1>}
+    </div>
+  );
+}
+```
 
 อีกวิธีหนึ่งสำหรับการสร้างเงื่อนใขในการแสดงผลแบบ inline คือ การใช้ JavaScript conditional operator [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator).
 
