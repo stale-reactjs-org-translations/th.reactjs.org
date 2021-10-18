@@ -7,6 +7,7 @@
 
 import Container from 'components/Container';
 import React, {Component} from 'react';
+import {BannerContext} from 'components/Banner';
 import Sidebar from 'templates/components/Sidebar';
 import {colors, media} from 'theme';
 import ChevronSvg from 'templates/components/ChevronSvg';
@@ -24,6 +25,8 @@ type Props = {
 };
 
 class StickyResponsiveSidebar extends Component<Props, State> {
+  static contextType = BannerContext;
+
   constructor(props: Props) {
     super(props);
 
@@ -42,6 +45,7 @@ class StickyResponsiveSidebar extends Component<Props, State> {
 
   render() {
     const {open} = this.state;
+    const {banner} = this.context;
     const smallScreenSidebarStyles = {
       top: 'var(--banner-height-small)',
       left: 0,
@@ -120,7 +124,7 @@ class StickyResponsiveSidebar extends Component<Props, State> {
               marginTop: 'calc(60px + var(--banner-height-normal))',
 
               [media.size('xsmall')]: {
-                marginTop: 40,
+                marginTop: 60,
               },
 
               [media.between('small', 'medium')]: {
