@@ -8,11 +8,7 @@ redirect_from:
   - "docs/events-ko-KR.html"
 ---
 
-<<<<<<< HEAD
 การจัดการเหตุการณ์ที่เกิดบน React elements นั้นมีความคล้ายคลึงกับการจัดการเหตุการณ์บน DOM elements มาก มีเพียงไวยากรณ์ที่ต่างกันเล็กน้อย
-=======
-Handling events with React elements is very similar to handling events on DOM elements. There are some syntax differences:
->>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 * เหตุการณ์ที่เกิดบน React ใช้วิธีเขียนชื่อแบบ camelCase แทนที่จะเป็นภาษาอังกฤษตัวพิมพ์เล็ก
 * เราส่งฟังก์ชั่นเข้ามาเป็นตัวจัดการเหตุการณ์ใน JSX เลย แทนที่จะเป็น string
@@ -58,11 +54,7 @@ function ActionLink() {
 }
 ```
 
-<<<<<<< HEAD
-โดย `e` ในที่นี้เป็นข้อมูลที่สังเคราะห์ขึ้นจากเหตุการณ์นั้น ซึ่ง React สร้างขึ้นมาตาม[ข้อกำหนดของ W3C](https://www.w3.org/TR/DOM-Level-3-Events/) ดังนั้นจึงไม่ต้องกังวลกับการรองรับการใช้งานในหลายบราว์เซอร์ ดูรายละเอียดเพิ่มเ
-=======
-Here, `e` is a synthetic event. React defines these synthetic events according to the [W3C spec](https://www.w3.org/TR/DOM-Level-3-Events/), so you don't need to worry about cross-browser compatibility. React events do not work exactly the same as native events. See the [`SyntheticEvent`](/docs/events.html) reference guide to learn more.
->>>>>>> 4fa06486cdb8c5a1cd7e3d88b24e76b1920f33fd
+โดย `e` ในที่นี้เป็นข้อมูลที่สังเคราะห์ขึ้นจากเหตุการณ์นั้น ซึ่ง React สร้างขึ้นมาตาม[ข้อกำหนดของ W3C](https://www.w3.org/TR/DOM-Level-3-Events/) ดังนั้นจึงไม่ต้องกังวลกับการรองรับการใช้งานในหลายบราว์เซอร์ เหตูการณ์ของ React จะไม่เหมือนเหตุการณ์ของเบราว์เซอร์เสียทีเดียว ดูรายละเอียดเพิ่มเติม [`SyntheticEvent`](/docs/events.html)
 
 ในการเขียน React นั้น มักจะไม่จำเป็นที่ต้องเรียก `addEventListener` เพื่อเพิ่มข้อมูลการรับฟัง (listener) บน DOM element หลังจากที่มันถูกสร้าง เราเพียงแค่ให้ข้อมูลการรับฟัง(listener) เมื่อ element นั้นถูกนำไปแสดงผลในครั้งแรก
 
