@@ -235,7 +235,7 @@ class Square extends React.Component {
 class Square extends React.Component {
   render() {
     return (
-      <button className="square" onClick={function() { alert('click'); }}>
+      <button className="square" onClick={function() { console.log('click'); }}>
         {this.props.value}
       </button>
     );
@@ -243,7 +243,11 @@ class Square extends React.Component {
 }
 ```
 
+<<<<<<< HEAD
 ตอนนี้ถ้าคุณคลิกบนคอมโพเนนท์ Square, คุณควรจะเห็นหน้าจอฟ้องขึ้นมาในเบราเซอร์ของคุณ
+=======
+If you click on a Square now, you should see 'click' in your browser's devtools console.
+>>>>>>> 4133943e718a77f11627888db2f59f6cb7a73403
 
 >หมายเหตุ
 >
@@ -253,7 +257,7 @@ class Square extends React.Component {
 >class Square extends React.Component {
 >  render() {
 >    return (
->      <button className="square" onClick={() => alert('click')}>
+>      <button className="square" onClick={() => console.log('click')}>
 >        {this.props.value}
 >      </button>
 >    );
@@ -261,7 +265,11 @@ class Square extends React.Component {
 >}
 >```
 >
+<<<<<<< HEAD
 >สังเกตวิธีที่เขียน `onClick={() => alert('click')}`, เรากำลังทำการส่งwe're passing *ฟังก์ชั่น* เป็นพร็อบให้กับ `onClick` แล้ว React จะเรียกฟังก์ชั่นนี้เท่านั้น หลังจากการคลิกแต่ละครั้ง การลืม `() =>` และเขียน `onClick={alert('click')}` เป็นข้อผิดพลาดทั่วไป และจะทำให้เห็นหน้าจอฟ้องขึ้นมาทุกครั้งที่มีเรนเดอร์ใหม่
+=======
+>Notice how with `onClick={() => console.log('click')}`, we're passing *a function* as the `onClick` prop. React will only call this function after a click. Forgetting `() =>` and writing `onClick={console.log('click')}` is a common mistake, and would fire every time the component re-renders.
+>>>>>>> 4133943e718a77f11627888db2f59f6cb7a73403
 
 ในขั้นต่อไป, เราต้องการให้คอมโพเนนท์ Square "จำ" ว่ามันได้ถูกคลิกไปแล้ว, และใส่ "X" ลงไป. เพื่อ "จำ" สิ่งต่าง ๆ, คอมโพเนนท์จะใช้ **สเตท (State)**.
 
@@ -280,7 +288,7 @@ class Square extends React.Component {
 
   render() {
     return (
-      <button className="square" onClick={() => alert('click')}>
+      <button className="square" onClick={() => console.log('click')}>
         {this.props.value}
       </button>
     );
@@ -451,11 +459,19 @@ class Square extends React.Component {
 
 เมื่อคอมโพเนนท์ Square ถูกคลิก, พร็อบ `onClick` ที่ถูกส่งมาจากคอมโพเนนท์ Board จะถูกเรียกใช้ และนี่คือขั้นตอนที่มันเกิดขึ้น:
 
+<<<<<<< HEAD
 1. พร็อบ `onClick` ที่อยู่ใน DOM ของคอมโพเนนท์ `<button>` บอก React ตั้งค่ารอรับการกดปุ่มคลิก
 2. เมื่อปุ่มถูกคลิก, React จะเรียกใช้ `onClick` ที่ถูกประกาศไว้ในฟังก์ชั่น `render()` ของคอมโพเนนท์ Square
 3. ทำให้เกิดการเรียกใช้ `this.props.onClick()` พร็อบ `onClick` ของคอมโพเนนท์ Square ที่ถูกระบุมาจากคอมโพเนนท์ Board
 4. เนื่องจากคอมโพเนนท์ Board ได้ส่ง `onClick={() => this.handleClick(i)}` ไปหาคอมโพเนนท์ Square, ดังนั้นคอมโพเนนท์ Square จึงเรียกใช้ `this.handleClick(i)` เมื่อมันถูกคลิก
 5. เรายังไม่ได้ประกาศฟังก์ชั่น `handleClick()` กันเลย, ดังนั้นโค้ดของเราเลยพัง ถ้าคุณลองคลิกที่ช่องตารางตอนนี้, คุณควรจะเห็นหน้าจอเออเรอร์สีแดงบอกประมาณว่า "this.handleClick is not a function".
+=======
+1. The `onClick` prop on the built-in DOM `<button>` component tells React to set up a click event listener.
+2. When the button is clicked, React will call the `onClick` event handler that is defined in Square's `render()` method.
+3. This event handler calls `this.props.onClick()`. The Square's `onClick` prop was specified by the Board.
+4. Since the Board passed `onClick={() => this.handleClick(i)}` to Square, the Square calls the Board's `handleClick(i)` when clicked.
+5. We have not defined the `handleClick()` method yet, so our code crashes. If you click a square now, you should see a red error screen saying something like "this.handleClick is not a function".
+>>>>>>> 4133943e718a77f11627888db2f59f6cb7a73403
 
 >หมายเหตุ
 >
@@ -524,7 +540,11 @@ class Board extends React.Component {
 
 ### ทำไม การไม่เปลี่ยนรูป (Immutability) จึงมีความสำคัญ {#why-immutability-is-important}
 
+<<<<<<< HEAD
 ในโค้ดตัวอย่างก่อนหน้านี้, เราแนะนำให้คุณใช้ `.slice()` เพื่อสร้างสำเนาของอาเรย์ `squares` แทนที่จะไปแก้ไขข้อมูลที่มีอยู่ในอาเรย์นั้นตรง ๆ ตอนนี้เราจะพูดถึง การไม่เปลี่ยนรูป (immutability) และทำไมจึงเป็นเรื่องสำคัญที่ต้องเรียนรู้
+=======
+In the previous code example, we suggested that you create a copy of the `squares` array using the `slice()` method instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
+>>>>>>> 4133943e718a77f11627888db2f59f6cb7a73403
 
 วิธีการเปลี่ยนแปลงข้อมูลนั้น โดยทั่วไปจะมีอยู่ 2 วิธีด้วยกัน วิธีการแรก คือ *การเปลี่ยนรูป (mutate)* โดยการเปลี่ยนแปลงค่าของข้อมูลโดยตรง วิธีการที่สอง คือ การแทนที่ข้อมูลด้วยสำเนาใหม่ซึ่งมีการเปลี่ยนแปลงเฉพาะส่วนที่ต้องการ
 
@@ -1045,7 +1065,13 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 **[ดูโค้ดเต็มของจุดนี้](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
+<<<<<<< HEAD
 สำหรับการเดินแต่ละครั้งในประวัติของเกมโอ-เอ็กซ์, เราสร้างรายการของ `<li>` ซึ่งมีปุ่ม `<button>` ตัวปุ่มนั้นจะมีฟังก์ชั่น `onClick` เพื่อที่จะรองรับการคลิกแล้วจะเรียกใช้ฟังก์ชั่น `this.jumpTo()` ณ ตรงนี้เราจะยังไม่ทำฟังก์ชั่น `jumpTo()` แต่ตอนนี้, เราควรจะเห็นรายการการเดินที่เกิดขึ้นภายในเกมและคำเตือนในหน้าจอคอนโซลของนักพัฒนาที่กล่าวว่า:
+=======
+As we iterate through `history` array, `step` variable refers to the current `history` element value, and `move` refers to the current `history` element index. We only interested in `move` here, hence `step` is not getting assigned to anything.
+
+For each move in the tic-tac-toe game's history, we create a list item `<li>` which contains a button `<button>`. The button has a `onClick` handler which calls a method called `this.jumpTo()`. We haven't implemented the `jumpTo()` method yet. For now, we should see a list of the moves that have occurred in the game and a warning in the developer tools console that says:
+>>>>>>> 4133943e718a77f11627888db2f59f6cb7a73403
 
 >  คำเตือน:
 >  ลูกในอาเรย์แต่ละตัวควรจะมีค่าของพร็อบ "key" ที่ไม่ซ้ำกัน ตรวจสอบฟังก์ชั่น `render` ของ "คอมโพเนนท์ Game"
