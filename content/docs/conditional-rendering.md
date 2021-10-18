@@ -167,8 +167,6 @@ render() {
 }
 ```
 
-### Inline If-Else with Conditional Operator {#inline-if-else-with-conditional-operator}
-
 อีกวิธีหนึ่งสำหรับการสร้างเงื่อนใขในการแสดงผลแบบ inline คือ การใช้ JavaScript conditional operator [`condition ? true : false`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator).
 ในตัวอย่างด้านล่าง เราใชัมันในการสร้างเงื่อนใขในการแสดงผลสำหรับข้อความสั้นบางส่วน:
 
