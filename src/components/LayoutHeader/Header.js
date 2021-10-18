@@ -259,6 +259,9 @@ const Header = ({location}: {location: Location}) => (
         </div>
       </div>
     </Container>
+    <Container>
+      <Banner />
+    </Container>
   </header>
 );
 
