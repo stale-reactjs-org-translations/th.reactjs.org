@@ -20,7 +20,6 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
 > หมายเหตุ:
 >
 > เราแนะนำให้ใช้ [React Testing Library](https://testing-library.com/react) ซึ่งเป็นไลบรารี่ที่ออกแบบมาเพื่อให้ใช้งานและสนับสนุนการเขียนเทสเพื่อทดสอบ components
->
 > สำหรับ React เวอร์ชั่น 16 ไลบรารี่ [Enzyme](https://airbnb.io/enzyme/) ใช้งานง่ายต่อการตรวจสอบ จัดการ หรือ สำรวจ React Components' output ของคุณ.
 
  - [`act()`](#act)
