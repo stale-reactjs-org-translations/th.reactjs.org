@@ -153,7 +153,6 @@ ReactDOM.render(
 ด้วยเหตุนี้ถ้าเงื่อนใขเป็น `true` แล้ว element ด้านขวาที่อยู่หลัง `&&` จะปรากฏเป็นเป็นผลลัพธ์เสมอ ถ้ามันเป็น `false` แล้ว React จะเพิกเฉยและข้ามมันไป
 
 ### Inline If-Else กับ Conditional Operator {#inline-if-else-with-conditional-operator}
-
 Note that returning a falsy expression will still cause the element after `&&` to be skipped but will return the falsy expression. In the example below, `<div>0</div>` will be returned by the render method.
 
 ```javascript{2,5}
