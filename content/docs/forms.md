@@ -9,11 +9,7 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
-<<<<<<< HEAD
 HTML element ประเภท ฟอร์ม (form) จะทำงานแตกต่างจาก DOM element ประเภทอื่นๆ ใน React เล็กน้อย เนื่องจากโดยปกติ element ประเภทฟอร์ม จะมีการเก็บ state ไว้เป็นของตัวเองอยู่แล้ว (ไม่เกี่ยวกับ state ของ React) ดังตัวอย่างด้านล่างที่เป็นแบบฟอร์ม HTML ทั่วไปที่รับข้อมูลเพียงหนึ่งอย่างคือ ชื่อ
-=======
-HTML form elements work a bit differently from other DOM elements in React, because form elements naturally keep some internal state. For example, this form in plain HTML accepts a single name:
->>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
 
 ```html
 <form>
@@ -72,7 +68,6 @@ class NameForm extends React.Component {
 
 เนื่องจากเราได้ใส่แอตทริบิวต์ `value` ไปให้กับ element ของฟอร์ม, ค่าที่จะถูกแสดงบนหน้าจอจะเป็นค่า `this.state.value` เสมอ ทำให้ state ของ React มีสถานะเป็น "ความจริงเพียงหนึ่งเดียว" (single source of truth) และฟังก์ชัน `handleChange` จะถูกรันทุกครั้งเมื่อมีอินพุทใหม่เข้ามา ทำให้ค่าที่ถูกแสดงบนหน้าจอจะอัพเดททุกครั้งที่ผู้ใช้พิมพ์
 
-<<<<<<< HEAD
 เมื่อเราใช้คอนโทรลคอมโพเนนท์, ทุก ๆ ค่าของ state ที่จะมีการเปลี่ยนแปลง จะมีฟังก์ชันสำหรับควบคุมการเปลี่ยนแปลงควบคู่ไปด้วยเสมอ จึงทำให้การแก้ไขหรือว่าตรวจสอบอินพุทของผู้ใช้เป็นไปได้อย่างง่ายดาย ตัวอย่างเช่น หากเราต้องการให้ชื่อที่ผู้ใช้กรอกเข้ามาเป็นตัวอักษรพิมพ์ใหญ่เสมอ เราสามารถทำได้ด้วยการเขียนฟังก์ชัน `handleChange` ดังนี้:
 
 ```javascript{2}
@@ -80,9 +75,6 @@ handleChange(event) {
   this.setState({value: event.target.value.toUpperCase()});
 }
 ```
-=======
-With a controlled component, the input's value is always driven by the React state. While this means you have to type a bit more code, you can now pass the value to other UI elements too, or reset it from other event handlers.
->>>>>>> fa5e6e7a988b4cb465601e4c3beece321edeb812
 
 ## Tag ประเภท textarea  {#the-textarea-tag}
 
