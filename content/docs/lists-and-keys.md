@@ -185,7 +185,8 @@ function NumberList(props) {
   const numbers = props.numbers;
   const listItems = numbers.map((number) =>
     // ถูกต้อง! Key ควรถูกกำหนดภายใน array
-    <ListItem key={number.toString()} value={number} />
+    <ListItem key={number.toString()}
+              value={number} />
   );
   return (
     <ul>
