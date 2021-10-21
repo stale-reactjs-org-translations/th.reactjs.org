@@ -29,7 +29,8 @@ redirect_from:
 </button>
 ```
 
-Another difference is that you cannot return `false` to prevent default behavior in React. You must call `preventDefault` explicitly. For example, with plain HTML, to prevent the default form behavior of submitting, you can write:
+
+สิ่งที่แตกต่างอีกอย่างใน React คือเราไม่สามารถใช้การคืนค่า `false` ในการป้องกันสิ่งที่จะเกิดขึ้นหลังจากเหตุการณ์นั้น เราต้องเรียก `preventDefault` เอง ยกตัวอย่างเช่นถ้าต้องการจะป้องกันการเปิดหน้าใหม่หลังจากที่กดลิงค์ ในกรณีที่เป็น HTML นั้นสามารถเขียนได้ในลักษณะนี้
 
 ```html
 <form onsubmit="console.log('You clicked submit.'); return false">
