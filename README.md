@@ -32,7 +32,7 @@
 
 1. `git checkout master` ในโฟลเดอร์ของเรโป (repository) `reactjs.org` บนเครื่องของคุณ
 1. `git pull origin master` เพื่อให้มั่นใจว่าคุณมีโค้ดหลัก (main code) อันล่าสุด
-1. `git checkout -b the-name-of-my-branch` (แทนที่ `the-name-of-my-branch` ด้วยชื่อที่เหมาะสม) เพื่อที่จะสร้าง branch
+1. `git checkout -b the-name-of-my-branch` (แทนที่ `the-name-of-my-branch` ด้วยชื่อที่เหมาะสม) เพื่อที่จะสร้าง
 
 ### การสร้างความเปลี่ยนแปลง
 
@@ -66,5 +66,5 @@
 
 - `yarn reset` เพื่อล้างแคชในเครื่อง
 
-## License
-Content submitted to [reactjs.org](https://reactjs.org/) is CC-BY-4.0 licensed, as found in the [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/main/LICENSE-DOCS.md) file.
+## การอนุญาต
+เนื้อหาที่ส่งไปยัง [reactjs.org](https://reactjs.org/) ได้รับใบอนุญาต CC-BY-4.0 ตามที่พบในไฟล์ [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md)
