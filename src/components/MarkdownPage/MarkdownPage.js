@@ -57,6 +57,7 @@ const MarkdownPage = ({
   sectionList,
   titlePostfix = '',
 }: Props) => {
+  const {banner} = useContext(BannerContext);
   const hasAuthors = authors.length > 0;
   const titlePrefix = markdownRemark.frontmatter.title || '';
 
@@ -94,7 +95,10 @@ const MarkdownPage = ({
               <MarkdownHeader title={titlePrefix} />
 
               {(date || hasAuthors) && (
-                <div css={{marginTop: 15}}>
+                <div
+                  css={{
+                    marginTop: 15,
+                  }}>
                   {date}{' '}
                   {hasAuthors && (
                     <span css={{lineHeight: 1.75}}>
