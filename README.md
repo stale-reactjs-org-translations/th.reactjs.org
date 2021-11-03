@@ -30,8 +30,8 @@
 
 ### สร้าง branch
 
-1. `git checkout master` ในโฟลเดอร์ของเรโป (repository) `reactjs.org` บนเครื่องของคุณ
-1. `git pull origin master` เพื่อให้มั่นใจว่าคุณมีโค้ดหลัก (main code) อันล่าสุด
+1. `git checkout main` ในโฟลเดอร์ของเรโป (repository) `reactjs.org` บนเครื่องของคุณ
+1. `git pull origin main` เพื่อให้มั่นใจว่าคุณมีโค้ดหลัก (main code) อันล่าสุด
 1. `git checkout -b the-name-of-my-branch` (แทนที่ `the-name-of-my-branch` ด้วยชื่อที่เหมาะสม) เพื่อที่จะสร้าง
 
 ### การสร้างความเปลี่ยนแปลง
