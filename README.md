@@ -57,7 +57,11 @@
 
 ## การแปลภาษา
 
+<<<<<<< HEAD
 ถ้าคุณสนใจในการแปล `reactjs.org`, ดูการแปลปัจจุบันได้ที่ [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/)
+=======
+If you are interested in translating `reactjs.org`, please see the current translation efforts at [translations.reactjs.org](https://translations.reactjs.org/).
+>>>>>>> 17ad2cbc71f4c1fcc3f3f9ae528bfd292a9fced7
 
 
 หากภาษาของคุณไม่มีการแปลและคุณต้องการที่จะสร้าง โปรดทำตามคำแนะนำที่ [reactjs.org Translations](https://github.com/reactjs/reactjs.org-translation#translating-reactjsorg)
