@@ -92,7 +92,11 @@ function getGreeting(user) {
 คุณสามารถใช้เครื่องหมายคำพูด เมื่อเป็นตัวอักษรสตริง ในแอตทริบิวต์:
 
 ```js
+<<<<<<< HEAD
 const element = <div tabIndex={0}></div>;
+=======
+const element = <a href="https://www.reactjs.org"> link </a>;
+>>>>>>> b9c33a05520ddc728f15c4eb19a343213309f59f
 ```
 
 คุณอาจใช้วงเล็บปีกกา เมื่อฝังนิพจน์ JavaScript ในแอตทริบิวต์:
