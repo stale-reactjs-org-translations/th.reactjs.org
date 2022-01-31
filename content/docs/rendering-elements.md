@@ -38,7 +38,11 @@ const element = <h1>Hello, world</h1>;
 
 `embed:rendering-elements/render-an-element.js`
 
+<<<<<<< HEAD
 [ทดลองบน Codepen](codepen://rendering-elements/render-an-element)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/ZpvBNJ?editors=1010)**
+>>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
 
 ผลลัพธ์คือมันจะแสดง "Hello, world" บนหน้า
 
@@ -52,7 +56,11 @@ const element = <h1>Hello, world</h1>;
 
 `embed:rendering-elements/update-rendered-element.js`
 
+<<<<<<< HEAD
 [ทดลองบน Codepen](codepen://rendering-elements/update-rendered-element)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
+>>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
 
 มันจะเรียกใช้ฟังก์ชั่น [`ReactDOM.render()`](/docs/react-dom.html#render) ทุกวินาทีจากการตอบกลับของฟังก์ชั่น [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)
 
@@ -71,7 +79,11 @@ const element = <h1>Hello, world</h1>;
 
 React DOM จะเปรียบเทียบองค์ประกอบและลูก ๆ กับองค์ประกอบก่อนหน้า, และทำการปรับปรุง DOM เฉพาะส่วนที่จำเป็นเพื่อให้ DOM เข้าสู่สถานะที่ต้องการ
 
+<<<<<<< HEAD
 คุณสามารถพิสูจน์โดยการตรวจสอบ [ตัวอย่างล่าสุด](codepen://rendering-elements/update-rendered-element) ด้วยเครื่องมือของเบราเซอร์:
+=======
+You can verify by inspecting the [last example](https://codepen.io/gaearon/pen/gwoJZk?editors=1010) with the browser tools:
+>>>>>>> 5f0549c86e7a9c0774e66687d1bc0118a681eb9d
 
 ![ตัวตรวจสอบ DOM แสดงการปรับปรุงที่ละเอียด](../images/docs/granular-dom-updates.gif)
 
