@@ -68,7 +68,11 @@ ReactDOM.render(
 );
 ```
 
+<<<<<<< HEAD
 [ทดลองบน Codepen](codepen://introducing-jsx)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/PGEjdG?editors=1010)**
+>>>>>>> 71cc6be6182418dec43b72f2a9ef464619cb7025
 
 เราแยก JSX เป็นหลายบรรทัดเพื่อให้อ่านง่าย ซึ่งจริง ๆ แล้วก็ไม่จำเป็น เมื่อทำเช่นนี้ นอกจากนี้เรายังแนะนำให้ห่อไว้ในวงเล็บเพื่อหลีกเลี่ยงข้อผิดพลาดของ [การแทรกเครื่องหมายเซมิโคลอน (;) โดยอัตโนมัติ](https://stackoverflow.com/q/2846283).
 
@@ -92,7 +96,11 @@ function getGreeting(user) {
 คุณสามารถใช้เครื่องหมายคำพูด เมื่อเป็นตัวอักษรสตริง ในแอตทริบิวต์:
 
 ```js
+<<<<<<< HEAD
 const element = <div tabIndex={0}></div>;
+=======
+const element = <a href="https://www.reactjs.org"> link </a>;
+>>>>>>> 71cc6be6182418dec43b72f2a9ef464619cb7025
 ```
 
 คุณอาจใช้วงเล็บปีกกา เมื่อฝังนิพจน์ JavaScript ในแอตทริบิวต์:
