@@ -77,7 +77,11 @@ ReactDOM.render(
 );
 ```
 
+<<<<<<< HEAD
 [ทดลองเขียนบน CodePen](codepen://components-and-props/rendering-a-component)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/YGYmEG?editors=1010)**
+>>>>>>> 71cc6be6182418dec43b72f2a9ef464619cb7025
 
 เรามาลองดูกันว่ามีอะไรเกิดขึ้นบ้างในตัวอย่างนี้
 
@@ -119,7 +123,11 @@ ReactDOM.render(
 );
 ```
 
+<<<<<<< HEAD
 [ทดลองเขียนบน CodePen](codepen://components-and-props/composing-components)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/KgQKPr?editors=1010)**
+>>>>>>> 71cc6be6182418dec43b72f2a9ef464619cb7025
 
 โดยทั่วไปแล้ว แอพที่เขียนด้วย React นั้นจะมีคอมโพเนนท์ `App` อยู่บนสุด แต่อย่างไรก็ตาม มีบางกรณี เราอาจกำลังทำการผสาน React เข้าไปในแอพเดิมที่มีอยู่แล้ว ในกรณีเช่นนี้เราอาจจะเริ่มจากการเขียนคอมโพเนนท์เล็กๆเช่น `Button` ก่อน แล้วค่อยๆขยายการใช้งานเพิ่มขึ้นไปเรื่อยๆแบบล่างขึ้นบน
 
@@ -151,7 +159,11 @@ function Comment(props) {
 }
 ```
 
+<<<<<<< HEAD
 [ทดลองเขียนบน CodePen](codepen://components-and-props/extracting-components)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/VKQwEo?editors=1010)**
+>>>>>>> 71cc6be6182418dec43b72f2a9ef464619cb7025
 
 คอมโพเนนท์นี้รับ `author` (เป็นอ็อปเจค), `text` (เป็น string) และรับ `date` (เป็น date) เข้ามาเป็นพรอพส์แล้วทำการแสดงผลข้อความ Comment ขึ้นไปบนเว็บไซต์เครือข่ายสังคม
 
@@ -230,7 +242,11 @@ function Comment(props) {
 }
 ```
 
+<<<<<<< HEAD
 [ทดลองเขียนบน CodePen](codepen://components-and-props/extracting-components-continued)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/rrJNJY?editors=1010)**
+>>>>>>> 71cc6be6182418dec43b72f2a9ef464619cb7025
 
 การแบ่งส่วนคอมโพเนนท์อาจจะดูเป็นงานที่ดูจุกจิกในตอนแรก แต่การมีชุดของคอมโพเนนท์ที่สามารถนำไปใช้ซ้ำได้เยอะๆส่งผลดีต่อการพัฒนาในแอพที่ใหญ่ขึ้น หลักการง่ายๆคือถ้ามีส่วนของการแสดงผลที่นำไปใช้หลายๆครั้ง (เช่น `Button`, `Panel`, `Avatar`) หรือคอมโพเนนท์ที่ซับซ้อน (อย่างเช่น `App`, `FeedStory`, `Comment`) การสร้างมันให้เป็นคอมโพเนนท์ก็เป็นตัวเลือกดี
 
