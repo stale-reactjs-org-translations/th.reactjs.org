@@ -10,7 +10,8 @@ import Flex from 'components/Flex';
 import MarkdownHeader from 'components/MarkdownHeader';
 import NavigationFooter from 'templates/components/NavigationFooter';
 // $FlowFixMe Update Flow
-import React from 'react';
+import React, {useContext} from 'react';
+import {BannerContext} from 'components/Banner';
 import StickyResponsiveSidebar from 'components/StickyResponsiveSidebar';
 import TitleAndMetaTags from 'components/TitleAndMetaTags';
 import FeedbackForm from 'components/FeedbackForm';

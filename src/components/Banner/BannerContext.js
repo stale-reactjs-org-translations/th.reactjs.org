@@ -8,7 +8,7 @@
 import React from 'react';
 
 // $FlowFixMe Update Flow
-export default React.createContext({
+export const BannerContext = React.createContext({
   banner: null,
   dismiss() {},
 });
