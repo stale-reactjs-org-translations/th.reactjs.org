@@ -7,7 +7,7 @@
 
 // $FlowFixMe Update Flow
 import React, {useState, useLayoutEffect} from 'react';
-import BannerContext from './BannerContext';
+import {BannerContext} from './BannerContext';
 
 let activeBanner = null;
 let snoozeStartDate = null;
@@ -68,7 +68,7 @@ type Props = {
   children: mixed,
 };
 
-export default function BannerContextManager({children}: Props) {
+export function BannerContextManager({children}: Props) {
   const [bannerContext, setBannerContext] = useState({
     banner: null,
     dismiss() {},
