@@ -139,7 +139,11 @@ mockComponent(
 
 > หมายเหตุ:
 >
+<<<<<<< HEAD
 > `mockComponent()` เป็น legacy API. ดังนั้นเราจึงแนะนำ[`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) ดีกว่า
+=======
+> `mockComponent()` is a legacy API. We recommend using [`jest.mock()`](https://jestjs.io/docs/tutorial-react-native#mock-native-modules-using-jestmock) instead.
+>>>>>>> a08e1fd4b574a4d2d55e292af9eb01d55a526303
 
 * * *
 
