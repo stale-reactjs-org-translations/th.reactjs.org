@@ -8,16 +8,27 @@ next: introducing-jsx.html
 
 ตัวอย่าง React แบบน้อยที่สุด จะเป็นแบบนี้:
 
+<<<<<<< HEAD
 ```js
 ReactDOM.render(
   <h1>Hello, World!</h1>,
   document.getElementById('root')
 );
+=======
+```jsx
+ReactDOM
+  .createRoot(document.getElementById('root'))
+  .render(<h1>Hello, world!</h1>);
+>>>>>>> 707f22d25f5b343a2e5e063877f1fc97cb1f48a1
 ```
 
 มันแสดงหัวข้อว่า "Hello, World!" บนหน้านั้น
 
+<<<<<<< HEAD
 [ทดลองบน Codepen](codepen://hello-world)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/rrpgNB?editors=1010)**
+>>>>>>> 707f22d25f5b343a2e5e063877f1fc97cb1f48a1
 
 คลิกลิ้งค์ข้างบนเพื่อเปิดตัวแก้ไขออนไลน์ อย่าลังลังที่จะทำการเปลี่ยนแปลงบางอย่าง และดูว่ามันมีผลอย่างไร หน้าส่วนใหญ่ในคู่มือนี้จะมีตัวอย่างที่สามารถแก้ไขได้เหมือนแบบนี้
 
