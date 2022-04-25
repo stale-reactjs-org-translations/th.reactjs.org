@@ -51,13 +51,23 @@
 
 1. `git add -A && git commit -m "My message"` (แทนที่ `My message` ด้วยข้อความที่จะคอมมิท เช่น `Fix header logo on Android`) เพื่อสเตทและคอมมิทสิ่งที่คุณเปลี่ยนแปลง
 1. `git push my-fork-name the-name-of-my-branch`
+<<<<<<< HEAD
 1. ไปที่ [reactjs.org repo](https://github.com/reactjs/reactjs.org) และคุณควรจะเห็น branch ล่าสุดที่คุณ push
 1. ทำตามคำแนะนำของ GitHub
 1. หากเป็นไปได้, เพิ่มภาพสกรีนชอต (screenshot) ของการเปลี่ยนแปลงที่มองเห็นได้ [Netlify](https://www.netlify.com/) build จะถูกสร้างโดยอัตโนมัติเมื่อคุณสร้าง PR เพื่อให้คนอื่นเห็นการเปลี่ยนแปลงที่คุณทำ
+=======
+1. Go to the [reactjs.org repo](https://github.com/reactjs/reactjs.org) and you should see recently pushed branches.
+1. Follow GitHub's instructions.
+1. If possible, include screenshots of visual changes. A preview build is triggered after your changes are pushed to GitHub.
+>>>>>>> 1d21630e126af0f4c04ff392934dcee80fc54892
 
 ## การแปลภาษา
 
+<<<<<<< HEAD
 ถ้าคุณสนใจในการแปล `reactjs.org`, ดูการแปลปัจจุบันได้ที่ [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/)
+=======
+If you are interested in translating `reactjs.org`, please see the current translation efforts at [translations.reactjs.org](https://translations.reactjs.org/).
+>>>>>>> 1d21630e126af0f4c04ff392934dcee80fc54892
 
 
 หากภาษาของคุณไม่มีการแปลและคุณต้องการที่จะสร้าง โปรดทำตามคำแนะนำที่ [reactjs.org Translations](https://github.com/reactjs/reactjs.org-translation#translating-reactjsorg)
