@@ -33,13 +33,14 @@ const listItems = numbers.map((number) =>
 );
 ```
 
+<<<<<<< HEAD
 จากนั้นเรานำ `listItems` array ไปไว้ภายใน `<ul>` และ[แสดงผลมันไปยัง DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
+=======
+Then, we can include the entire `listItems` array inside a `<ul>` element:
+>>>>>>> 26a870e1c6e232062b760d37620d85802750e985
 
 ```javascript{2}
-ReactDOM.render(
-  <ul>{listItems}</ul>,
-  document.getElementById('root')
-);
+<ul>{listItems}</ul>
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
@@ -64,10 +65,8 @@ function NumberList(props) {
 }
 
 const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<NumberList numbers={numbers} />);
 ```
 
 เมื่อคุณรันโค๊ดนี้ คุณจะได้ได้รับคำเตือนว่า list items นั้นควรจะมีค่าของ key ด้วย ซึ่ง "key" เป็นคุณลักษณะพิเศษ ที่คุณจำเป็นต้องเพิ่มเข้ามาเมื่อคุณสร้าง list ของ elements และเราจะพูดความสำคัญของมันในส่วนต่อไปอีกที
@@ -87,12 +86,6 @@ function NumberList(props) {
     <ul>{listItems}</ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
@@ -165,12 +158,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 **ตัวอย่าง: ที่ถูกต้องในการใช้ Key**
@@ -194,12 +181,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
@@ -240,10 +221,9 @@ const posts = [
   {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
   {id: 2, title: 'Installation', content: 'You can install React from npm.'}
 ];
-ReactDOM.render(
-  <Blog posts={posts} />,
-  document.getElementById('root')
-);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Blog posts={posts} />);
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
