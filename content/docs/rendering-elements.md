@@ -34,11 +34,19 @@ const element = <h1>Hello, world</h1>;
 
 แอปพลิเคชันที่ถูกสร้างจากแค่ React มักจะมีรูทโหนด DOM เพียงอันเดียว ถ้าคุณกำลังต้องการจะผสานรวม React เข้ากับแอปที่มีอยู่แล้ว, คุณอาจมีรูทโหนด DOM ที่แยกได้มากเท่าที่คุณต้องการ
 
+<<<<<<< HEAD
 ในการแสดงผลองค์ประกอบของ React เข้าไปในรูทโหนด DOM ต้องส่งทั้งสองอย่างไปยังฟังก์ชั่น [`ReactDOM.render()`](/docs/react-dom.html#render):
 
 `embed:rendering-elements/render-an-element.js`
 
 [ทดลองบน Codepen](codepen://rendering-elements/render-an-element)
+=======
+To render a React element, first pass the DOM element to [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot), then pass the React element to `root.render()`:
+
+`embed:rendering-elements/render-an-element.js`
+
+**[Try it on CodePen](https://codepen.io/gaearon/pen/ZpvBNJ?editors=1010)**
+>>>>>>> f67fa22cc1faee261f9e22449d90323e26174e8e
 
 ผลลัพธ์คือมันจะแสดง "Hello, world" บนหน้า
 
@@ -46,22 +54,36 @@ const element = <h1>Hello, world</h1>;
 
 องค์ประกอบของ React นั้นคือ [สิ่งที่ไม่เปลี่ยนรูป](https://en.wikipedia.org/wiki/Immutable_object) ทันทีที่คุณสร้างองค์ประกอบขึ้นมาหนึ่งตัว, คุณจะไม่สามารถเปลี่ยนลูก ๆ หรือแอตทริบิวต์ของมันได้ องค์ประกอบก็เหมือนเฟรมหนึ่งเฟรมในหนัง: มันเป็นตัวแทนของ UI ณ เวลาใดเวลาหนึ่งเท่านั้น
 
+<<<<<<< HEAD
 ด้วยความรู้ของเราจนถึงตอนนี้, ทางเดียวที่จะปรับปรุง UI ได้คือสร้างองค์ประกอบใหม่, และส่งต่อไปยังฟังก์ชั่น [`ReactDOM.render()`](/docs/react-dom.html#render)
+=======
+With our knowledge so far, the only way to update the UI is to create a new element, and pass it to `root.render()`.
+>>>>>>> f67fa22cc1faee261f9e22449d90323e26174e8e
 
 ลองพิจารณาตัวอย่างนาฬิกาที่กำลังเดินอยู่นี้:
 
 `embed:rendering-elements/update-rendered-element.js`
 
+<<<<<<< HEAD
 [ทดลองบน Codepen](codepen://rendering-elements/update-rendered-element)
 
 มันจะเรียกใช้ฟังก์ชั่น [`ReactDOM.render()`](/docs/react-dom.html#render) ทุกวินาทีจากการตอบกลับของฟังก์ชั่น [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
+
+It calls [`root.render()`](/docs/react-dom.html#render) every second from a [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback.
+>>>>>>> f67fa22cc1faee261f9e22449d90323e26174e8e
 
 >**หมายเหตุ:**
 >
+<<<<<<< HEAD
 >ในทางปฏิบัติ, แอป React ส่วนใหญ่จะเรียกใช้ฟังก์ชั่น [`ReactDOM.render()`](/docs/react-dom.html#render) เพียงครั้งเดียวเท่านั้น ในหัวข้อต่อไปเราจะมาเรียนรู้ว่าการห่อหุ้มโค้ดไว้ใน [สเตทฟูลคอมโพเนนท์](/docs/state-and-lifecycle.html) ทำอย่างไร
 มันจะเรียกใช้ฟังก์ชั่น `ReactDOM.render()` ทุกวินาทีจากการตอบกลับของฟังก์ชั่น [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)
 
 >**หมายเหตุ:**
+=======
+>In practice, most React apps only call `root.render()` once. In the next sections we will learn how such code gets encapsulated into [stateful components](/docs/state-and-lifecycle.html).
+>>>>>>> f67fa22cc1faee261f9e22449d90323e26174e8e
 >
 >ในทางปฏิบัติ, แอป React ส่วนใหญ่จะเรียกใช้ฟังก์ชั่น `ReactDOM.render()` เพียงครั้งเดียวเท่านั้น ในหัวข้อต่อไปเราจะมาเรียนรู้ว่าการห่อหุ้มโค้ดไว้ใน [สเตทฟูลคอมโพเนนท์](/docs/state-and-lifecycle.html) ทำอย่างไร
 >
@@ -71,7 +93,11 @@ const element = <h1>Hello, world</h1>;
 
 React DOM จะเปรียบเทียบองค์ประกอบและลูก ๆ กับองค์ประกอบก่อนหน้า, และทำการปรับปรุง DOM เฉพาะส่วนที่จำเป็นเพื่อให้ DOM เข้าสู่สถานะที่ต้องการ
 
+<<<<<<< HEAD
 คุณสามารถพิสูจน์โดยการตรวจสอบ [ตัวอย่างล่าสุด](codepen://rendering-elements/update-rendered-element) ด้วยเครื่องมือของเบราเซอร์:
+=======
+You can verify by inspecting the [last example](https://codepen.io/gaearon/pen/gwoJZk?editors=1010) with the browser tools:
+>>>>>>> f67fa22cc1faee261f9e22449d90323e26174e8e
 
 ![ตัวตรวจสอบ DOM แสดงการปรับปรุงที่ละเอียด](../images/docs/granular-dom-updates.gif)
 
