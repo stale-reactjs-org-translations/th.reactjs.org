@@ -1,24 +1,24 @@
 community:
-  title: Community
+  title: ชุมชน
 
 docs:
-  title: Docs
+  title: เอกสาร
 
 more:
-  title: More
+  title: เพิ่มเติม
   items:
-    - title: Tutorial
+    - title: บทช่วยสอน
       to: /tutorial/tutorial.html
-    - title: Blog
+    - title: บล็อก
       to: /blog
-    - title: Acknowledgements
+    - title: ผู้ร่วมให้ข้อมูล
       to: /acknowledgements.html
     - title: React Native
       to: https://reactnative.dev/
       external: true
 
 channels:
-  title: Channels
+  title: ช่องทางต่างๆ
   items:
     - title: GitHub
       to: https://github.com/facebook/react
