@@ -11,27 +11,29 @@ prev: testing-recipes.html
 
 ### Test runners {#test-runners}
 
-Test runners like [Jest](https://jestjs.io/), [mocha](https://mochajs.org/), [ava](https://github.com/avajs/ava) let you write test suites as regular JavaScript, and run them as part of your development process. Additionally, test suites are run as part of continuous integration.
+ตัวทดสอบอย่าง [Jest](https://jestjs.io/), [mocha](https://mochajs.org/), [ava](https://github.com/avajs/ava) ให้คุณเขียนชุดทดสอบเป็น JavaScript ปกติ และเรียกใช้เป็นส่วนหนึ่งของกระบวนการพัฒนาของคุณ นอกจากนี้ ชุดทดสอบยังทำงานเป็นส่วนหนึ่งของการผสานรวมอย่างต่อเนื่อง.
 
-- Jest is widely compatible with React projects, supporting features like mocked [modules](#mocking-modules) and [timers](#mocking-timers), and [`jsdom`](#mocking-a-rendering-surface) support. **If you use Create React App, [Jest is already included out of the box](https://facebook.github.io/create-react-app/docs/running-tests) with useful defaults.**
-- Libraries like [mocha](https://mochajs.org/#running-mocha-in-the-browser) work well in real browser environments, and could help for tests that explicitly need it.
-- End-to-end tests are used for testing longer flows across multiple pages, and require a [different setup](#end-to-end-tests-aka-e2e-tests).
+- Jest เข้ากันได้กับโปรเจ็กต์ React อย่างกว้างขวาง รองรับฟีเจอร์ต่างๆ เช่น [modules](#mocking-modules) และ [timers](#mocking-timers), และรองรับ [`jsdom`](#mocking-a-rendering-surface)  **หากคุณใช้ Create React App, [Jest จะถูกรวมไว้พร้อมค่าเริ่มต้น](https://facebook.github.io/create-react-app/docs/running-tests) ที่มีประโยชน์อยู่แล้ว.**
+- ไลบรารีต่างๆ เช่น [mocha](https://mochajs.org/#running-mocha-in-the-browser) ทำงานได้ดีในสภาพแวดล้อมของเบราว์เซอร์จริง และสามารถช่วยในการทดสอบที่ต้องการได้อย่างชัดเจน.
+- การทดสอบแบบ end-to-end ใช้สำหรับทดสอบโฟลว์ที่ยาวขึ้นในหลาย ๆ หน้า [และต้องมีการตั้งค่าอื่น](#end-to-end-tests-aka-e2e-tests).
 
 ### Mocking a rendering surface {#mocking-a-rendering-surface}
 
-Tests often run in an environment without access to a real rendering surface like a browser. For these environments, we recommend simulating a browser with [`jsdom`](https://github.com/jsdom/jsdom), a lightweight browser implementation that runs inside Node.js.
+การทดสอบมักจะทำงานในสภาพแวดล้อมที่ไม่มีการเข้าถึงพื้นผิวการเรนเดอร์จริงเช่นเบราว์เซอร์ สำหรับสภาพแวดล้อมเหล่านี้ เราแนะนำให้จำลองเบราว์เซอร์ด้วย [`jsdom`](https://github.com/jsdom/jsdom), ซึ่งเป็นการใช้งานเบราว์เซอร์ขนาดเล็กที่ทำงานภายใน Node.js
 
-In most cases, jsdom behaves like a regular browser would, but doesn't have features like [layout and navigation](https://github.com/jsdom/jsdom#unimplemented-parts-of-the-web-platform). This is still useful for most web-based component tests, since it runs quicker than having to start up a browser for each test. It also runs in the same process as your tests, so you can write code to examine and assert on the rendered DOM.
+ในกรณีส่วนใหญ่ jsdom จะทำงานเหมือนเบราว์เซอร์ทั่วไป แต่ไม่มีฟีเจอร์อย่าง [เลย์เอาต์(layout) และ การนำทาง(navigation)](https://github.com/jsdom/jsdom#unimplemented-parts-of-the-web-platform). วิธีนี้ยังคงมีประโยชน์สำหรับการทดสอบส่วนประกอบบนเว็บส่วนใหญ่ เนื่องจากทำงานได้เร็วกว่าการเปิดเบราว์เซอร์สำหรับการทดสอบแต่ละครั้ง นอกจากนี้ยังทำงานในกระบวนการเดียวกับการทดสอบของคุณ ดังนั้นคุณจึงสามารถเขียนโค้ดเพื่อตรวจสอบและยืนยันบน DOM ที่แสดงผลได้.
 
-Just like in a real browser, jsdom lets us model user interactions; tests can dispatch events on DOM nodes, and then observe and assert on the side effects of these actions [<small>(example)</small>](/docs/testing-recipes.html#events).
 
-A large portion of UI tests can be written with the above setup: using Jest as a test runner, rendered to jsdom, with user interactions specified as sequences of browser events, powered by the `act()` helper [<small>(example)</small>](/docs/testing-recipes.html). For example, a lot of React's own tests are written with this combination.
+เช่นเดียวกับในเบราว์เซอร์จริง jsdom ทำให้เราจำลองการโต้ตอบของผู้ใช้ การทดสอบสามารถส่งเหตุการณ์บนโหนด DOM จากนั้นสังเกตและยืนยันผลข้างเคียงของการกระทำเหล่านี้ [<small>(ตัวอย่าง)</small>](/docs/testing-recipes.html#events).
 
-If you're writing a library that tests mostly browser-specific behavior, and requires native browser behavior like layout or real inputs, you could use a framework like [mocha.](https://mochajs.org/)
+การทดสอบ UI ส่วนใหญ่ สามารถเขียนได้ด้วยการตั้งค่าข้างต้น: ใช้ Jest เป็นตัวดำเนินการทดสอบ, แสดงผลเป็น jsdom โดยระบุการโต้ตอบของผู้ใช้เป็นลำดับของเหตุการณ์ของเบราว์เซอร์ ขับเคลื่อนโดย `act()` ตัวช่วย [<small>(ตัวอย่าง)</small>](/docs/testing-recipes.html). ตัวอย่างเช่น การทดสอบของ React จำนวนมากถูกเขียนด้วยชุดค่าผสมนี้.
 
-In an environment where you _can't_ simulate a DOM (e.g. testing React Native components on Node.js), you could use [event simulation helpers](/docs/test-utils.html#simulate) to simulate interactions with elements. Alternately, you could use the `fireEvent` helper from [`@testing-library/react-native`](https://testing-library.com/docs/react-native-testing-library/intro).
 
-Frameworks like [Cypress](https://www.cypress.io/), [puppeteer](https://github.com/GoogleChrome/puppeteer) and [webdriver](https://www.seleniumhq.org/projects/webdriver/) are useful for running [end-to-end tests](#end-to-end-tests-aka-e2e-tests).
+หากคุณกำลังเขียนไลบรารีที่ทดสอบลักษณะการทำงานเฉพาะเบราว์เซอร์เป็นส่วนใหญ่ และต้องใช้ลักษณะการทำงานของเบราว์เซอร์ดั้งเดิม เช่น เลย์เอาต์หรืออินพุตจริง คุณสามารถใช้เฟรมเวิร์กอย่าง [mocha.](https://mochajs.org/)
+
+ในสภาพแวดล้อมที่คุณไม่สามารถจำลอง DOM (เช่น การทดสอบส่วนประกอบ React Native บน Node.js), คุณสามารถใช้ตัว [event simulation helpers](/docs/test-utils.html#simulate) ช่วยการจำลองเหตุการณ์เพื่อจำลองการโต้ตอบกับองค์ประกอบ หรือคุณสามารถใช้ตัวช่วย `fireEvent` จาก [`@testing-library/react-native`](https://testing-library.com/docs/react-native-testing-library/intro).
+
+Frameworks เช่น [Cypress](https://www.cypress.io/), [puppeteer](https://github.com/GoogleChrome/puppeteer) และ [webdriver](https://www.seleniumhq.org/projects/webdriver/) มีประโยชน์สำหรับการทดสอบแบบ [end-to-end tests](#end-to-end-tests-aka-e2e-tests).
 
 ### Mocking functions {#mocking-functions}
 
