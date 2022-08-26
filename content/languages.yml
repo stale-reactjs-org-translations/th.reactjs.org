@@ -3,195 +3,195 @@
 # 1: Partially complete (50-99%)
 # 2: Complete (100%)
 
-- name: English
+- name: ภาษาอังกฤษ
   translated_name: English
   code: en
   status: 2
-- name: Arabic
+- name: ภาษาอาหรับ
   translated_name: العربية
   code: ar
   status: 2
-- name: Azerbaijani
+- name: ภาษาอาเซอร์ไบจาน
   translated_name: Azərbaycanca
   code: az
   status: 2
-- name: Bulgarian
+- name: ภาษาบัลแกเรีย
   translated_name: Български
   code: bg
   status: 1
-- name: Bengali
+- name: ภาษาเบงกอล
   translated_name: বাংলা
   code: bn
   status: 1
-- name: Catalan
+- name: ภาษากาตาลา
   translated_name: Català
   code: ca
   status: 1
-- name: German
+- name: ภาษาเยอรมัน
   translated_name: Deutsch
   code: de
   status: 1
-- name: Greek
+- name: ภาษากรีก
   translated_name: Ελληνικά
   code: el
   status: 1
-- name: Spanish
+- name: ภาษาสเปน
   translated_name: Español
   code: es
   status: 2
-- name: Persian
+- name: ภาษาเปอร์เซีย
   translated_name: فارسی
   code: fa
   status: 1
-- name: French
+- name: ภาษาฝรั่งเศส 
   translated_name: Français
   code: fr
   status: 2
-- name: Gujarati
+- name: ภาษาคุชราต
   translated_name: ગુજરાતી
   code: gu
   status: 0
-- name: Hebrew
+- name: ภาษาฮีบรู
   translated_name: עברית
   code: he
   status: 1
-- name: Hindi
+- name: ภาษาฮินดี
   translated_name: हिन्दी
   code: hi
   status: 0
-- name: Haitian Creole
+- name: ภาษาครีโอลเฮติ
   translated_name: Kreyòl ayisyen
   code: ht
   status: 0
-- name: Hungarian
+- name: ภาษาฮังการี
   translated_name: magyar
   code: hu
   status: 2
-- name: Armenian
+- name: ภาษาอาร์มีเนีย
   translated_name: Հայերեն
   code: hy
   status: 0
-- name: Indonesian
+- name: ภาษาอินโดนีเซีย
   translated_name: Bahasa Indonesia
   code: id
   status: 1
-- name: Italian
+- name: ภาษาอิตาลี
   translated_name: Italiano
   code: it
   status: 2
-- name: Japanese
+- name: ภาษาญี่ปุ่น
   translated_name: 日本語
   code: ja
   status: 2
-- name: Georgian
+- name: ภาษาจอร์เจีย
   translated_name: ქართული
   code: ka
   status: 0
-- name: Central Khmer
+- name: ภาษาเขมร
   translated_name: ភាសាខ្មែរ
   code: km
   status: 0
-- name: Kannada
+- name: ภาษากันนาดา
   translated_name: ಕನ್ನಡ
   code: kn
   status: 0
-- name: Korean
+- name: ภาษาเกาหลี
   translated_name: 한국어
   code: ko
   status: 2
-- name: Kurdish
+- name: ภาษาเคิร์ด
   translated_name: کوردی‎
   code: ku
   status: 0
-- name: Lithuanian
+- name: ภาษาลิทัวเนีย
   translated_name: Lietuvių kalba
   code: lt
   status: 0
-- name: Malayalam
+- name: ภาษามลยาฬัม
   translated_name: മലയാളം
   code: ml
   status: 0
-- name: Mongolian
+- name: ภาษามองโกเลีย
   translated_name: Монгол хэл
   code: mn
   status: 2
-- name: Nepali
+- name: ภาษาเนปาล
   translated_name: नेपाली
   code: ne
   status: 0
-- name: Dutch
+- name: ภาษาดัตช์
   translated_name: Nederlands
   code: nl
   status: 0
-- name: Polish
+- name: ภาษาโปแลนด์
   translated_name: Polski
   code: pl
   status: 2
-- name: Portuguese (Brazil)
+- name: ภาษาโปรตุเกส (บราซิล)
   translated_name: Português do Brasil
   code: pt-br
   status: 2
-- name: Portuguese (Portugal)
+- name: ภาษาโปรตุเกส (โปรตุเกส)
   translated_name: Português europeu
   code: pt-pt
   status: 0
-- name: Romanian
+- name: ภาษาโรมาเนีย
   translated_name: Română
   code: ro
   status: 0
-- name: Russian
+- name: ภาษารัสเซีย
   translated_name: Русский
   code: ru
   status: 2
-- name: Sinhala
+- name: ภาษาสิงหล
   translated_name: සිංහල
   code: si
   status: 0
-- name: Swedish
+- name: ภาษาสวีเดน
   translated_name: Svenska
   code: sv
   status: 0
-- name: Tamil
+- name: ภาษาทมิฬ
   translated_name: தமிழ்
   code: ta
   status: 0
-- name: Telugu
+- name: ภาษาเตลูกู
   translated_name: తెలుగు
   code: te
   status: 0
-- name: Thai
+- name: ภาษาไทย
   translated_name: ไทย
   code: th
   status: 0
-- name: Tagalog
+- name: ภาษาตากาล็อก
   translated_name: Wikang Tagalog
   code: tl
   status: 0
-- name: Turkish
+- name: ภาษาตุรกี
   translated_name: Türkçe
   code: tr
   status: 2
-- name: Ukrainian
+- name: ภาษายูเครน
   translated_name: Українська
   code: uk
   status: 2
-- name: Urdu
+- name: ภาษาอูรดู
   translated_name: اردو
   code: ur
   status: 0
-- name: Uzbek
+- name: ภาษาอุซเบก
   translated_name: Oʻzbekcha
   code: uz
   status: 0
-- name: Vietnamese
+- name: ภาษาเวียดนาม
   translated_name: Tiếng Việt
   code: vi
   status: 1
-- name: Simplified Chinese
+- name: ภาษาจีน แผ่นดินใหญ่
   translated_name: 简体中文
   code: zh-hans
   status: 2
-- name: Traditional Chinese
+- name: ภาษาจีน ดั้งเดิม
   translated_name: 繁體中文
   code: zh-hant
   status: 2
