@@ -37,9 +37,9 @@ Frameworks เช่น [Cypress](https://www.cypress.io/), [puppeteer](https://
 
 ### Mocking functions {#mocking-functions}
 
-When writing tests, we'd like to mock out the parts of our code that don't have equivalents inside our testing environment (e.g. checking `navigator.onLine` status inside Node.js). Tests could also spy on some functions, and observe how other parts of the test interact with them. It is then useful to be able to selectively mock these functions with test-friendly versions.
+เมื่อเขียนการทดสอบ เราต้องการเยาะเย้ยส่วนต่างๆ ของโค้ดที่ไม่มีค่าเทียบเท่าในสภาพแวดล้อมการทดสอบของเรา (เช่น การตรวจสอบสถานะ  `navigator.onLine` ภายใน Node.js). การทดสอบยังสามารถสอดแนมฟังก์ชันบางอย่าง และสังเกตว่าส่วนอื่นๆ ของการทดสอบมีปฏิสัมพันธ์กับพวกเขาอย่างไร การเลือกจำลองฟังก์ชันเหล่านี้ด้วยเวอร์ชันที่เหมาะกับการทดสอบจึงเป็นประโยชน์
 
-This is especially useful for data fetching. It is usually preferable to use "fake" data for tests to avoid the slowness and flakiness due to fetching from real API endpoints [<small>(example)</small>](/docs/testing-recipes.html#data-fetching). This helps make the tests predictable. Libraries like [Jest](https://jestjs.io/) and [sinon](https://sinonjs.org/), among others, support mocked functions. For end-to-end tests, mocking network can be more difficult, but you might also want to test the real API endpoints in them anyway.
+สิ่งนี้มีประโยชน์อย่างยิ่งสำหรับการดึงข้อมูล โดยปกติแล้ว ควรใช้ข้อมูล "ปลอม" สำหรับการทดสอบเพื่อหลีกเลี่ยงความช้าและความไม่สม่ำเสมอเนื่องจากการดึงข้อมูลจากปลายทาง API จริง [<small>(ตัวอย่าง)</small>](/docs/testing-recipes.html#data-fetching). สิ่งนี้จะช่วยทำให้การทดสอบสามารถคาดเดาได้. Libraries เช่น [Jest](https://jestjs.io/) และ [sinon](https://sinonjs.org/), ในระหว่างนั้น, รองรับฟังก์ชั่น mocked. สำหรับการทดสอบแบบ end-to-end, การ mocking เครือข่ายอาจทำได้ยากกว่า แต่คุณอาจต้องการทดสอบปลายทาง API จริงในเครือข่ายเหล่านี้ด้วย.
 
 ### Mocking modules {#mocking-modules}
 
