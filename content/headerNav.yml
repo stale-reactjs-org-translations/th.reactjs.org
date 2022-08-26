@@ -1,13 +1,13 @@
 items:
-  - title: Docs
+  - title: เอกสาร
     to: /docs/getting-started.html
     activeSelector: /docs/
-  - title: Tutorial
+  - title: การสอน
     to: /tutorial/tutorial.html
     activeSelector: /tutorial
-  - title: Blog
+  - title: บล็อก
     to: /blog/
     activeSelector: /blog
-  - title: Community
+  - title: ชุมชน
     to: /community/support.html
     activeSelector: /community
