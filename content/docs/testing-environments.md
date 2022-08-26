@@ -43,18 +43,19 @@ Frameworks เช่น [Cypress](https://www.cypress.io/), [puppeteer](https://
 
 ### Mocking modules {#mocking-modules}
 
-Some components have dependencies for modules that may not work well in test environments, or aren't essential to our tests. It can be useful to selectively mock these modules out with suitable replacements [<small>(example)</small>](/docs/testing-recipes.html#mocking-modules).
 
-On Node.js, runners like Jest [support mocking modules](https://jestjs.io/docs/en/manual-mocks). You could also use libraries like [`mock-require`](https://www.npmjs.com/package/mock-require).
+ส่วนประกอบบางอย่างมีการขึ้นต่อกันสำหรับโมดูลที่อาจทำงานได้ไม่ดีในสภาพแวดล้อมการทดสอบ หรือไม่จำเป็นต่อการทดสอบของเรา อาจเป็นประโยชน์ในการเลือกจำลองโมดูลเหล่านี้ด้วยการเปลี่ยนที่เหมาะสม [<small>(ตัวอย่าง)</small>](/docs/testing-recipes.html#mocking-modules).
+
+บน Node.js นักวิ่งอย่าง Jest  [รองรับโมดูลการ mocking](https://jestjs.io/docs/en/manual-mocks). คุณยังสามารถใช้ไลบรารีเช่น [`mock-require`](https://www.npmjs.com/package/mock-require).
 
 ### Mocking timers {#mocking-timers}
 
-Components might be using time-based functions like `setTimeout`, `setInterval`, or `Date.now`. In testing environments, it can be helpful to mock these functions out with replacements that let you manually "advance" time. This is great for making sure your tests run fast! Tests that are dependent on timers would still resolve in order, but quicker [<small>(example)</small>](/docs/testing-recipes.html#timers). Most frameworks, including [Jest](https://jestjs.io/docs/en/timer-mocks), [sinon](https://sinonjs.org/releases/v7.3.2/fake-timers/) and [lolex](https://github.com/sinonjs/lolex), let you mock timers in your tests.
+Components อาจใช้ฟังก์ชันตามเวลา เช่น `setTimeout`, `setInterval`, or `Date.now`. ในสภาพแวดล้อมการทดสอบ, การ mock ฟังก์ชันเหล่านี้ด้วยการแทนที่ที่ช่วยให้คุณ "ทำล่วงหน้า" ได้ด้วยตนเองอาจเป็นประโยชน์ วิธีนี้เหมาะอย่างยิ่งสำหรับการทำให้การทดสอบของคุณดำเนินไปอย่างรวดเร็ว! การทดสอบที่ขึ้นอยู่กับตัวจับเวลาจะยังคงแก้ไขตามลำดับ แต่เร็วกว่า [<small>(ตัวอย่าง)</small>](/docs/testing-recipes.html#timers). เฟรมเวิร์กส่วนใหญ่ รวมถึง [Jest](https://jestjs.io/docs/en/timer-mocks), [sinon](https://sinonjs.org/releases/v7.3.2/fake-timers/) และ [lolex](https://github.com/sinonjs/lolex), ช่วยให้คุณจำลองตัวจับเวลาในการทดสอบได้.
 
-Sometimes, you may not want to mock timers. For example, maybe you're testing an animation, or interacting with an endpoint that's sensitive to timing (like an API rate limiter). Libraries with timer mocks let you enable and disable them on a per test/suite basis, so you can explicitly choose how these tests would run.
+บางครั้งคุณอาจไม่ต้องการ mock ตัวจับเวลา ตัวอย่างเช่น คุณอาจกำลังทดสอบแอนิเมชันหรือโต้ตอบกับปลายทางที่ไวต่อจังหวะเวลา (เช่น ตัวจำกัดอัตรา API) ไลบรารีที่มีตัวจับเวลาจำลองช่วยให้คุณเปิดใช้งานและปิดใช้งานได้ตามแต่ละการทดสอบ/ชุด ดังนั้นคุณสามารถเลือกวิธีดำเนินการทดสอบเหล่านี้ได้อย่างชัดเจน
 
 ### End-to-end tests {#end-to-end-tests-aka-e2e-tests}
 
-End-to-end tests are useful for testing longer workflows, especially when they're critical to your business (such as payments or signups). For these tests, you'd probably want to test how a real browser renders the whole app, fetches data from the real API endpoints, uses sessions and cookies, navigates between different links. You might also likely want to make assertions not just on the DOM state, but on the backing data as well (e.g. to verify whether the updates have been persisted to the database).
+การทดสอบตั้งแต่ต้นจนจบมีประโยชน์สำหรับการทดสอบเวิร์กโฟลว์ที่ยาวขึ้น โดยเฉพาะอย่างยิ่งเมื่อการทดสอบเหล่านั้นมีความสำคัญต่อธุรกิจของคุณ (เช่น การชำระเงินหรือการสมัคร) สำหรับการทดสอบเหล่านี้ คุณอาจต้องการทดสอบว่าเบราว์เซอร์จริงแสดงผลแอปทั้งหมดอย่างไร ดึงข้อมูลจากปลายทาง API จริง ใช้เซสชันและคุกกี้ นำทางระหว่างลิงก์ต่างๆ คุณอาจต้องการยืนยันไม่ใช่เฉพาะในสถานะ DOM แต่ยังรวมถึงข้อมูลสำรองด้วย (เช่น เพื่อตรวจสอบว่าการอัปเดตยังคงอยู่ในฐานข้อมูลหรือไม่)
 
-In this scenario, you would use a framework like [Cypress](https://www.cypress.io/) or a library like [puppeteer](https://github.com/GoogleChrome/puppeteer) so you can navigate between multiple routes and assert on side effects not just in the browser, but potentially on the backend as well.
+ในสถานการณ์สมมตินี้ คุณจะใช้เฟรมเวิร์กอย่าง [Cypress](https://www.cypress.io/) หรือไลบรารี่อย่าง [puppeteer](https://github.com/GoogleChrome/puppeteer) เพื่อให้คุณสามารถนำทางไปมาระหว่างเส้นทางต่างๆ และยืนยันผลข้างเคียง ไม่ใช่แค่ในเบราว์เซอร์ แต่อาจอยู่ในแบ็กเอนด์ด้วยเช่นกัน.
