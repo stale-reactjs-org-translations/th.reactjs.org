@@ -85,11 +85,6 @@ class Toggle extends React.Component {
     );
   }
 }
-
-ReactDOM.render(
-  <Toggle />,
-  document.getElementById('root')
-);
 ```
 
 [**ทดลองเขียนบน CodePen**](https://codepen.io/gaearon/pen/xEmzGg?editors=0010)
@@ -98,15 +93,23 @@ ReactDOM.render(
 
 นี้ไม่ใช่สิ่งที่พบเจอได้แค่ใน React แต่มันเป็น[วิธีการทำงานของฟังก์ชั่น JavaScritp](https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/) ทั่วไป นั้นคือโดยทั่วไปแล้วถ้าเราอ้างถึงฟังก์ชั่นโดยที่ไม่มี `()` ต่อท้ายเช่น `onClick={this.handleClick}` เราควร bind method นั้น
 
+<<<<<<< HEAD
 ถ้าการเรียก `bind` นั้นดูไม่น่าใช้ ยังมีอีกสองวิธีที่สามารถทำได้ โดยใช้ [ไวยากรณ์ class fields](https://babeljs.io/docs/plugins/transform-class-properties/) ที่ยังอยู่ในช่วงทดลองนั้นจัดการ bind ให้กับ callback
 
 ```js{2-6}
 class LoggingButton extends React.Component {
   // ไวยากรณ์แบบนี้จะให้ทำให้ `this` นั้นถูก bind ภายใน handleClick
   // ระวัง: ไวยากรณ์แบบนี้ยังอยู่ในช่วง *ทดลอง*
+=======
+If calling `bind` annoys you, there are two ways you can get around this. You can use [public class fields syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) to correctly bind callbacks:
+
+```js{2-6}
+class LoggingButton extends React.Component {
+  // This syntax ensures `this` is bound within handleClick.
+>>>>>>> ea9e9ab2817c8b7eff5ff60e8fe9b649fd747606
   handleClick = () => {
     console.log('this is:', this);
-  }
+  };
 
   render() {
     return (
