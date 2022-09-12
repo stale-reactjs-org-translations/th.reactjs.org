@@ -33,13 +33,14 @@ const listItems = numbers.map((number) =>
 );
 ```
 
+<<<<<<< HEAD
 จากนั้นเรานำ `listItems` array ไปไว้ภายใน `<ul>` และ[แสดงผลมันไปยัง DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
+=======
+Then, we can include the entire `listItems` array inside a `<ul>` element:
+>>>>>>> c7d858947f832d1ba4e78caebc391fd964ff6de6
 
 ```javascript{2}
-ReactDOM.render(
-  <ul>{listItems}</ul>,
-  document.getElementById('root')
-);
+<ul>{listItems}</ul>
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
@@ -64,10 +65,8 @@ function NumberList(props) {
 }
 
 const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<NumberList numbers={numbers} />);
 ```
 
 เมื่อคุณรันโค๊ดนี้ คุณจะได้ได้รับคำเตือนว่า list items นั้นควรจะมีค่าของ key ด้วย ซึ่ง "key" เป็นคุณลักษณะพิเศษ ที่คุณจำเป็นต้องเพิ่มเข้ามาเมื่อคุณสร้าง list ของ elements และเราจะพูดความสำคัญของมันในส่วนต่อไปอีกที
@@ -87,12 +86,6 @@ function NumberList(props) {
     <ul>{listItems}</ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
@@ -132,7 +125,11 @@ const todoItems = todos.map((todo, index) =>
 ```
 แต่เราไม่แนะนำให้ใช้ค่าดัชนีมาเป็นค่า key ถ้าลำดับของ items มีการเปลี่ยนแปลงได้ ซึ่งมันอาจส่งผลร้ายต่อประสิทธิภาพการทำงาน และอาจมีปัญหากับ สถานะของคอมโพเนนท์ด้วย ลองอ่านบทความของ Robin Pokorny สำหรับ [in-depth explanation on the negative impacts of using an index as a key (ผลกระทบเชิงลึกในการใช้ดัชนีเป็นค่า key)](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318) อย่างไรก็ตามหากคุณไม่กำหนดค่า key ให้กับ list items แล้ว React จะกำหนดค่าปริยายให้โดยใช้ค่าดัชนีเป็นค่า key
 
+<<<<<<< HEAD
 และนี้คือ [in-depth explanation about why keys are necessary(ทำไมค่่า key ถึงสำคัญในเชิงลึก)](/docs/reconciliation.html#recursing-on-children) ถ้าคุณสนใจที่จะศึกษาเพิ่มเติม
+=======
+We don't recommend using indexes for keys if the order of items may change. This can negatively impact performance and may cause issues with component state. Check out Robin Pokorny's article for an [in-depth explanation on the negative impacts of using an index as a key](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/). If you choose not to assign an explicit key to list items then React will default to using indexes as keys.
+>>>>>>> c7d858947f832d1ba4e78caebc391fd964ff6de6
 
 ### แยกคอมโพเนนท์ที่มี key (Extracting Components with Keys) {#extracting-components-with-keys}
 
@@ -165,12 +162,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 **ตัวอย่าง: ที่ถูกต้องในการใช้ Key**
@@ -194,12 +185,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
@@ -240,10 +225,9 @@ const posts = [
   {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
   {id: 2, title: 'Installation', content: 'You can install React from npm.'}
 ];
-ReactDOM.render(
-  <Blog posts={posts} />,
-  document.getElementById('root')
-);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Blog posts={posts} />);
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
