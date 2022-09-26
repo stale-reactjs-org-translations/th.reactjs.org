@@ -10,9 +10,15 @@ next: handling-events.html
 
 หน้านี้จะแนะนำแนวคิดของ state(สถานะ) และ lifecycle(วงจรชีวิต)ใน React คอมโพเนนท์ คุณสามารถหา[รายละเอียดเอกสารอ้างอิงคอมโพเนนท์ API](/docs/react-component.html).
 
+<<<<<<< HEAD
 พิจารณาตัวอย่าง ticking clock จาก [ในเอกสารก่อนหน้า](/docs/rendering-elements.html#updating-the-rendered-element) ใน [Rendering Elements](/docs/rendering-elements.html#rendering-an-element-into-the-dom) เราได้เรียนรู้ว่าทางเดียวที่เราจะสามารถปรับปรุงการแสดงผลได้ จากการเรียก `ReactDOM.render()` เพื่อเปลี่ยนแปลงผลลัพธ์บนหน้าจอ:
+=======
+Consider the ticking clock example from [one of the previous sections](/docs/rendering-elements.html#updating-the-rendered-element). In [Rendering Elements](/docs/rendering-elements.html#rendering-an-element-into-the-dom), we have only learned one way to update the UI. We call `root.render()` to change the rendered output:
+>>>>>>> e3073b03a5b9eff4ef12998841b9e56120f37e26
 
-```js{8-11}
+```js{10}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+  
 function tick() {
   const element = (
     <div>
@@ -20,10 +26,7 @@ function tick() {
       <h2>It is {new Date().toLocaleTimeString()}.</h2>
     </div>
   );
-  ReactDOM.render(
-    element,
-    document.getElementById('root')
-  );
+  root.render(element);
 }
 
 setInterval(tick, 1000);
@@ -35,7 +38,9 @@ setInterval(tick, 1000);
 
 เราสามารถเริ่มห่อคอมโพเนนท์ `Clock` และโค๊ดจะเปลี่ยนเป็นดังนี้:
 
-```js{3-6,12}
+```js{5-8,13}
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
 function Clock(props) {
   return (
     <div>
@@ -46,10 +51,7 @@ function Clock(props) {
 }
 
 function tick() {
-  ReactDOM.render(
-    <Clock date={new Date()} />,
-    document.getElementById('root')
-  );
+  root.render(<Clock date={new Date()} />);
 }
 
 setInterval(tick, 1000);
@@ -62,10 +64,7 @@ setInterval(tick, 1000);
 อันที่จริงเราต้องการเขียนโค๊ดนี้เพียงครั้งเดียวและทำให้ `Clock` สามารถปรับปรุงภายในตัวเองได้:
 
 ```js{2}
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
-);
+root.render(<Clock />);
 ```
 
 เพื่อจะพัฒนาในส่วนนี้ เราจำเป็นต้องเพิ่ม State เข้าไปใน `Clock` คอมโพเนนท์
@@ -158,10 +157,7 @@ class Clock extends React.Component {
 3) นำ `date` ออกจาก prop ที่เป็นในองค์ประกอบ `<Clock />`:
 
 ```js{2}
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
-);
+root.render(<Clock />);
 ```
 
 จากนี้ต่อไปเราจะเพิ่มตัวจับเวลากลับเข้าไปในตัวของคอมโพเนนท์
@@ -185,10 +181,8 @@ class Clock extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Clock />);
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/KgQpJd?editors=0010)
@@ -294,10 +288,8 @@ class Clock extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Clock />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Clock />);
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/amqdNA?editors=0010)
@@ -306,7 +298,11 @@ ReactDOM.render(
 
 มาสรุปกันว่าเกิดอะไรขึ้น และลำดับการเรียกใช้ของแต่ละเมธอด:
 
+<<<<<<< HEAD
 1) เมื่อ `<Clock />` ถูกใส่เข้าไปใน `ReactDOM.render()` React จะเรียก constructor ของคอมโพเนนท์ `Clock` เมื่อ `Clock` ต้องการแสดงผลเวลาปัจจุบัน มันจะทำการเตรียม `this.state` ที่มีออบเจ็คที่เก็บข้อมูลเวลาปัจจุบัน ซึ่งเราจะต้องนำข้อมูลในส่วนนี้ไปใช้ในการปรับปรุงต่อไปในอนาคต
+=======
+1) When `<Clock />` is passed to `root.render()`, React calls the constructor of the `Clock` component. Since `Clock` needs to display the current time, it initializes `this.state` with an object including the current time. We will later update this state.
+>>>>>>> e3073b03a5b9eff4ef12998841b9e56120f37e26
 
 2) React จะเรียกเมธอด `render()` ของคอมโพเนนท์ `Clock` นี้คือวิธีที่ทำให้ React รู้ว่าอะไรควรที่ถูกนำไปแสดงผลบนจอภาพ จากนั้น React จะทำการปรับปรุง DOM ให้ตรงกับผลลัพธ์ของ `Clock`
 
@@ -456,11 +452,6 @@ function App() {
     </div>
   );
 }
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/vXdGmd?editors=0010)
