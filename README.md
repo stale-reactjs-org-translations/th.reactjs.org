@@ -7,10 +7,17 @@
 ### ข้อกำหนดเบื้องต้น
 
 1. Git
+<<<<<<< HEAD
 1. Node: เวอร์ชั่น 12.x โดยเริ่มต้นที่ v12.0.0 หรือเวอร์ชั่นที่ใหม่กว่า
 1. Yarn: ดู [เว็บไซต์ Yarn: คำแนะนำสำหรับการติดตั้ง](https://yarnpkg.com/lang/en/docs/install/)
 1. เรโป (repo) ที่ fork แล้ว (สำหรับผู้ที่เข้าร่วมโครงการ)
 1. clone ของ [reactjs.org repo](https://github.com/reactjs/reactjs.org) บนเครื่องของคุณ
+=======
+1. Node: any 12.x version starting with v12.0.0 or greater
+1. Yarn v1: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
+1. A fork of the repo (for any contributions)
+1. A clone of the [reactjs.org repo](https://github.com/reactjs/reactjs.org) on your local machine
+>>>>>>> 3ff6fe871c6212118991ffafa5503358194489a0
 
 ### การติดตั้ง
 
@@ -51,13 +58,23 @@
 
 1. `git add -A && git commit -m "My message"` (แทนที่ `My message` ด้วยข้อความที่จะคอมมิท เช่น `Fix header logo on Android`) เพื่อสเตทและคอมมิทสิ่งที่คุณเปลี่ยนแปลง
 1. `git push my-fork-name the-name-of-my-branch`
+<<<<<<< HEAD
 1. ไปที่ [reactjs.org repo](https://github.com/reactjs/reactjs.org) และคุณควรจะเห็น branch ล่าสุดที่คุณ push
 1. ทำตามคำแนะนำของ GitHub
 1. หากเป็นไปได้, เพิ่มภาพสกรีนชอต (screenshot) ของการเปลี่ยนแปลงที่มองเห็นได้ [Netlify](https://www.netlify.com/) build จะถูกสร้างโดยอัตโนมัติเมื่อคุณสร้าง PR เพื่อให้คนอื่นเห็นการเปลี่ยนแปลงที่คุณทำ
+=======
+1. Go to the [reactjs.org repo](https://github.com/reactjs/reactjs.org) and you should see recently pushed branches.
+1. Follow GitHub's instructions.
+1. If possible, include screenshots of visual changes. A preview build is triggered after your changes are pushed to GitHub.
+>>>>>>> 3ff6fe871c6212118991ffafa5503358194489a0
 
 ## การแปลภาษา
 
+<<<<<<< HEAD
 ถ้าคุณสนใจในการแปล `reactjs.org`, ดูการแปลปัจจุบันได้ที่ [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/)
+=======
+If you are interested in translating `reactjs.org`, please see the current translation efforts at [translations.reactjs.org](https://translations.reactjs.org/).
+>>>>>>> 3ff6fe871c6212118991ffafa5503358194489a0
 
 
 หากภาษาของคุณไม่มีการแปลและคุณต้องการที่จะสร้าง โปรดทำตามคำแนะนำที่ [reactjs.org Translations](https://github.com/reactjs/reactjs.org-translation#translating-reactjsorg)
@@ -66,5 +83,10 @@
 
 - `yarn reset` เพื่อล้างแคชในเครื่อง
 
+<<<<<<< HEAD
 ## การอนุญาต
 เนื้อหาที่ส่งไปยัง [reactjs.org](https://reactjs.org/) ได้รับใบอนุญาต CC-BY-4.0 ตามที่พบในไฟล์ [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md)
+=======
+## License
+Content submitted to [reactjs.org](https://reactjs.org/) is CC-BY-4.0 licensed, as found in the [LICENSE-DOCS.md](LICENSE-DOCS.md) file.
+>>>>>>> 3ff6fe871c6212118991ffafa5503358194489a0
