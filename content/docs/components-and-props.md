@@ -65,26 +65,35 @@ const element = <Welcome name="Sara" />;
 
 จาก Code ตัวอย่างนี้ หน้าจอจะทำการแสดงผลคำว่า "Hello, Sara" ออกมา
 
-```js{1,5}
+```js{1,6}
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>;
 }
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
 const element = <Welcome name="Sara" />;
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
+root.render(element);
 ```
 
+<<<<<<< HEAD
 [ทดลองเขียนบน CodePen](codepen://components-and-props/rendering-a-component)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/YGYmEG?editors=1010)**
+>>>>>>> 3ff6fe871c6212118991ffafa5503358194489a0
 
 เรามาลองดูกันว่ามีอะไรเกิดขึ้นบ้างในตัวอย่างนี้
 
+<<<<<<< HEAD
 1. เราเรียก `ReactDOM.render()` ด้วย `<Welcome name="Sara" />`
 2. React เรียกดูคอมโพเนนท์ `Welcome` ด้วยพรอพส์ `{name: 'Sara'}`
 3. คอมโพเนนท์ `Welcome` ของเรานั้นตอบกลับด้วย element `<h1>Hello, Sara</h1>`
 4. React DOM ทำการแก้ไข DOM ให้กลายเป็น `<h1>Hello, Sara</h1>`.
+=======
+1. We call `root.render()` with the `<Welcome name="Sara" />` element.
+2. React calls the `Welcome` component with `{name: 'Sara'}` as the props.
+3. Our `Welcome` component returns a `<h1>Hello, Sara</h1>` element as the result.
+4. React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
+>>>>>>> 3ff6fe871c6212118991ffafa5503358194489a0
 
 >**สังเกต:** การตั้งชื่อคอมโพเนนท์ให้ขึ้นต้นด้วยภาษาอังกฤษตัวพิมพ์ใหญ่เสมอ
 >
@@ -112,14 +121,13 @@ function App() {
     </div>
   );
 }
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
 ```
 
+<<<<<<< HEAD
 [ทดลองเขียนบน CodePen](codepen://components-and-props/composing-components)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/KgQKPr?editors=1010)**
+>>>>>>> 3ff6fe871c6212118991ffafa5503358194489a0
 
 โดยทั่วไปแล้ว แอพที่เขียนด้วย React นั้นจะมีคอมโพเนนท์ `App` อยู่บนสุด แต่อย่างไรก็ตาม มีบางกรณี เราอาจกำลังทำการผสาน React เข้าไปในแอพเดิมที่มีอยู่แล้ว ในกรณีเช่นนี้เราอาจจะเริ่มจากการเขียนคอมโพเนนท์เล็กๆเช่น `Button` ก่อน แล้วค่อยๆขยายการใช้งานเพิ่มขึ้นไปเรื่อยๆแบบล่างขึ้นบน
 
@@ -151,7 +159,11 @@ function Comment(props) {
 }
 ```
 
+<<<<<<< HEAD
 [ทดลองเขียนบน CodePen](codepen://components-and-props/extracting-components)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/VKQwEo?editors=1010)**
+>>>>>>> 3ff6fe871c6212118991ffafa5503358194489a0
 
 คอมโพเนนท์นี้รับ `author` (เป็นอ็อปเจค), `text` (เป็น string) และรับ `date` (เป็น date) เข้ามาเป็นพรอพส์แล้วทำการแสดงผลข้อความ Comment ขึ้นไปบนเว็บไซต์เครือข่ายสังคม
 
@@ -230,7 +242,11 @@ function Comment(props) {
 }
 ```
 
+<<<<<<< HEAD
 [ทดลองเขียนบน CodePen](codepen://components-and-props/extracting-components-continued)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/rrJNJY?editors=1010)**
+>>>>>>> 3ff6fe871c6212118991ffafa5503358194489a0
 
 การแบ่งส่วนคอมโพเนนท์อาจจะดูเป็นงานที่ดูจุกจิกในตอนแรก แต่การมีชุดของคอมโพเนนท์ที่สามารถนำไปใช้ซ้ำได้เยอะๆส่งผลดีต่อการพัฒนาในแอพที่ใหญ่ขึ้น หลักการง่ายๆคือถ้ามีส่วนของการแสดงผลที่นำไปใช้หลายๆครั้ง (เช่น `Button`, `Panel`, `Avatar`) หรือคอมโพเนนท์ที่ซับซ้อน (อย่างเช่น `App`, `FeedStory`, `Comment`) การสร้างมันให้เป็นคอมโพเนนท์ก็เป็นตัวเลือกดี
 
