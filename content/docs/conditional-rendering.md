@@ -8,7 +8,20 @@ redirect_from:
   - "tips/false-in-jsx.html"
 ---
 
+<<<<<<< HEAD
 ใน React คุณสามารถสร้างคอมโพเนนท์ที่เป็นส่วนๆ และมีพฤติกรรมภายของตัวเองอย่างที่คุณต้องการ จากนั้นคุณสามารถเลือกแสดงผลเพียงบางส่วนได้ ซึ่งขึ้นอยุ่กับ state ของแอพที่คุณสร้าง
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Conditional Rendering](https://beta.reactjs.org/learn/conditional-rendering)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
+In React, you can create distinct components that encapsulate behavior you need. Then, you can render only some of them, depending on the state of your application.
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 
 Conditional rendering(เงื่อนใขการแสดงผล) ใน React นั้นทำงานคล้ายกับเงื่อนใขใน JavaScript ในบางส่วน ซึ่งใช้ตัวโอเปอเรเตอร์ของ Javascript เช่น [`if`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) หรือ [conditional operator](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) เพื่อสร้าง element ที่เป็นตัวแทนของ state ปัจจุบัน และให้ React ปรับปรุงส่วนแสดงผลให้ตรงกับ element เหล่านั้น
 
@@ -35,11 +48,17 @@ function Greeting(props) {
   return <GuestGreeting />;
 }
 
+<<<<<<< HEAD
 ReactDOM.render(
   // ลองเปลี่ยนให้เป็น isLoggedIn={true}:
   <Greeting isLoggedIn={false} />,
   document.getElementById('root')
 );
+=======
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+// Try changing to isLoggedIn={true}:
+root.render(<Greeting isLoggedIn={false} />);
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
@@ -110,10 +129,8 @@ class LoginControl extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <LoginControl />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(<LoginControl />);
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
@@ -140,10 +157,9 @@ function Mailbox(props) {
 }
 
 const messages = ['React', 'Re: React', 'Re:Re: React'];
-ReactDOM.render(
-  <Mailbox unreadMessages={messages} />,
-  document.getElementById('root')
-);
+
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(<Mailbox unreadMessages={messages} />);
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
@@ -160,7 +176,7 @@ render() {
   const count = 0;
   return (
     <div>
-      { count && <h1>Messages: {count}</h1>}
+      {count && <h1>Messages: {count}</h1>}
     </div>
   );
 }
@@ -242,10 +258,8 @@ class Page extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Page />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(<Page />);
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)
