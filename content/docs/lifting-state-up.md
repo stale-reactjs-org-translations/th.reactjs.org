@@ -9,7 +9,19 @@ redirect_from:
   - "docs/flux-todo-list.html"
 ---
 
+<<<<<<< HEAD
 บ่อยครั้งที่คอมโพเนนท์หลาย ๆ คอมโพเนนท์จำเป็นที่จะต้องใช้ข้อมูลจากที่เดียวกัน เราแนะนำให้คุณเลื่อนตำแหน่งของ state ที่ถูกแชร์ขึ้นมาเก็บไว้ที่คอมโพเนนท์แม่ในใกล้ที่สุดของ 2 คอมโพเนนท์นั้น เราลองมาดูตัวอย่างโดยละเอียดข้างล่างกัน
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Sharing State Between Components](https://beta.reactjs.org/learn/sharing-state-between-components)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+Often, several components need to reflect the same changing data. We recommend lifting the shared state up to their closest common ancestor. Let's see how this works in action.
+>>>>>>> ba290ad4e432f47a2a2f88d067dacaaa161b5200
 
 สำหรับหัวข้อนี้ เราจะสร้างเครื่องคำนวณอุณหภูมิที่จะคำนวณว่าน้ำจะเดือดหรือไม่สำหรับค่าอุณหภูมิที่ผู้ใช้ป้อนให้
 

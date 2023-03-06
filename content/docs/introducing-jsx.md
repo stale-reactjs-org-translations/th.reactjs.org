@@ -6,7 +6,20 @@ prev: hello-world.html
 next: rendering-elements.html
 ---
 
+<<<<<<< HEAD
 พิจารณาการประกาศตัวแปรนี้:
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Writing Markup with JSX](https://beta.reactjs.org/learn/writing-markup-with-jsx)
+> - [JavaScript in JSX with Curly Braces](https://beta.reactjs.org/learn/javascript-in-jsx-with-curly-braces)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+Consider this variable declaration:
+>>>>>>> ba290ad4e432f47a2a2f88d067dacaaa161b5200
 
 ```js
 const element = <h1>Hello, World!</h1>;
@@ -34,12 +47,16 @@ React [ไม่บังคับ](/docs/react-without-jsx.html) ว่าง�
 
 ```js{1,2}
 const name = 'Josh Perez';
+<<<<<<< HEAD
 const element = <h1>สวัสดี, {name}</h1>;
 
 ReactDOM.render(
   element,
   document.getElementById('root')
 );
+=======
+const element = <h1>Hello, {name}</h1>;
+>>>>>>> ba290ad4e432f47a2a2f88d067dacaaa161b5200
 ```
 
 คุณสามารถใส่ [นิพจน์ JavaScript ที่ถูกต้อง](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) ใด ๆ ด้านในวงเล็บปีกกาใน JSX ได้ ตัวอย่างเช่น `2 + 2`, `user.firstName`, หรือ `formatName(user)` เป็นนิพจน์ JavaScript ที่ถูกต้องทั้งหมด
@@ -61,14 +78,13 @@ const element = (
     สวัสดี, {formatName(user)}!
   </h1>
 );
-
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
 ```
 
+<<<<<<< HEAD
 [ทดลองบน Codepen](codepen://introducing-jsx)
+=======
+**[Try it on CodePen](https://codepen.io/gaearon/pen/PGEjdG?editors=1010)**
+>>>>>>> ba290ad4e432f47a2a2f88d067dacaaa161b5200
 
 เราแยก JSX เป็นหลายบรรทัดเพื่อให้อ่านง่าย ซึ่งจริง ๆ แล้วก็ไม่จำเป็น เมื่อทำเช่นนี้ นอกจากนี้เรายังแนะนำให้ห่อไว้ในวงเล็บเพื่อหลีกเลี่ยงข้อผิดพลาดของ [การแทรกเครื่องหมายเซมิโคลอน (;) โดยอัตโนมัติ](https://stackoverflow.com/q/2846283).
 
@@ -92,7 +108,11 @@ function getGreeting(user) {
 คุณสามารถใช้เครื่องหมายคำพูด เมื่อเป็นตัวอักษรสตริง ในแอตทริบิวต์:
 
 ```js
+<<<<<<< HEAD
 const element = <div tabIndex={0}></div>;
+=======
+const element = <a href="https://www.reactjs.org"> link </a>;
+>>>>>>> ba290ad4e432f47a2a2f88d067dacaaa161b5200
 ```
 
 คุณอาจใช้วงเล็บปีกกา เมื่อฝังนิพจน์ JavaScript ในแอตทริบิวต์:
