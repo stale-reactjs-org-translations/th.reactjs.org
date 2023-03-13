@@ -6,7 +6,20 @@ prev: conditional-rendering.html
 next: forms.html
 ---
 
+<<<<<<< HEAD
 เราจะเริ่มจากการรีวิวในการปรับเปลี่ยน lists ใน JavaScript
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Rendering Lists](https://beta.reactjs.org/learn/rendering-lists)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
+First, let's review how you transform lists in JavaScript.
+>>>>>>> 19aa5b4852c3905757edb16dd62f7e7506231210
 
 จากโค๊ดที่อยู่ด้านล่าง เราใช้ฟังก์ชั่น [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) โดยการใส่ array ของ `numbers` แล้วนำตัวเลขเหล่านี้มาคูณสอง โดยเรานำ array ผลลัพธ์ที่ได้มาจาก `map()` ใส่ลงไปในตัวแปร `doubled` จากนั้นก็บันทึกมันออกมา
 
@@ -33,13 +46,14 @@ const listItems = numbers.map((number) =>
 );
 ```
 
+<<<<<<< HEAD
 จากนั้นเรานำ `listItems` array ไปไว้ภายใน `<ul>` และ[แสดงผลมันไปยัง DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
+=======
+Then, we can include the entire `listItems` array inside a `<ul>` element:
+>>>>>>> 19aa5b4852c3905757edb16dd62f7e7506231210
 
 ```javascript{2}
-ReactDOM.render(
-  <ul>{listItems}</ul>,
-  document.getElementById('root')
-);
+<ul>{listItems}</ul>
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
@@ -64,10 +78,8 @@ function NumberList(props) {
 }
 
 const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<NumberList numbers={numbers} />);
 ```
 
 เมื่อคุณรันโค๊ดนี้ คุณจะได้ได้รับคำเตือนว่า list items นั้นควรจะมีค่าของ key ด้วย ซึ่ง "key" เป็นคุณลักษณะพิเศษ ที่คุณจำเป็นต้องเพิ่มเข้ามาเมื่อคุณสร้าง list ของ elements และเราจะพูดความสำคัญของมันในส่วนต่อไปอีกที
@@ -87,12 +99,6 @@ function NumberList(props) {
     <ul>{listItems}</ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
@@ -132,7 +138,11 @@ const todoItems = todos.map((todo, index) =>
 ```
 แต่เราไม่แนะนำให้ใช้ค่าดัชนีมาเป็นค่า key ถ้าลำดับของ items มีการเปลี่ยนแปลงได้ ซึ่งมันอาจส่งผลร้ายต่อประสิทธิภาพการทำงาน และอาจมีปัญหากับ สถานะของคอมโพเนนท์ด้วย ลองอ่านบทความของ Robin Pokorny สำหรับ [in-depth explanation on the negative impacts of using an index as a key (ผลกระทบเชิงลึกในการใช้ดัชนีเป็นค่า key)](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318) อย่างไรก็ตามหากคุณไม่กำหนดค่า key ให้กับ list items แล้ว React จะกำหนดค่าปริยายให้โดยใช้ค่าดัชนีเป็นค่า key
 
+<<<<<<< HEAD
 และนี้คือ [in-depth explanation about why keys are necessary(ทำไมค่่า key ถึงสำคัญในเชิงลึก)](/docs/reconciliation.html#recursing-on-children) ถ้าคุณสนใจที่จะศึกษาเพิ่มเติม
+=======
+We don't recommend using indexes for keys if the order of items may change. This can negatively impact performance and may cause issues with component state. Check out Robin Pokorny's article for an [in-depth explanation on the negative impacts of using an index as a key](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/). If you choose not to assign an explicit key to list items then React will default to using indexes as keys.
+>>>>>>> 19aa5b4852c3905757edb16dd62f7e7506231210
 
 ### แยกคอมโพเนนท์ที่มี key (Extracting Components with Keys) {#extracting-components-with-keys}
 
@@ -165,12 +175,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 **ตัวอย่าง: ที่ถูกต้องในการใช้ Key**
@@ -194,12 +198,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
@@ -240,10 +238,9 @@ const posts = [
   {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
   {id: 2, title: 'Installation', content: 'You can install React from npm.'}
 ];
-ReactDOM.render(
-  <Blog posts={posts} />,
-  document.getElementById('root')
-);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Blog posts={posts} />);
 ```
 
 [**ทดลองบน CodePen**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
